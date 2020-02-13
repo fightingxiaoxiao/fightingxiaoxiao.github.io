@@ -101,3 +101,6 @@ exclude: [
 
 # Theme
 version: v3.0.2
+
+paginate: 5
+paginate_path: "page:num"
