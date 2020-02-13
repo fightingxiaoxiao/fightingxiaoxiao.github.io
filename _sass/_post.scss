@@ -56,7 +56,10 @@
     @include mainFont(300);
   }
 
-  p,
+  p {
+    max-width: fit-content;
+  }
+  
   h1,
   h2,
   h3,
