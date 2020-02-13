@@ -13,7 +13,7 @@
   padding-bottom: rem(40px);
 
   @include media(">=sm") {
-    max-width: rem(1600px);
+    max-width: rem(1100px);
     flex-direction: row;
     margin: 0 auto;
     padding: rem(40px) 0;
@@ -23,7 +23,6 @@
     padding-bottom: rem(5px);
 
     @include media(">=sm") {
-      max-width: rem(1600px);
       flex-basis: 80%;
       padding: 0 rem(30px) 0 rem(10px);
     }
