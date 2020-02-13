@@ -20,7 +20,7 @@
   }
 
   .post-content {
-    padding-bottom: rem(5px);
+    padding-bottom: rem(10px);
 
     @include media(">=sm") {
       flex-basis: 80%;
@@ -86,14 +86,14 @@
 
   h1.post-title {
     line-height: 1.2;
-    margin: rem(5px) auto rem(10px);
+    //margin: rem(5px) auto rem(10px);
     padding-top: 0;
   }
 
   p.post-subtitle {
     color: darken($lightGray, 30%);
     font-size: rem(17px);
-    margin: rem(10px) auto;
+    //margin: rem(10px) auto;
     line-height: 1.6;
 
     @include media(">=sm") {
