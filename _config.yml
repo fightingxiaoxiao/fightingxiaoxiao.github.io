@@ -1,7 +1,7 @@
 # Site Settings
-name: SmileMax
+name: 笑笑的科研小站
 title: 笑笑的科研小站
-description: Jekflix is a template for Jekyll inspired by Netflix and made by Thiago Rossener.
+description: 我的博客！
 tags:
   - blog
   - template
@@ -16,10 +16,10 @@ menu:
     url: /
   - title: About
     url: /about
-  - title: Contact
-    url: /contact
-  - title: Feed
-    url: /feed.xml
+  #- title: Contact
+    #url: /contact
+  #- title: Feed
+    #url: /feed.xml
 
 
 # Social Media Settings
