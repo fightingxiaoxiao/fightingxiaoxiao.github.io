@@ -20,7 +20,7 @@
   }
 
   .post-content {
-    padding-bottom: rem(10px);
+    padding-bottom: rem(5px);
 
     @include media(">=sm") {
       flex-basis: 70%;
