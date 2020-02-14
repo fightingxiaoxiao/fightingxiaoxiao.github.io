@@ -61,10 +61,24 @@
     line-height: 1.6;
   }
   
-  h1,
-  h2,
-  h3,
-  h4,
+  h1 {
+    margin-left: unset;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+    margin-left: unset;
+  }
+  
+  h3 {
+    font-size: 1.4rem;
+    margin-left: unset;
+  }
+  
+  h4 {
+    margin-left: unset;
+  }
+  
   h5,
   h6,
   ul,
