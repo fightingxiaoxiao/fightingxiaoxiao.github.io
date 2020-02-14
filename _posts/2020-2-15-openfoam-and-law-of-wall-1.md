@@ -19,6 +19,14 @@ paginate: true
 <center>$$u^{+}=y^{+}$$</center>
 <p>对数层的无量纲形式可写作</p>
 <center>$$u^{+}=\frac{1}{\kappa} \ln y^{+}+C^{+}$$</center>
-<p>其中的无量纲数可表示为</p>
+<p>式中的无量纲数可表示为</p>
 <center>$$y^{+}=\frac{y u_{\tau}}{\nu}, \quad u_{\tau}=\sqrt{\frac{\tau_{w}}{\rho}} \quad \text , \quad u^{+}=\frac{u}{u_{\tau}}$$</center>
 <embed src="../article_img/2020-2-15-openfoam-and-law-of-wall-1/law_of_the_wall.svg" type="image/svg+xml" />
+其中，
+$y^{+}$是距壁面高度值$y$处理后的无量纲值
+$y^{+}$是平行于壁面的速度$u$处理后的无量纲值
+$\tau_{w}$是壁面剪切应力(wall shear stress)
+$\rho$是流体密度
+$u_{\tau}$是剪切速度(friction velocity/shear velocity)
+$\kappa$是卡曼常数(Von Kármán constant)，一般取$0.40~0.42$
+$C^{+}$为常数，一般取$5.0$
