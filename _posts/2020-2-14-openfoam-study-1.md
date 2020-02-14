@@ -29,7 +29,7 @@ paginate: true
 > OpenFOAM is packaged for simple installation on Ubuntu Linux, **which can be directly installed on Windows 10** and is available as a Docker image for other Linux and macOS.
 
 <p style="text-indent:2em">但是事实上这是指WSL，即Windows Subsystem Linux，具体的安装和操作指南可见[了解适用于 Linux 的 Windows 子系统](https://docs.microsoft.com/zh-cn/windows/wsl/about)。</p>
-WSL的易用性确实非常优秀，在上述的微软官网下载Ubuntu 18.04，简单配置一下，再按照OpenFOAM的官方安装指南就完事了。缺点如下：1，性能较原生Linux要低，尤其是I/O性能相当糟糕(WSL2有所改进)，不少算例耗费的时间要多出30%～50%不等；2，可视化依赖第三方，不支持高版本OpenGL，这就意味着使用者不能直接使用paraFoam做后处理。如果要呈现拉格朗日粒子，这是个致命的缺陷；3，Windows和UNIX系统的文件命名规则不同，转换之间会出现非法字符（比如冒号）。</p>
+<p style="text-indent:2em">WSL的易用性确实非常优秀，在上述的微软官网下载Ubuntu 18.04，简单配置一下，再按照OpenFOAM的官方安装指南就完事了。缺点如下：1，性能较原生Linux要低，尤其是I/O性能相当糟糕(WSL2有所改进)，不少算例耗费的时间要多出30%～50%不等；2，可视化依赖第三方，不支持高版本OpenGL，这就意味着使用者不能直接使用paraFoam做后处理。如果要呈现拉格朗日粒子，这是个致命的缺陷；3，Windows和UNIX系统的文件命名规则不同，转换之间会出现非法字符（比如冒号）。</p>
 <p style="text-indent:2em">当然，如果是在Windows上办公，后台挂个小算例这种场景，WSL是几乎完美的。双系统用户对硬盘空间不敏感的话完全可以装一个。</p>
 ### Deepin 15.11
 <p style="text-indent:2em">国产的Linux系统，优点是本地化到位，自带QQ、微信、百度盘这种应用，符合国人操作习惯。OpenFOAM安装起来和WSL、Ubuntu一模一样。缺点是桌面性能不好，尤其是显卡驱动支持稀烂，对双显卡的笔记本支持很差，界面虽然很漂亮但是很多组件都卡卡的，很多窗口甚至会出现一些图形的错位，自带的记事本更是卡的要命...用了两天果断放弃。</p>
