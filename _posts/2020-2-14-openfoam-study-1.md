@@ -27,7 +27,8 @@ OpenFOAM是一款流行的开源CFD工具箱，最初萌生体验的想法主要
 
 ### Windows 10 WSL
 虽然按照官网的说法，
-> OpenFOAM is packaged for simple installation on Ubuntu Linux, **which can be directly installed on Windows 10** and is available as a Docker image for other Linux and macOS
+> OpenFOAM is packaged for simple installation on Ubuntu Linux, **which can be directly installed on Windows 10** and is available as a Docker image for other Linux and macOS.
+
 但是事实上这是指WSL，即Windows Subsystem Linux，具体的安装和操作指南可见[了解适用于 Linux 的 Windows 子系统](https://link.zhihu.com/?target=https%3A//docs.microsoft.com/zh-cn/windows/wsl/about)。
 WSL的易用性确实非常优秀，在上述的微软官网下载Ubuntu 18.04，简单配置一下，再按照OpenFOAM的官方安装指南就完事了。缺点如下：1，性能较原生Linux要低，尤其是I/O性能相当糟糕(WSL2有所改进)，不少算例耗费的时间要多出30%～50%不等；2，可视化依赖第三方，不支持高版本OpenGL，这就意味着使用者不能直接使用paraFoam做后处理。如果要呈现拉格朗日粒子，这是个致命的缺陷；3，Windows和UNIX系统的文件命名规则不同，转换之间会出现非法字符（比如冒号）。
 
@@ -40,7 +41,9 @@ WSL的易用性确实非常优秀，在上述的微软官网下载Ubuntu 18.04�
 基于Arch的Linux系统，在科学计算领域相对于Ubuntu、CentOS/RedHat这些系列似乎要冷门不少。但是体验下来桌面确实很漂亮，性能也很棒！同时，Gnome支持HIDpi，完美适配4K屏幕，N卡的驱动(大黄蜂)默认已经自动打上了。商店软件很全，连CUDA、CuCNN这种包都能直接下...总体感觉pacman的体验要优于apt。
 
 虽然官网没有直接的指导，但前置包的安装其实比其他系统更加简洁：
-```hljs bash
+
+```bash
 sudo pacman -S gcc qt flex cmake openmpi git
 ```
+
 注：这里搜qt会出很多包，不知道哪些是必要的，心一横就全安了=。=
