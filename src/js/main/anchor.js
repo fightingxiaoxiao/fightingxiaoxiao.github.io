@@ -1,5 +1,5 @@
 (function () {
-  var headings = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+  var headings = document.querySelectorAll('');
   for (var i = 0; i < headings.length; i++) {
     var img = document.createElement('img');
     img.setAttribute('src', '/assets/img/link-symbol.svg');
