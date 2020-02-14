@@ -23,12 +23,12 @@ paginate: true
 <p style="text-indent:2em">OpenFOAM是一款流行的开源CFD工具箱，最初萌生体验的想法主要还是觉得自己的代码水平有些上路了(自我感觉)，此外觉得用命令行和脚本操作很有一种Geek的感觉～</p>
 
 ## 环境配置
-<p style="text-indent:2em">参考官网(https://openfoam.org/)，OpenFOAM主要面向Linux，同时也一定程度支持Windows 10和macOS。笔者在研究过程中大概换了以下这些环境:</p>
+<p style="text-indent:2em">参考<a href="https://openfoam.org/">官网</a>，OpenFOAM主要面向Linux，同时也一定程度支持Windows 10和macOS。笔者在研究过程中大概换了以下这些环境:</p>
 ### Windows 10 WSL
 <p style="text-indent:2em">虽然按照官网的说法，</p>
 > OpenFOAM is packaged for simple installation on Ubuntu Linux, **which can be directly installed on Windows 10** and is available as a Docker image for other Linux and macOS.
 
-<p style="text-indent:2em">但是事实上这是指WSL，即Windows Subsystem Linux，具体的安装和操作指南可见[了解适用于 Linux 的 Windows 子系统](https://docs.microsoft.com/zh-cn/windows/wsl/about)。</p>
+<p style="text-indent:2em">但是事实上这是指WSL，即Windows Subsystem Linux，具体的安装和操作指南可见<a href="https://docs.microsoft.com/zh-cn/windows/wsl/about">了解适用于 Linux 的 Windows 子系统</a>。</p>
 <p style="text-indent:2em">WSL的易用性确实非常优秀，在上述的微软官网下载Ubuntu 18.04，简单配置一下，再按照OpenFOAM的官方安装指南就完事了。缺点如下：1，性能较原生Linux要低，尤其是I/O性能相当糟糕(WSL2有所改进)，不少算例耗费的时间要多出30%～50%不等；2，可视化依赖第三方，不支持高版本OpenGL，这就意味着使用者不能直接使用paraFoam做后处理。如果要呈现拉格朗日粒子，这是个致命的缺陷；3，Windows和UNIX系统的文件命名规则不同，转换之间会出现非法字符（比如冒号）。</p>
 <p style="text-indent:2em">当然，如果是在Windows上办公，后台挂个小算例这种场景，WSL是几乎完美的。双系统用户对硬盘空间不敏感的话完全可以装一个。</p>
 ### Deepin 15.11
