@@ -22,13 +22,13 @@ paginate: true
 <p>式中的无量纲数可表示为</p>
 <center>$$y^{+}=\frac{y u_{\tau}}{\nu}, \quad u_{\tau}=\sqrt{\frac{\tau_{w}}{\rho}} \quad \text , \quad u^{+}=\frac{u}{u_{\tau}}$$</center>
 
-其中，
-$$y^{+}$$是距壁面高度值$$y$$处理后的无量纲值
-$$y^{+}$$是平行于壁面的速度$u$处理后的无量纲值
-$$\tau_{w}$$是壁面剪切应力(wall shear stress)
-$$\rho$是流体密度
-$$u_{\tau}$$是剪切速度(friction velocity/shear velocity)
-$$\kappa$$是卡曼常数(Von Kármán constant)，一般取$$0.40~0.42$$
-$$C^{+}$$为常数，一般取$$5.0$$
+其中，<br>
+$$y^{+}$$是距壁面高度值$$y$$处理后的无量纲值<br>
+$$y^{+}$$是平行于壁面的速度$$u$$处理后的无量纲值<br>
+$$\tau_{w}$$是壁面剪切应力(wall shear stress)<br>
+$$\rho$$是流体密度<br>
+$$u_{\tau}$$是剪切速度(friction velocity/shear velocity)<br>
+$$\kappa$$是卡曼常数(Von Kármán constant)，一般取$$0.40~0.42$$<br>
+$$C^{+}$$为常数，一般取$$5.0$$<br>
 
 <embed src="../article_img/2020-2-15-openfoam-and-law-of-wall-1/law_of_the_wall.svg" type="image/svg+xml" />
