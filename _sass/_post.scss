@@ -91,7 +91,7 @@
     line-height: 1.2;
     margin: rem(5px) 0 rem(10px);
     padding-top: 0;
-    padding-left: 0;
+    padding-left: 2rem;
   }
 
   p.post-subtitle {
@@ -109,6 +109,8 @@
     padding: 0;
     margin-top: rem(20px);
     margin-bottom: rem(20px);
+    padding-left: 2rem;
+    padding-right: 2rem;
 
     @include media(">=sm") {
       margin-top: rem(29px);
