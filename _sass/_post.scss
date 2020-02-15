@@ -147,8 +147,6 @@
   p,
   li {
     color: $texts;
-    font-size: 0.7em;
-    line-height: 1.6;
     
     code {
       font-size: rem(15px);
@@ -166,7 +164,9 @@
 
   li {
     padding: rem(10px) 0;
-
+    font-size: 0.7em;
+    line-height: 1.6;
+    
     ul {
       margin-bottom: 0;
     }
