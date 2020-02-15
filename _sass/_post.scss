@@ -147,7 +147,9 @@
   p,
   li {
     color: $texts;
-
+    font-size: 0.7em;
+    line-height: 1.6;
+    
     code {
       font-size: rem(15px);
       background: #282a36;
