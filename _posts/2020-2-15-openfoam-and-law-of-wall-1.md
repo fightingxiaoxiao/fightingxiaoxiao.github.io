@@ -34,4 +34,6 @@ $$\kappa$$  是卡曼常数(Von Kármán constant)，一般取0.40~0.42<br>
 $$C^{+}$$  为常数，一般取5.0<br>
 
 <center><embed src="../article_img/2020-2-15-openfoam-and-law-of-wall-1/law_of_the_wall.svg" style="display:block;width:400px;height:400px" /></center>
-<b>Fig. 1</b> 壁面率
+<center><b>Fig. 1</b> 壁面率</center>
+
+<center>$$\tau_{w}=\left.\nu \cdot \frac{\partial U}{\partial n}\right|_{w}=\nu_{e f f} \frac{U_{p}-U_{w}}{y}=\left(\nu+\nu_{t}\right) \cdot \frac{U_{p}-U_{w}}{y}$$</center>
