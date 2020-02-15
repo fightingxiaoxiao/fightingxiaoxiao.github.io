@@ -14,7 +14,7 @@ tags:
 author: Xiaoxiao
 paginate: true
 ---
-<p style="text-indent:2em">大量试验表明，对于充分发展的湍流流动，在沿壁面法线的不同高度上，可将流动划分为近壁区和核心区。核心区的流动可认为是完全湍流区，而在近壁区，流体运动受壁面的影响比较明显，其可以分成三个子层：粘性底层、过渡层和对数层(**Fig. 1**)。</p>
+<p style="text-indent:2em">大量试验表明，对于充分发展的湍流流动，在沿壁面法线的不同高度上，可将流动划分为近壁区和核心区。核心区的流动可认为是完全湍流区，而在近壁区，流体运动受壁面的影响比较明显，其可以分成三个子层：粘性底层、过渡层和对数层(<b>Fig. 1</b>)。</p>
 <p style="text-indent:2em">粘性底层满足</p>
 <center>$$u^{+}=y^{+}$$</center>
 <p style="text-indent:2em">对数层的无量纲形式可写作</p>
@@ -32,5 +32,4 @@ $$\kappa$$  是卡曼常数(Von Kármán constant)，一般取0.40~0.42<br>
 $$C^{+}$$  为常数，一般取5.0<br>
 
 <center><embed src="../article_img/2020-2-15-openfoam-and-law-of-wall-1/law_of_the_wall.svg" type="image/svg+xml" /></center>
-
-![placeholder]**Fig. 1** 壁面率
+<center><b>Fig. 1</b> 壁面率</center>
