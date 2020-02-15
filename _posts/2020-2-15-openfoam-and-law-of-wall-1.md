@@ -39,6 +39,6 @@ $$E$$  为常数，一般取9.793<br>
 <p style="text-indent:2em">对于近壁区流动的计算，常用方法有两类:</p>
 <p style="text-indent:2em">· 近壁区模型(Near-wall Model): 该方法通过高解析度的网格，通过对湍流模型的直接修正来解析包括粘性底层、过渡层和对数层的流动情况。</p>
 <p style="text-indent:2em">· 壁面函数(Wall Function): 该方法不直接解析粘性底层和过渡层，而是采用半经验的壁面函数来近似近壁区的流动。</p>
-<p style="text-indent:2em">按照(<b>Fig. 1</b>)，$y^{+}$小于30时，第一层网格处于过渡层或粘性底层。这将导致壁面函数的不精确。因此，在应用壁面函数时，建议的$y^{+}$值推荐为30~100。</p>
+按照(<b>Fig. 1</b>)，$$y^{+}$$小于30时，第一层网格处于过渡层或粘性底层。这将导致壁面函数的不精确。因此，在应用壁面函数时，建议的$$y^{+}$$值推荐为30~100。
 <p style="text-indent:2em">本文以标准壁面函数为例</p>
 $$\tau_{w}=\left.\nu \cdot \frac{\partial U}{\partial n}\right|_{w}=\nu_{e f f} \frac{U_{p}-U_{w}}{y}=\left(\nu+\nu_{t}\right) \cdot \frac{U_{p}-U_{w}}{y}$$
