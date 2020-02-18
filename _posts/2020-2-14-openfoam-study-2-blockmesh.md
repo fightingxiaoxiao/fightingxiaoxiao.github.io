@@ -20,16 +20,16 @@ paginate: true
 用法(Usage):<br>
 &emsp;&emsp;&emsp; **blockMesh** [OPTION]<br>
 选项(OPTION):<br>
-&emsp;&emsp;&emsp; * **-case** <dir><br>
-&emsp;&emsp;&emsp;&emsp; 指定案例所在目录，若缺省，则为当前路径。<br>
-&emsp;&emsp;&emsp; * **-dict** <filename><br>
-&emsp;&emsp;&emsp;&emsp; 从指定路径读取blockMeshDict。<br>
-&emsp;&emsp;&emsp; * **-region** <name><br>
-&emsp;&emsp;&emsp;&emsp; 只生成指定区域的网格。<br>
-&emsp;&emsp;&emsp; * **-blockTopology**<br>
-&emsp;&emsp;&emsp;&emsp; 将块的边缘和中心输出为.obj文件，以便进行可视化。<br>
-&emsp;&emsp;&emsp; * **-noFunctionObjects**<br>
-&emsp;&emsp;&emsp;&emsp; 跳过functionObjects的执行<br>
+&emsp;&emsp;&emsp;  **-case** <directory><br>
+&emsp;&emsp;&emsp; 指定案例所在目录，若缺省，则为当前路径。<br>
+&emsp;&emsp;&emsp;  **-dict** <filename><br>
+&emsp;&emsp;&emsp; 从指定路径读取blockMeshDict。<br>
+&emsp;&emsp;&emsp;  **-region** <name><br>
+&emsp;&emsp;&emsp; 只生成指定区域的网格。<br>
+&emsp;&emsp;&emsp;  **-blockTopology**<br>
+&emsp;&emsp;&emsp; 将块的边缘和中心输出为.obj文件，以便进行可视化。<br>
+&emsp;&emsp;&emsp;  **-noFunctionObjects**<br>
+&emsp;&emsp;&emsp; 跳过functionObjects的执行<br> 
 
 ### 字典文件的书写
 
