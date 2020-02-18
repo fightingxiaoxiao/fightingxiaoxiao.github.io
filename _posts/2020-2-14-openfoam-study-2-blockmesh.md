@@ -44,8 +44,8 @@ blockMesh [OPTION]
 * system/&lt;region&gt;/blockMeshDict
 * constant/polyMesh/blockMeshDict
 * constant/&lt;region&gt;/polyMesh/blockMeshDict
-字典文件的内容包括：
 
+字典文件的内容包括：
 ### 文件头(File Header)
 &emsp;&emsp;文件头用于申明字典类型。
 ```bash
