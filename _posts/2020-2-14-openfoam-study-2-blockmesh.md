@@ -38,7 +38,7 @@ paginate: true
 &emsp;&emsp;&emsp; 跳过functionObjects的执行
 
 ### 字典文件的书写
-`blockMesh`指令依赖于字典文件blockMeshDict，改字典文件可位于
+&emsp;&emsp;`blockMesh` 指令依赖于字典文件blockMeshDict，该字典文件可位于
 * system/blockMeshDict
 * system/<region>/blockMeshDict
 * constant/polyMesh/blockMeshDict
