@@ -149,11 +149,11 @@
     color: $texts;
     
     code {
-      font-size: rem(15px);
+      font-size: rem(14px);
       background: #282a36;
       color: #fff;
       word-wrap: break-word;
-      padding: rem(3px) rem(5px);
+      padding: rem(10px) rem(10px);
       border-radius: 3px;
 
       @include media(">=sm") {
