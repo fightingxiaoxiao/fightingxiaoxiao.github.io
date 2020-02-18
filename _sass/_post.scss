@@ -317,7 +317,33 @@
 
   h1,
   h2{
+    position: relative;
     padding-top: 1em;
+
+    .anchor {
+      display: none;
+      height: rem(16px);
+      left: 0;
+      margin-top: rem(30px);
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: rem(14px);
+
+      @include media(">=sm") {
+        display: block;
+        opacity: 0;
+      }
+
+      img {
+        padding: 0;
+      }
+    }
+
+    &:hover .anchor,
+    .anchor:hover {
+      opacity: 1;
+    }
   }
   h3,
   h4,
