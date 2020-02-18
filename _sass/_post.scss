@@ -69,7 +69,12 @@
   h5,
   h6,
   ul,
-  ol,
+  ol{
+    margin-top: 0em;
+    padding-left: 3.75rem;
+    font-size: 1em;
+    line-height: 0.6;
+  }
   iframe {
     @include center(rem(800px));
     @include mainFont(400);
