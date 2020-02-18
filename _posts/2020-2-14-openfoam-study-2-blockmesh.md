@@ -38,7 +38,7 @@ paginate: true
 &emsp;&emsp;&emsp; 跳过functionObjects的执行
 
 ### 字典文件的书写
-&emsp;&emsp;`blockMesh`shell 指令依赖于字典文件blockMeshDict，该字典文件可位于
+&emsp;&emsp;`blockMesh` 指令依赖于字典文件blockMeshDict，该字典文件可位于
 * system/blockMeshDict
 * system/&lt;region&gt;/blockMeshDict
 * constant/polyMesh/blockMeshDict
@@ -47,7 +47,7 @@ paginate: true
 字典文件的内容包括：
 #### 文件头(File Header)
 &emsp;&emsp;文件头用于申明字典类型。
-```shell
+```c
 FoamFile
 {
     version        2.0;
@@ -59,7 +59,7 @@ FoamFile
 ```
 
 #### 尺度缩放
-&emsp;&emsp;关键词`convertToMeters`shell 用于定义几何尺度，一般均转换为国际单位-米。
+&emsp;&emsp;关键词`convertToMeters` 用于定义几何尺度，一般均转换为国际单位-米。
 ```shell
 convertToMeters 1.0;
 
@@ -67,7 +67,7 @@ convertToMeters 1.0;
 #### 顶点(vertices)
 &emsp;&emsp;顶点关键词用于指定block顶点坐标，编号从0开始。
 
-```shell
+```c
 vertices
 (
     (0 0 0)
