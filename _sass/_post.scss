@@ -32,6 +32,7 @@
 .post-content {
   overflow-x: auto;
   padding: rem(40px) 0;
+  
 
   &.fullwidth {
     padding: rem(60px) rem(10px) 0;
@@ -58,15 +59,13 @@
 
   p {
     max-width: fit-content;
-    line-height: 1.75;
-    padding-left: 2rem;
-    padding-right: 1rem;
+    line-height: 1.6;
   }
   
   h1,
   h2,
   h3,
-  h4, 
+  h4,
   h5,
   h6,
   ul,
@@ -91,8 +90,7 @@
     line-height: 1.2;
     margin: rem(5px) 0 rem(10px);
     padding-top: 0;
-    padding-left: 2rem;
-    font-size: 2.5em;
+    padding-left: 0;
   }
 
   p.post-subtitle {
@@ -110,8 +108,6 @@
     padding: 0;
     margin-top: rem(20px);
     margin-bottom: rem(20px);
-    padding-left: 2rem;
-    padding-right: 2rem;
 
     @include media(">=sm") {
       margin-top: rem(29px);
@@ -147,13 +143,13 @@
   p,
   li {
     color: $texts;
-    
+
     code {
-      font-size: rem(14px);
+      font-size: rem(15px);
       background: #282a36;
       color: #fff;
       word-wrap: break-word;
-      padding: rem(10px) rem(10px);
+      padding: rem(3px) rem(5px);
       border-radius: 3px;
 
       @include media(">=sm") {
@@ -164,9 +160,7 @@
 
   li {
     padding: rem(10px) 0;
-    font-size: 0.7em;
-    line-height: 1.6;
-    
+
     ul {
       margin-bottom: 0;
     }
@@ -274,7 +268,9 @@
   }
 
   pre {
-    overflow-x: auto;
+        padding-top: 1.5em;
+    			overflow-x: auto;
+    			padding-bottom: 1.5em;
   }
 
   table {
