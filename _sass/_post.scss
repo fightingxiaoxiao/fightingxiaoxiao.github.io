@@ -322,6 +322,7 @@
   h5,
   h6 {
     position: relative;
+    padding-top: 0.5em;
 
     .anchor {
       display: none;
@@ -331,7 +332,7 @@
       position: absolute;
       top: 50%;
       transform: translate(-50%, -50%);
-      width: rem(16px);
+      width: rem(14px);
 
       @include media(">=sm") {
         display: block;
