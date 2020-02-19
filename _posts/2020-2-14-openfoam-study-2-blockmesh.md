@@ -111,6 +111,7 @@ edges
 * 说明边界名称 —— inlet, outlet, any_name_u_like... 
 * 边界类型 —— patch表示后续需要赋予明确数值的边界，比如出入口；wall当然就是壁面；symmetry就是对称边界；其余定义尚在探索。
 * 几何面 —— 表示该边界包含的block面。
+
 对于未定义的所有外露面，`blockMesh` 在执行过程中会有警告，并将这些面合并成一个集合。
 ```
 boundary               // keyword
