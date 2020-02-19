@@ -40,7 +40,7 @@ blockMesh [OPTION]
 &emsp;&emsp;&emsp;  **-noFunctionObjects** <br>
 &emsp;&emsp;&emsp; 跳过functionObjects的执行
 
-
+<br>
 ## 字典文件的书写
 &emsp;&emsp;`blockMesh` 指令依赖于字典文件blockMeshDict，该字典文件可位于
 * system/blockMeshDict
@@ -154,7 +154,7 @@ mergePatchPairs
 );
 ```
 
-
+<br>
 ## 宏语法和动态编译（参数化）
 &emsp;&emsp;对于超过1个blcok的字典文件，顶点数超过了10个，后期修改简直要了懒人们的命。万幸的是，OpenFOAM的字典文件提供宏语法，比如在开头申明 `para 1.;` ，那在后续定义数字类参数时就可以用 `$para` 来表示。而对于需要进行数学计算的部分，可以采用 `#calc` 植入简单的计算语句：
 ```
@@ -163,6 +163,6 @@ Y_left   #calc "-0.5*$Y";
 ```
 &emsp;&emsp;对于更复杂的需求，当然也可以直接植入C++代码片段。当然放这写显得杀鸡焉用牛刀，先给个[链接](https://cfd.direct/openfoam/user-guide/v7-basic-file-format/#x17-1230004.2)。
 
-
+<br>
 ## 总结
 &emsp;&emsp;`blockMesh` 从本质上讲就是一个脚本化的结构化网格生成器，对于一些简单模型，免去了在GUI上点来点去的麻烦，参数化的支持也能一定程度上改善几何参数化分析时的前处理效率。同时， `blockMesh` 在很多算例中都用于生成一个大流域，以进行下一步 `sanppyHexMesh` 的精细化非结构网格处理。
