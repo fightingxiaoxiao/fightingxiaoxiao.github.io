@@ -17,13 +17,13 @@ author: Xiaoxiao
 paginate: true
 ---
 ## 前言
-&emsp;&emsp;Fluent是运用最为广泛的通用商业CFD软件，也是我CFD学习生涯接触的第一个CFD软件。长期以来，对Fluent的数据处理基本局限于Tecplot和CFD-Post，在后处理过程中，大量的精力浪费在软件反复的开启和导入导出、GUI操作和纷繁的Colorful Fluid Dynamics中。作为科研工具，我更希望获得对计算数据的充分掌握和提炼，并且回避大量手动操作（人活着就是为了自动化！）。
+&emsp;&emsp;**Fluent**是运用最为广泛的通用商业CFD软件，也是我CFD学习生涯接触的第一个CFD软件。长期以来，对Fluent的数据处理基本局限于**Tecplot**和**CFD-Post**，在后处理过程中，大量的精力浪费在软件反复的开启和导入导出、GUI操作和纷繁的Colorful Fluid Dynamics中。作为科研工具，我更希望获得对计算数据的充分掌握和提炼，并且回避大量手动操作（人活着就是为了自动化！）。
 
-&emsp;&emsp;最早的想法是采用Fluent的journal脚本进行I/O操作，并采用Python进行文本提取。但是存在两个问题：
-* journal文件(.jnl)包括TUI/GUI两类，通常我们在FluentGUI界面直接录制的journal是GUI语言。Fluent自从17版本以后全面贯彻落实了母公司ANSYS“科技源于换壳”的崭新理念（大误），基本上隔一个版本就换一套GUI，因此GUI型的journal文件跨版本往往不能互通。TUI学习成本比较高，而且这个语言本质上还是像GUI语言那样一层一层标签往下找，使用体验还是类似软件界面的点击而非CFD模型的建立，相比之下Abaqus和ls-dyna一类有限元软件采用的keywords形式的脚本反而比较友好。而且按照以前阅读UDF手册和理论书册的经验，遇到冷门一些的功能估计手册还是讲不清，因此直接放弃。 
-* 每次开启Fluent都要浪费大量的时间启动证书和读取case和data，并占用大量的内存，甚至由于证书的莫名BUG存在启动失败的可能，可靠性并不高。对于没有Fluent的机器，还需要进行安装。总之，这种方式不太适合团队形式的CFD计算及处理（除非你热衷于帮助每个课题组成员排雷）。
+&emsp;&emsp;最早的想法是采用**Fluent**的journal脚本进行I/O操作，并采用Python进行文本提取。但是存在两个问题：
+* journal文件(.jnl)包括TUI/GUI两类。通常，我们在FluentGUI界面直接录制的journal是**GUI**语言，也就是通过用户界面直接录制的操作宏。但是需要指出，Fluent在17版本以后全面贯彻落实了母公司ANSYS“科技源于换壳”的崭新理念（大误），基本上隔一个版本就换一套GUI，因此**GUI**型的journal文件跨版本往往不能互通。而**TUI**学习成本比较高，而且这个语言本质上还是像**GUI**脚本那样一层一层标签往下找，使用体验还是类似软件界面的点击而非CFD模型的建立，相比之下**Abaqus**和**ls-dyna**一类有限元软件采用的keywords形式的脚本反而比较友好。而且按照以前阅读UDF手册和理论书册的经验，遇到冷门一些的功能估计手册还是讲不清，因此直接放弃。 
+* 每次开启**Fluent**都要浪费大量的时间启动证书和读取case和data，并占用大量的内存，甚至由于证书的莫名BUG存在启动失败的可能，可靠性并不高。对于没有**Fluent**的机器，还需要进行安装。总之，这种方式不太适合团队形式的CFD计算及处理（除非你热衷于帮助每个课题组成员排雷）。
 
-&emsp;&emsp;本文主要总结Fluent User's Guide(Solution Mode)附录B1中.msh文件的格式规范，并尝试对ascii格式的.msh文件进行读取。由于主要工作集中在I/O操作，Python相比C++性能差异不大, 因此先采用Python。但是考虑到后续对数据灵活处理的需求，不排除采用C++重写或C++/Python混合编程形式的可能。
+&emsp;&emsp;本文主要总结*Fluent User's Guide(Solution Mode)*附录B1中.msh文件的格式规范，并尝试对ascii格式的.msh文件进行读取。由于主要工作集中在I/O操作，Python相比C++性能差异不大, 因此先采用Python。但是考虑到后续对数据灵活处理的需求，不排除采用C++重写或C++/Python混合编程形式的可能。
 
 ## .msh格式解读
 ### 注释(Comment)
