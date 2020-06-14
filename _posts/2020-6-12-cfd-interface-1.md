@@ -17,6 +17,7 @@ tags:
   - Python
 author: Xiaoxiao
 paginate: true
+top: true
 ---
 ## 前言
 &emsp;&emsp;**Fluent**是运用最为广泛的通用商业CFD软件，也是我CFD学习生涯接触的第一个CFD软件。长期以来，对Fluent的数据处理基本局限于**Tecplot**和**CFD-Post**，在后处理过程中，大量的精力浪费在软件反复的开启和导入导出、GUI操作和纷繁的Colorful Fluid Dynamics中。作为科研工具，我更希望获得对计算数据的充分掌握和提炼，并且回避大量手动操作（人活着就是为了自动化！）。
