@@ -11,7 +11,7 @@ category: CFD
 tags:
   - CFD
   - OpenFOAM
-author: Xiaoxiao
+author: xiaoxiao
 paginate: true
 ---
 

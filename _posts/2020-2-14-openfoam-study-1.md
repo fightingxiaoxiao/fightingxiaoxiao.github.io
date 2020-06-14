@@ -12,7 +12,7 @@ tags:
   - CFD
   - OpenFOAM
   - Linux
-author: Xiaoxiao
+author: xiaoxiao
 paginate: true
 ---
 
