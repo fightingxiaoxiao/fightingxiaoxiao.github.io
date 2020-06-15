@@ -104,6 +104,11 @@ PS: 官方文档似乎把1写错成了0...
 ```
 
 ### 单元(Cells)
+&emsp;&emsp;单元是文件内容的重点，编号为12，书写格式见下。
+```
+ (12 (zone-id first-index last-index type element-type)) 
+```
+`zone-id`  `first-index` `last-index` 同上，不再解释。`type`为1是表示单元为激活状态，`type`为32是表示单元为未激活状态。`element-type` 表示单元类型，其取值可见下表。
 
 <table>
   <thead>
@@ -154,21 +159,21 @@ PS: 官方文档似乎把1写错成了0...
     </tr>
 
     <tr align="middle">
-    <td5</td>
+    <td>5</td>
     <td align="left">pyramid(四棱锥)</td>
     <td>5</td>
     <td>5</td>
     </tr>
 
     <tr align="middle">
-    <td5</td>
+    <td>6</td>
     <td align="left">wedge(三棱柱)</td>
     <td>6</td>
     <td>5</td>
     </tr>
 
     <tr align="middle">
-    <td5</td>
+    <td>7</td>
     <td align="left">wedge(三棱柱)</td>
     <td>NN</td>
     <td>NF</td>
