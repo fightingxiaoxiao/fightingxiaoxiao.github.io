@@ -5,7 +5,7 @@ name: xiaoxiao
 display_name: Xiaoxiao
 position: Phd Student
 bio: Studying
-github_username: xiaoxiao
+github_username: fightingxiaoxiao
 facebook_username: xiaoxiao
 twitter_username: xiaoxiao
 instagram_username: xiaoxiao
