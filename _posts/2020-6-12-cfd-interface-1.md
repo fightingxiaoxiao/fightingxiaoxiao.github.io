@@ -54,6 +54,7 @@ PS: 官方文档似乎把1写错成了0...
 
 ### 节点(Nodes)
 &emsp;&emsp;括号内编号为10时，表示节点集。`zone-id` 为域ID，`zone-id=0` 时，表面当前几何下的节点为计算域中的全部节点；`first-index` 和 `last-index` 分别为起始节点编号（一般为1）和结尾节点编号，为十六进制；`type` 默认为1；`ND` 是维度，取2或3。
+
 &emsp;&emsp;这是一个很典型的面向C语言的文本，因为原生的C没有类似C++中vector容器的动态数组，读取不确定量的数据前需要明确数据量来申请动态内存。文档也指出结尾节点编号必须大于或等于声明的节点数，否则会引发数组下标越界导致动态内存耗尽。
 ```
 (10 (zone-id first-index last-index type ND)(
@@ -102,3 +103,75 @@ PS: 官方文档似乎把1写错成了0...
    )) 
 ```
 
+### 单元(Cells)
+
+<table>
+  <thead>
+    <tr>
+      <th>element-type</th>
+      <th>description</th>
+      <th>nodes/cell</th>
+      <th>faces/cell</th>
+    </tr>
+  </thead>
+  <tfoot>
+  </tfoot>
+  <tbody>
+
+    <tr align="middle">
+    <td>0</td>
+    <td align="left">mixed(混合)</td>
+    <td>-</td>
+    <td>-</td>
+    </tr>
+
+    <tr align="middle">
+    <td>1</td>
+    <td align="left">triangular(三角形)</td>
+    <td>3</td>
+    <td>3</td>
+    </tr>
+
+    <tr align="middle">
+    <td>2</td>
+    <td align="left">tetrahedral(四边形)</td>
+    <td>4</td>
+    <td>4</td>
+    </tr>
+
+    <tr align="middle">
+    <td>3</td>
+    <td align="left">quadrilateral(四面体)</td>
+    <td>4</td>
+    <td>4</td>
+    </tr>
+
+    <tr align="middle">
+    <td>4</td>
+    <td align="left">hexahedral(六面体)</td>
+    <td>8</td>
+    <td>6</td>
+    </tr>
+
+    <tr align="middle">
+    <td5</td>
+    <td align="left">pyramid(四棱锥)</td>
+    <td>5</td>
+    <td>5</td>
+    </tr>
+
+    <tr align="middle">
+    <td5</td>
+    <td align="left">wedge(三棱柱)</td>
+    <td>6</td>
+    <td>5</td>
+    </tr>
+
+    <tr align="middle">
+    <td5</td>
+    <td align="left">wedge(三棱柱)</td>
+    <td>NN</td>
+    <td>NF</td>
+    </tr>
+  </tbody>
+</table>
