@@ -1,10 +1,10 @@
 ---
 date: 2020-06-12T14:35:00.000Z
 layout: post
-title: 基于C++/Python的CFD数据接口开发（一）Fluent Mesh
+title: 基于C++/Python的CFD数据接口开发（一）Fluent Mesh解读
 subtitle: Fluent
 description: >-
-    Fluent Mesh格式的解读与接口开发
+    Fluent Mesh格式的解读
 image: >-
   ../article_img/2020-6-12-cfd-interface-1/title.jpg
 optimized_image: >-
@@ -13,8 +13,6 @@ category: CFD
 tags:
   - CFD
   - Fluent
-  - C++
-  - Python
 author: xiaoxiao
 paginate: true
 top: true
@@ -27,7 +25,7 @@ top: true
 * 每次开启**Fluent**都要浪费大量的时间启动证书和读取case和data，并占用大量的内存，甚至由于证书的莫名BUG存在启动失败的可能，可靠性并不高。对于没有**Fluent**的机器，还需要进行安装。
 总之，这种方式不太适合团队形式的CFD计算及处理（除非你热衷于帮助每个课题组成员排雷）。
 
-&emsp;&emsp;本文主要总结**Fluent User's Guide(Solution Mode)**附录B1中.msh文件的格式规范，并尝试对ASCII格式的.msh文件进行读取。由于主要工作集中在I/O操作，Python相较C++性能差异不大, 因此先采用Python。但是考虑到后续对数据灵活处理的需求，不排除采用C++重写或C++/Python混合编程形式的可能。
+&emsp;&emsp;本文主要总结**Fluent User Guide(Solution Mode)**附录B1中.msh文件的格式规范，为尝试对ASCII格式的.msh文件进行读取提供前置准备。
 
 ## Fluent Mesh格式解读
 &emsp;&emsp;Fluent Mesh的书写格式主要应用于 *.msh* 和 *.cas* 两类文件中。*.msh* 是**Fluent**导入时指定的网格文件格式，*.cas* 则是同时包含网格信息和求解器信息的Case文件。在19.3版本之前，这两类格式均采用ASCII格式，能通过文本工具直接阅读。但在版本更新至2019R1（即19.3）后，**Fluent**为了追求I/O性能开始采用binary格式（即二进制）的文件——经由**Fluent Meshing**生成的 *.msh* 和计算模块保存的 *.cas* 直接打开均是乱码。**针对binary格式的读写我会放在下一篇文章中进行探讨。**
@@ -369,5 +367,48 @@ x n0 n1 ... nf c0 c1
 
 &emsp;&emsp;在**Fluent Mesh**文件的格式定义中，所有有效节点、单元及面的编号均为正数。因此，对于边界上的面，其只与一个单元相邻，则将对应的c0或c1写作0。对于只存在面网格的3D模型，则c0和c1均为0。
 
-&emsp;&emsp;至于面在单元中的局部编号，笔者认为对程序而言可有可无，感兴趣的读者可以参考**Fluent User's Guide(Solution Part) 6.1.2**。
+&emsp;&emsp;至于面在单元中的局部编号，笔者认为对程序而言可有可无，感兴趣的读者可以参考**Fluent User Guide(Solution Part) 6.1.2**。
 
+### 树状结构·面(Face Tree)
+&emsp;&emsp;悬挂节点网格是一种相对新颖的网格存储技术。其能通过树状结构的数据形式对特定区域的网格进行细分，大大降低了计算所消耗的资源。目前OpenFOAM和Fluent均已实装了相关网格的前处理(SnappyHexMesh/Fluent Meshing)和计算模块。
+```
+ (59 (face-id0 face-id1 parent-zone-id child-zone-id)
+ (
+ number-of-kids kid-id-0 kid-id-1 ... kid-id-n
+.
+.
+.
+ )) 
+```
+**其中：**
+
+`face-id0`&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;父面的起始编号<br>
+`face-id1`&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;父面的终止编号<br>
+`parent-zone-id`&emsp;&emsp;父面的域ID<br>
+`child-zone-id`&emsp;&emsp;&ensp;子面的域ID<br>
+`number-of-kids`&emsp;&emsp;子面数量<br>
+`kid-id-n`&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;子面编号
+
+### 树状结构·单元(Cell Tree)
+&emsp;&emsp;和面的树状结构基本一致，故不再详细介绍。
+```
+ (58 (cell-id0 cell-id1 parent-zone-id child-zone-id)
+ (
+ number-of-kids kid-id-0 kid-id-1 ... kid-id-n
+.
+.
+.
+ )) 
+```
+
+### Interface Face Parents
+&emsp;&emsp;非共形网格相交产生的子面存储，对笔者而言暂时无用，跳过。
+```
+ (61 (face-id0 face-id1)
+ (
+ parent-id-0 parent-id-1
+.
+.
+.
+ )) 
+```
