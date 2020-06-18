@@ -2,7 +2,7 @@
 date: 2020-06-12T14:35:00.000Z
 layout: post
 title: 基于C++/Python的CFD数据接口开发（一）Fluent Mesh解读
-subtitle: Fluent
+subtitle: Fluent Mesh格式的解读
 description: >-
     Fluent Mesh格式的解读
 image: >-
