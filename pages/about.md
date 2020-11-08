@@ -5,7 +5,7 @@ description: Some description.
 permalink: /about/
 ---
 
-<center><img class="img-rounded" src="/assets/img/uploads/profile.png" alt="Thiago Rossener" width="200"></center>
+<center><img class="img-rounded" src="/assets/img/uploads/xiaoxiao.png" alt="Xiaoxiao" width="200"></center>
 <center><p style="font-size:24px"><b>About</b></p></center>
 
 <center><p>西南交通大学·结构工程·博士在读</p></center>
