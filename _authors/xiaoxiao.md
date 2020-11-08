@@ -6,10 +6,10 @@ display_name: Xiaoxiao
 position: Phd Student of SWJTU
 bio: CFD & Snow drifting
 github_username: fightingxiaoxiao
-facebook_username: xiaoxiao
-twitter_username: xiaoxiao
-instagram_username: xiaoxiao
-linkedin_username: xiaoxiao
-medium_username: xiaoxiao
+facebook_username: 
+twitter_username: 
+instagram_username: 
+linkedin_username: 
+medium_username: 
 ---
 
