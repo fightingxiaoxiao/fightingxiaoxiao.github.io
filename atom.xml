@@ -3,25 +3,50 @@
   <title>笑笑的科研小站</title>
   
   
-  <link href="http://ww.smilemax.top/atom.xml" rel="self"/>
+  <link href="http://www.smilemax.top/atom.xml" rel="self"/>
   
-  <link href="http://ww.smilemax.top/"/>
-  <updated>2021-01-23T07:45:37.205Z</updated>
-  <id>http://ww.smilemax.top/</id>
+  <link href="http://www.smilemax.top/"/>
+  <updated>2021-01-25T09:24:48.262Z</updated>
+  <id>http://www.smilemax.top/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>Xiaoxiao</name>
     
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>2020新春快乐！</title>
+    <link href="http://www.smilemax.top/2020/02/13/2020-02-13-2020-happy-new-year/"/>
+    <id>http://www.smilemax.top/2020/02/13/2020-02-13-2020-happy-new-year/</id>
+    <published>2020-02-13T04:04:05.000Z</published>
+    <updated>2021-01-25T09:24:48.262Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;这是我的第一篇博客，写于新冠病毒肆虐的2020年新春。曾经也有过搭建个人网站的念头，但苦于学业繁忙一直不能如愿。如今踏入博一，课业轻了，第一篇SCI也已投出，自觉应该静下心来整理整理一些囫囵吞枣的知识，好好思索一下自己的科研计划。于是这个博客就华丽地诞生了！&lt;br&gt;往后，包</summary>
+        
+      
+    
+    
+    
+    <category term="日记" scheme="http://www.smilemax.top/categories/%E6%97%A5%E8%AE%B0/"/>
+    
+    
+    <category term="日常" scheme="http://www.smilemax.top/tags/%E6%97%A5%E5%B8%B8/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hello World</title>
-    <link href="http://ww.smilemax.top/1970/01/01/hello-world/"/>
-    <id>http://ww.smilemax.top/1970/01/01/hello-world/</id>
+    <link href="http://www.smilemax.top/1970/01/01/hello-world/"/>
+    <id>http://www.smilemax.top/1970/01/01/hello-world/</id>
     <published>1970-01-01T00:00:00.000Z</published>
-    <updated>2021-01-23T07:45:37.205Z</updated>
+    <updated>2021-01-25T08:06:38.965Z</updated>
     
     
       
