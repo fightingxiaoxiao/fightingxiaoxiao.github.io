@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>笑笑的科研小站</title>
   
-  
+  <subtitle>且听风吟</subtitle>
   <link href="http://www.smilemax.top/atom.xml" rel="self"/>
   
   <link href="http://www.smilemax.top/"/>
