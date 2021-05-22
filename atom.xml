@@ -6,7 +6,7 @@
   <link href="http://www.smilemax.top/atom.xml" rel="self"/>
   
   <link href="http://www.smilemax.top/"/>
-  <updated>2021-03-13T14:06:48.805Z</updated>
+  <updated>2021-03-14T05:58:28.715Z</updated>
   <id>http://www.smilemax.top/</id>
   
   <author>
@@ -17,11 +17,30 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>CFD-DPM的基本原理</title>
+    <link href="http://www.smilemax.top/2021/03/14/2021-3-14-cfd-dpm-de-ji-ben-yuan-li/"/>
+    <id>http://www.smilemax.top/2021/03/14/2021-3-14-cfd-dpm-de-ji-ben-yuan-li/</id>
+    <published>2021-03-14T06:21:00.000Z</published>
+    <updated>2021-03-14T05:58:28.715Z</updated>
+    
+    
+    
+    
+    <category term="知识" scheme="http://www.smilemax.top/categories/%E7%9F%A5%E8%AF%86/"/>
+    
+    
+    <category term="CFD" scheme="http://www.smilemax.top/tags/CFD/"/>
+    
+    <category term="DPM" scheme="http://www.smilemax.top/tags/DPM/"/>
+    
+  </entry>
+  
+  <entry>
     <title>OpenFOAM初探（一）</title>
     <link href="http://www.smilemax.top/2020/02/14/2020-2-14-openfoam-de-jie-shao-yu-an-zhuang/"/>
     <id>http://www.smilemax.top/2020/02/14/2020-2-14-openfoam-de-jie-shao-yu-an-zhuang/</id>
     <published>2020-02-14T06:21:00.000Z</published>
-    <updated>2021-03-13T14:06:48.805Z</updated>
+    <updated>2021-03-13T14:48:38.977Z</updated>
     
     
       

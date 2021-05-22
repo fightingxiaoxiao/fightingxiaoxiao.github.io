@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="笑笑的科研小站" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="笑笑的科研小站" type="application/atom+xml">
 </head>
 
 
@@ -479,14 +479,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    769
+                    987
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    3 分
                 </div>
                 
 
@@ -510,16 +510,21 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>笔者早年的工作主要在win10平台进行，使用过诸如CFX、Fluent等商业软件，后续论文工作主要操练的是Fluent UDF。诚然，Fluent依托UDF在可操作性上已经远超其余商业CFD软件(待考证)，但是其缺陷依然明显：1, 界面操作繁琐，对于一些参数化的研究工作，很难通过脚本实现(GUI依赖版本，TUI懒得学)；2, 新功能的整合程度参差不齐，以笔者常用的DPM为例，功能限制较多，BUG不少…；3, 很难修改顶层求解器，很多中间步骤需要手工；4, 安装包太大，正版太贵。<br>OpenFOAM是一款流行的开源CFD工具箱，最初萌生体验的想法主要还是觉得自己的代码水平有些上路了(自我感觉)，此外觉得用命令行和脚本操作很有一种Geek的感觉～</p>
-<h2 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h2><p>OpenFOAM主要有两大分支，一是<a href="www.openfoam.org">基金会版(.org)</a>，版本号为OF6,7,8…，似乎是由帝国理工维护，从”血统”上讲更纯；二是[ESI版(.com)]，版本号为v1912,v2006,v2012…(前两位数字代表年份，后两位数字代表月份，第一次接触乍一看还以为这版本好几年没更新了)，由ESI Group维护，有那么一点点商业化的感觉。<br>通过使用OpenFOAM 7/8/v2006/v2012这四个版本, 我大致了解了一下这两个分支的区别：</p>
+<h2 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h2><p>OpenFOAM主要有两大分支，一是<a target="_blank" rel="noopener" href="https://www.openfoam.org/">基金会版(.org)</a>，版本号为OF6,7,8…，似乎是由帝国理工维护，从”血统”上讲更纯；二是<a target="_blank" rel="noopener" href="https://www.openfoam.com/">ESI版(.com)</a>，版本号为v1912,v2006,v2012…(前两位数字代表年份，后两位数字代表月份，第一次接触乍一看还以为这版本好几年没更新了)，由ESI Group维护，有那么一点点商业化的感觉。通过使用OpenFOAM 7/8/v2006/v2012这四个版本, 我大致了解了一下这两个分支的区别：</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://openfoam.com/documentation/guides/latest/doc/">ESI版的手册</a>要远比基金会版的全面，后者基本就是看源码。当然总体来说OpenFOAM是我用过的大型开源软件里文档做的最差的，大概是为了培训收入吧。</li>
-<li>ESI版自带的Tutorials要比基金会版的多，比如大气边界层的建模，基金会版似乎没有。</li>
-<li>ESI版DPM类的求解器输出的lagrangian粒子场能够通过外部安装的Paraview读取，而基金会版的只能通过在ThirdParty中编译的Paraview打开，而这个版本的显示性能往往不高。同时，如果使用的是WSL1这种没有显示接口的系统，使用Windows下的Paraview做颗粒后处理的话，ESI版是唯一的选择。</li>
-<li>基金会版似乎对一些求解器做了整合，比如将动网格功能合并进了一些原始的求解器，这一点比较友好。</li>
-<li>ESI版支持更多的第三方内容，比如比较知名的科学计算套件Petsc(很高端，很想学，但没空)、基于一些奇妙方法的多相流求解器OpenQBMM(但是算例好像跑不了…)、优化大规模IO的adios(听着很妙但没钱玩超算)…但是鲁迅说过，我可以不用，但它必须要有。</li>
+<li><strong>手册</strong> <a target="_blank" rel="noopener" href="https://openfoam.com/documentation/guides/latest/doc/">ESI版的手册</a>要远比基金会版的全面，后者基本就是看源码。当然总体来说OpenFOAM是我用过的大型开源软件里文档做的最差的，大概是为了培训收入吧。</li>
+<li><strong>算例</strong> ESI版自带的Tutorials要比基金会版的多，比如大气边界层的建模，基金会版似乎没有。</li>
+<li><strong>后处理</strong> ESI版DPM类的求解器输出的lagrangian粒子场能够通过外部安装的Paraview读取，而基金会版的只能通过在ThirdParty中编译的Paraview打开，而这个版本的显示性能较差。同时，如果使用的是WSL1这种没有显示接口的系统，使用Windows下的Paraview做颗粒后处理的话，ESI版是唯一的选择。</li>
+<li><strong>求解器</strong> 基金会版似乎对一些求解器做了整合，比如将动网格功能合并进了一些原始的求解器，这一点比较友好。求解器功能上两者似乎差异不大。</li>
+<li><strong>第三方包</strong> ESI版支持更多的第三方内容，比如比较知名的科学计算套件Petsc(很高端，很想学，但没空)、基于一些奇妙方法的多相流求解器OpenQBMM(但是算例好像跑不了…)、优化大规模IO的adios(听着很妙但没钱玩超算)…但是鲁迅说过，我可以不用，但它必须要有。</li>
+<li><strong>平台支持</strong> 参考基金会官网，OpenFOAM主要面向Linux，同时也一定程度支持Windows 10和macOS。基金会提供了面向Linux的源码包，以及Ubuntu等主流Linux发行版的二进制包。在Win10上安装OpenFOAM(不包括虚拟机)需要安装Linux子系统，即WSL。而ESI版提供基于MSYS的OpenCFD,能在Windows上做到开箱即用(似乎就是个docker?)，针对不同发行版的二进制包也更多。不过平台的支持程度并不是很关键，因为想要好好学习OpenFOAM还是得从编译源码包开始，使用原生Linux无论从性能和兼容性来看都是最佳选择，WSL可以作为Windows系统上的备胎。否则OpenFOAM对比Fluent似乎没有明显优势。</li>
 </ul>
-<p>参考基金会官网，OpenFOAM主要面向Linux，同时也一定程度支持Windows 10和macOS。基金会提供了面向Linux的源码包，以及Ubuntu等主流发行版的二进制包。但在ESI</p>
-<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> pacman -S gcc flex cmake <span class="token function">git</span> openmpi<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><h3 id="Arch-Manjaro"><a href="#Arch-Manjaro" class="headerlink" title="Arch/Manjaro"></a>Arch/Manjaro</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> pacman -S gcc flex cmake <span class="token function">git</span> openmpi<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="Debian-Ubuntu"><a href="#Debian-Ubuntu" class="headerlink" title="Debian/Ubuntu"></a>Debian/Ubuntu</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> update
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> build-essential flex bison cmake zlib1g-dev libboost-system-dev libboost-thread-dev libopenmpi-dev openmpi-bin gnuplot libreadline-dev libncurses-dev libxt-dev
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> qt4-dev-tools libqt4-dev libqt4-opengl-dev freeglut3-dev libqtwebkit-dev<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
                 
             </div>
             <hr/>
@@ -762,30 +767,29 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/02/14/2020-2-14-openfoam-de-jie-shao-yu-an-zhuang/">
+                <a href="/2021/03/14/2021-3-14-cfd-dpm-de-ji-ben-yuan-li/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="OpenFOAM初探（一）">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="CFD-DPM的基本原理">
                         
-                        <span class="card-title">OpenFOAM初探（一）</span>
+                        <span class="card-title">CFD-DPM的基本原理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            运行环境及编译安装
+                            耦合E-L方法的介绍与基本方程
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-14
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-14
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -798,7 +802,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -806,12 +809,8 @@
                         <span class="chip bg-color">CFD</span>
                     </a>
                     
-                    <a href="/tags/OpenFOAM/">
-                        <span class="chip bg-color">OpenFOAM</span>
-                    </a>
-                    
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
+                    <a href="/tags/DPM/">
+                        <span class="chip bg-color">DPM</span>
                     </a>
                     
                 </div>
@@ -1062,7 +1061,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">981</span>&nbsp;字
+                class="white-color">1.2k</span>&nbsp;字
             
             
             
