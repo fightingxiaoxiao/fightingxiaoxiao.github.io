@@ -6,7 +6,7 @@
   <link href="http://www.smilemax.top/atom.xml" rel="self"/>
   
   <link href="http://www.smilemax.top/"/>
-  <updated>2021-03-14T05:58:28.715Z</updated>
+  <updated>2021-05-22T12:19:16.095Z</updated>
   <id>http://www.smilemax.top/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Linux工作站指南</title>
+    <link href="http://www.smilemax.top/2021/05/22/2021-5-linux-gong-zuo-zhan-zhi-nan/"/>
+    <id>http://www.smilemax.top/2021/05/22/2021-5-linux-gong-zuo-zhan-zhi-nan/</id>
+    <published>2021-05-22T11:45:00.000Z</published>
+    <updated>2021-05-22T12:19:16.095Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;从2021年5月20日起，工作站的操作系统从Windows 10迁移至Ubuntu</summary>
+        
+      
+    
+    
+    
+    <category term="手册" scheme="http://www.smilemax.top/categories/%E6%89%8B%E5%86%8C/"/>
+    
+    
+    <category term="Linux" scheme="http://www.smilemax.top/tags/Linux/"/>
+    
+    <category term="CAE" scheme="http://www.smilemax.top/tags/CAE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>CFD-DPM的基本原理</title>
-    <link href="http://www.smilemax.top/2021/03/14/2021-3-14-cfd-dpm-de-ji-ben-yuan-li/"/>
-    <id>http://www.smilemax.top/2021/03/14/2021-3-14-cfd-dpm-de-ji-ben-yuan-li/</id>
+    <link href="http://www.smilemax.top/2021/03/14/2021-3-cfd-dpm-de-ji-ben-yuan-li/"/>
+    <id>http://www.smilemax.top/2021/03/14/2021-3-cfd-dpm-de-ji-ben-yuan-li/</id>
     <published>2021-03-14T06:21:00.000Z</published>
-    <updated>2021-03-14T05:58:28.715Z</updated>
+    <updated>2021-05-22T11:43:31.179Z</updated>
     
     
     
@@ -37,10 +64,10 @@
   
   <entry>
     <title>OpenFOAM初探（一）</title>
-    <link href="http://www.smilemax.top/2020/02/14/2020-2-14-openfoam-de-jie-shao-yu-an-zhuang/"/>
-    <id>http://www.smilemax.top/2020/02/14/2020-2-14-openfoam-de-jie-shao-yu-an-zhuang/</id>
+    <link href="http://www.smilemax.top/2020/02/14/2020-2-openfoam-de-jie-shao-yu-an-zhuang/"/>
+    <id>http://www.smilemax.top/2020/02/14/2020-2-openfoam-de-jie-shao-yu-an-zhuang/</id>
     <published>2020-02-14T06:21:00.000Z</published>
-    <updated>2021-03-13T14:48:38.977Z</updated>
+    <updated>2021-05-22T11:43:36.640Z</updated>
     
     
       
@@ -66,10 +93,10 @@
   
   <entry>
     <title>2020新春快乐！</title>
-    <link href="http://www.smilemax.top/2020/02/13/2020-02-13-2020-happy-new-year/"/>
-    <id>http://www.smilemax.top/2020/02/13/2020-02-13-2020-happy-new-year/</id>
+    <link href="http://www.smilemax.top/2020/02/13/2020-02-2020-happy-new-year/"/>
+    <id>http://www.smilemax.top/2020/02/13/2020-02-2020-happy-new-year/</id>
     <published>2020-02-13T04:04:05.000Z</published>
-    <updated>2021-01-25T09:24:48.262Z</updated>
+    <updated>2021-05-22T11:43:43.269Z</updated>
     
     
       

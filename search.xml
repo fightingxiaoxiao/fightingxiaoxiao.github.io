@@ -4,9 +4,36 @@
   
     
     <entry>
+      <title>Linux工作站指南</title>
+      <link href="2021/05/22/2021-5-linux-gong-zuo-zhan-zhi-nan/"/>
+      <url>2021/05/22/2021-5-linux-gong-zuo-zhan-zhi-nan/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>从2021年5月20日起，工作站的操作系统从Windows 10迁移至Ubuntu 20.04。Linux作为最流行的服务器系统，广泛应用于HPC集群等高性能计算机设备。其主要优势包括：</p><p><strong>1. 可靠的稳健性。</strong>Linux的操作基于Linux shell，这意味着所有对Linux的操作实际上由命令行完成，包括桌面图形在内的所有上层设施都基于底层的脚本，这确保Linux在图形崩溃时仍能使用底层的tty执行命令行或恢复。大部分7×24小时开启的服务器均采用Linux系统。</p><p><strong>2. 良好的性能。</strong>Linux系统的内存占用普遍低于Windows,这得益于没有针对Linux的流氓软件，以及Linux良好的进程管理。由于采用ext4格式硬盘，Linux在小文件IO的性能方便也具备显著优势。</p><p><strong>3. 强大的开源生态链。</strong>在计算机仿真领域，几乎所有的开源程序都更偏向GNU/Linux生态。事实上，包括ANSYS,LSTC在内的商软在测试性能时也偏向使用Linux(比如RHEL)。</p><p><strong>4. 便利的网络配置。</strong>Linux几乎是组建计算机集群的唯一选择。</p><p><strong>5. 以上都是编的。</strong>主要原因是逼格够高。</p><h2 id="工作站配置介绍"><a href="#工作站配置介绍" class="headerlink" title="工作站配置介绍"></a>工作站配置介绍</h2><h2 id="系统的基本操作"><a href="#系统的基本操作" class="headerlink" title="系统的基本操作"></a>系统的基本操作</h2><p>本系统安装了Gnome桌面，也就是你们现在看到的这个图形界面。尽管很多软件像win10一样能用双击的方式打开，但这并不是一个很好的选择。因为使用这种方式打开的软件默认采用后台运行的方式，当后台运行的软件报错时，我们可能需要进入任务管理器才能强制中断并退出。</p><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><h2 id="主要CAE软件的使用方法"><a href="#主要CAE软件的使用方法" class="headerlink" title="主要CAE软件的使用方法"></a>主要CAE软件的使用方法</h2><h3 id="ANSYS-Fluent"><a href="#ANSYS-Fluent" class="headerlink" title="ANSYS Fluent"></a>ANSYS Fluent</h3><h3 id="ANSYS-LS-DYNA"><a href="#ANSYS-LS-DYNA" class="headerlink" title="ANSYS LS-DYNA"></a>ANSYS LS-DYNA</h3><h3 id="Abaqus"><a href="#Abaqus" class="headerlink" title="Abaqus"></a>Abaqus</h3><h3 id="OpenFOAM"><a href="#OpenFOAM" class="headerlink" title="OpenFOAM"></a>OpenFOAM</h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> 手册 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> CAE </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>CFD-DPM的基本原理</title>
-      <link href="2021/03/14/2021-3-14-cfd-dpm-de-ji-ben-yuan-li/"/>
-      <url>2021/03/14/2021-3-14-cfd-dpm-de-ji-ben-yuan-li/</url>
+      <link href="2021/03/14/2021-3-cfd-dpm-de-ji-ben-yuan-li/"/>
+      <url>2021/03/14/2021-3-cfd-dpm-de-ji-ben-yuan-li/</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -32,8 +59,8 @@
     
     <entry>
       <title>OpenFOAM初探（一）</title>
-      <link href="2020/02/14/2020-2-14-openfoam-de-jie-shao-yu-an-zhuang/"/>
-      <url>2020/02/14/2020-2-14-openfoam-de-jie-shao-yu-an-zhuang/</url>
+      <link href="2020/02/14/2020-2-openfoam-de-jie-shao-yu-an-zhuang/"/>
+      <url>2020/02/14/2020-2-openfoam-de-jie-shao-yu-an-zhuang/</url>
       
         <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>笔者早年的工作主要在win10平台进行，使用过诸如CFX、Fluent等商业软件，后续论文工作主要操练的是Fluent UDF。诚然，Fluent依托UDF在可操作性上已经远超其余商业CFD软件(待考证)，但是其缺陷依然明显：1, 界面操作繁琐，对于一些参数化的研究工作，很难通过脚本实现(GUI依赖版本，TUI懒得学)；2, 新功能的整合程度参差不齐，以笔者常用的DPM为例，功能限制较多，BUG不少…；3, 很难修改顶层求解器，很多中间步骤需要手工；4, 安装包太大，正版太贵。<br>OpenFOAM是一款流行的开源CFD工具箱，最初萌生体验的想法主要还是觉得自己的代码水平有些上路了(自我感觉)，此外觉得用命令行和脚本操作很有一种Geek的感觉～</p><h2 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h2><p>OpenFOAM主要有两大分支，一是<a href="https://www.openfoam.org/">基金会版(.org)</a>，版本号为OF6,7,8…，似乎是由帝国理工维护，从”血统”上讲更纯；二是<a href="https://www.openfoam.com/">ESI版(.com)</a>，版本号为v1912,v2006,v2012…(前两位数字代表年份，后两位数字代表月份，第一次接触乍一看还以为这版本好几年没更新了)，由ESI Group维护，有那么一点点商业化的感觉。通过使用OpenFOAM 7/8/v2006/v2012这四个版本, 我大致了解了一下这两个分支的区别：</p><ul><li><strong>手册</strong> <a href="https://openfoam.com/documentation/guides/latest/doc/">ESI版的手册</a>要远比基金会版的全面，后者基本就是看源码。当然总体来说OpenFOAM是我用过的大型开源软件里文档做的最差的，大概是为了培训收入吧。</li><li><strong>算例</strong> ESI版自带的Tutorials要比基金会版的多，比如大气边界层的建模，基金会版似乎没有。</li><li><strong>后处理</strong> ESI版DPM类的求解器输出的lagrangian粒子场能够通过外部安装的Paraview读取，而基金会版的只能通过在ThirdParty中编译的Paraview打开，而这个版本的显示性能较差。同时，如果使用的是WSL1这种没有显示接口的系统，使用Windows下的Paraview做颗粒后处理的话，ESI版是唯一的选择。</li><li><strong>求解器</strong> 基金会版似乎对一些求解器做了整合，比如将动网格功能合并进了一些原始的求解器，这一点比较友好。求解器功能上两者似乎差异不大。</li><li><strong>第三方包</strong> ESI版支持更多的第三方内容，比如比较知名的科学计算套件Petsc(很高端，很想学，但没空)、基于一些奇妙方法的多相流求解器OpenQBMM(但是算例好像跑不了…)、优化大规模IO的adios(听着很妙但没钱玩超算)…但是鲁迅说过，我可以不用，但它必须要有。</li><li><strong>平台支持</strong> 参考基金会官网，OpenFOAM主要面向Linux，同时也一定程度支持Windows 10和macOS。基金会提供了面向Linux的源码包，以及Ubuntu等主流Linux发行版的二进制包。在Win10上安装OpenFOAM(不包括虚拟机)需要安装Linux子系统，即WSL。而ESI版提供基于MSYS的OpenCFD,能在Windows上做到开箱即用(似乎就是个docker?)，针对不同发行版的二进制包也更多。不过平台的支持程度并不是很关键，因为想要好好学习OpenFOAM还是得从编译源码包开始，使用原生Linux无论从性能和兼容性来看都是最佳选择，WSL可以作为Windows系统上的备胎。否则OpenFOAM对比Fluent似乎没有明显优势。</li></ul><h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><h3 id="Arch-Manjaro"><a href="#Arch-Manjaro" class="headerlink" title="Arch/Manjaro"></a>Arch/Manjaro</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> pacman -S gcc flex cmake <span class="token function">git</span> openmpi<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="Debian-Ubuntu"><a href="#Debian-Ubuntu" class="headerlink" title="Debian/Ubuntu"></a>Debian/Ubuntu</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> update<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> build-essential flex bison cmake zlib1g-dev libboost-system-dev libboost-thread-dev libopenmpi-dev openmpi-bin gnuplot libreadline-dev libncurses-dev libxt-dev<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> qt4-dev-tools libqt4-dev libqt4-opengl-dev freeglut3-dev libqtwebkit-dev<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>]]></content>
       
@@ -61,8 +88,8 @@
     
     <entry>
       <title>2020新春快乐！</title>
-      <link href="2020/02/13/2020-02-13-2020-happy-new-year/"/>
-      <url>2020/02/13/2020-02-13-2020-happy-new-year/</url>
+      <link href="2020/02/13/2020-02-2020-happy-new-year/"/>
+      <url>2020/02/13/2020-02-2020-happy-new-year/</url>
       
         <content type="html"><![CDATA[<p>这是我的第一篇博客，写于新冠病毒肆虐的2020年新春。曾经也有过搭建个人网站的念头，但苦于学业繁忙一直不能如愿。如今踏入博一，课业轻了，第一篇SCI也已投出，自觉应该静下心来整理整理一些囫囵吞枣的知识，好好思索一下自己的科研计划。于是这个博客就华丽地诞生了！<br>往后，包括自己对所在科研领域的一些小小见解、平日学习的一些笔记都会逐步整理并上传。主要目的是便于对自己知识体系的整理和重用，也希望漂亮的博客能给予自己一个正反馈。如果你是偶然路过的同行，也十分欢迎互相交流学习。</p>]]></content>
       
