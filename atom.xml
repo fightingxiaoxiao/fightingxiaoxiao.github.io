@@ -6,7 +6,7 @@
   <link href="http://www.smilemax.top/atom.xml" rel="self"/>
   
   <link href="http://www.smilemax.top/"/>
-  <updated>2021-05-22T12:19:16.095Z</updated>
+  <updated>2021-07-19T11:00:52.542Z</updated>
   <id>http://www.smilemax.top/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://www.smilemax.top/2021/05/22/2021-5-linux-gong-zuo-zhan-zhi-nan/"/>
     <id>http://www.smilemax.top/2021/05/22/2021-5-linux-gong-zuo-zhan-zhi-nan/</id>
     <published>2021-05-22T11:45:00.000Z</published>
-    <updated>2021-05-22T12:19:16.095Z</updated>
+    <updated>2021-07-19T11:00:52.542Z</updated>
     
     
       
@@ -59,6 +59,31 @@
     <category term="CFD" scheme="http://www.smilemax.top/tags/CFD/"/>
     
     <category term="DPM" scheme="http://www.smilemax.top/tags/DPM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>大气边界层的数值方法实现：以OpenFOAM为例（一）</title>
+    <link href="http://www.smilemax.top/2020/12/13/2020-12-14-da-qi-bian-jie-ceng/"/>
+    <id>http://www.smilemax.top/2020/12/13/2020-12-14-da-qi-bian-jie-ceng/</id>
+    <published>2020-12-13T15:21:00.000Z</published>
+    <updated>2021-07-19T11:03:31.866Z</updated>
+    
+    
+    <summary type="html">大气边界层理论</summary>
+    
+    
+    <content src="http://www.smilemax.top/article_img/2020-6-12-cfd-interface-1/title.jpg" type="image"/>
+    
+    
+    <category term="CFD" scheme="http://www.smilemax.top/categories/CFD/"/>
+    
+    
+    <category term="CFD" scheme="http://www.smilemax.top/tags/CFD/"/>
+    
+    <category term="OpenFOAM" scheme="http://www.smilemax.top/tags/OpenFOAM/"/>
+    
+    <category term="Wind Engineering" scheme="http://www.smilemax.top/tags/Wind-Engineering/"/>
     
   </entry>
   

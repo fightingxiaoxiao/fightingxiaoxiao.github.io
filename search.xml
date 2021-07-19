@@ -8,7 +8,7 @@
       <link href="2021/05/22/2021-5-linux-gong-zuo-zhan-zhi-nan/"/>
       <url>2021/05/22/2021-5-linux-gong-zuo-zhan-zhi-nan/</url>
       
-        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>从2021年5月20日起，工作站的操作系统从Windows 10迁移至Ubuntu 20.04。Linux作为最流行的服务器系统，广泛应用于HPC集群等高性能计算机设备。其主要优势包括：</p><p><strong>1. 可靠的稳健性。</strong>Linux的操作基于Linux shell，这意味着所有对Linux的操作实际上由命令行完成，包括桌面图形在内的所有上层设施都基于底层的脚本，这确保Linux在图形崩溃时仍能使用底层的tty执行命令行或恢复。大部分7×24小时开启的服务器均采用Linux系统。</p><p><strong>2. 良好的性能。</strong>Linux系统的内存占用普遍低于Windows,这得益于没有针对Linux的流氓软件，以及Linux良好的进程管理。由于采用ext4格式硬盘，Linux在小文件IO的性能方便也具备显著优势。</p><p><strong>3. 强大的开源生态链。</strong>在计算机仿真领域，几乎所有的开源程序都更偏向GNU/Linux生态。事实上，包括ANSYS,LSTC在内的商软在测试性能时也偏向使用Linux(比如RHEL)。</p><p><strong>4. 便利的网络配置。</strong>Linux几乎是组建计算机集群的唯一选择。</p><p><strong>5. 以上都是编的。</strong>主要原因是逼格够高。</p><h2 id="工作站配置介绍"><a href="#工作站配置介绍" class="headerlink" title="工作站配置介绍"></a>工作站配置介绍</h2><h2 id="系统的基本操作"><a href="#系统的基本操作" class="headerlink" title="系统的基本操作"></a>系统的基本操作</h2><p>本系统安装了Gnome桌面，也就是你们现在看到的这个图形界面。尽管很多软件像win10一样能用双击的方式打开，但这并不是一个很好的选择。因为使用这种方式打开的软件默认采用后台运行的方式，当后台运行的软件报错时，我们可能需要进入任务管理器才能强制中断并退出。</p><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><h2 id="主要CAE软件的使用方法"><a href="#主要CAE软件的使用方法" class="headerlink" title="主要CAE软件的使用方法"></a>主要CAE软件的使用方法</h2><h3 id="ANSYS-Fluent"><a href="#ANSYS-Fluent" class="headerlink" title="ANSYS Fluent"></a>ANSYS Fluent</h3><h3 id="ANSYS-LS-DYNA"><a href="#ANSYS-LS-DYNA" class="headerlink" title="ANSYS LS-DYNA"></a>ANSYS LS-DYNA</h3><h3 id="Abaqus"><a href="#Abaqus" class="headerlink" title="Abaqus"></a>Abaqus</h3><h3 id="OpenFOAM"><a href="#OpenFOAM" class="headerlink" title="OpenFOAM"></a>OpenFOAM</h3>]]></content>
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>从2021年5月20日起，工作站的操作系统从Windows 10迁移至Ubuntu 20.04。Linux作为最流行的服务器系统，广泛应用于HPC集群等高性能计算机设备。其主要优势包括：</p><p><strong>1. 可靠的稳健性。</strong>Linux的操作基于Linux shell，这意味着所有对Linux的操作实际上由命令行完成，包括桌面图形在内的所有上层设施都基于底层的脚本，这确保Linux在图形崩溃时仍能使用底层的tty执行命令行或恢复。大部分7×24小时开启的服务器均采用Linux系统。</p><p><strong>2. 良好的性能。</strong>Linux系统的内存占用普遍低于Windows,这得益于没有针对Linux的流氓软件，以及Linux良好的进程管理。由于采用ext4格式硬盘，Linux在小文件IO的性能方便也具备显著优势。</p><p><strong>3. 强大的开源生态链。</strong>在计算机仿真领域，几乎所有的开源程序都更偏向GNU/Linux生态。事实上，包括ANSYS,LSTC在内的商软在测试性能时也偏向使用Linux(比如RHEL)。</p><p><strong>4. 便利的网络配置。</strong>Linux几乎是组建计算机集群的唯一选择。</p><p><strong>5. 以上都是编的。</strong>主要原因是逼格够高。</p><h2 id="工作站配置介绍"><a href="#工作站配置介绍" class="headerlink" title="工作站配置介绍"></a>工作站配置介绍</h2><h2 id="系统的基本操作"><a href="#系统的基本操作" class="headerlink" title="系统的基本操作"></a>系统的基本操作</h2><p>本系统安装了Gnome桌面，也就是你们现在看到的这个图形界面。尽管很多软件像win10一样能用双击的方式打开，但这并不是一个很好的选择。因为使用这种方式打开的软件默认采用后台运行的方式，当后台运行的软件报错时，我们可能需要进入任务管理器才能强制中断并退出。</p><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><h2 id="主要CAE软件的使用方法"><a href="#主要CAE软件的使用方法" class="headerlink" title="主要CAE软件的使用方法"></a>主要CAE软件的使用方法</h2><h3 id="ANSYS-Fluent"><a href="#ANSYS-Fluent" class="headerlink" title="ANSYS Fluent"></a>ANSYS Fluent</h3><h3 id="ANSYS-LS-DYNA"><a href="#ANSYS-LS-DYNA" class="headerlink" title="ANSYS LS-DYNA"></a>ANSYS LS-DYNA</h3><ol><li><p>打开终端窗口</p></li><li><p>进入k文件所在路径，比如</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /media/workstationData/cxx/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li><li><p>执行LSDYNA程序</p></li></ol><p>SMP求解器</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">lsdyna <span class="token assign-left variable">i</span><span class="token operator">=</span>test.k<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>MPP求解器</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">lsdyna -mpp -np <span class="token number">4</span> <span class="token assign-left variable">i</span><span class="token operator">=</span>test.k <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>PS: 如果MPP程序卡住，可以尝试执行</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token number">0</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> /proc/sys/kernel/yama/ptrace_scope<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="Abaqus"><a href="#Abaqus" class="headerlink" title="Abaqus"></a>Abaqus</h3><h3 id="OpenFOAM"><a href="#OpenFOAM" class="headerlink" title="OpenFOAM"></a>OpenFOAM</h3>]]></content>
       
       
       <categories>
@@ -50,6 +50,35 @@
             <tag> CFD </tag>
             
             <tag> DPM </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>大气边界层的数值方法实现：以OpenFOAM为例（一）</title>
+      <link href="2020/12/13/2020-12-14-da-qi-bian-jie-ceng/"/>
+      <url>2020/12/13/2020-12-14-da-qi-bian-jie-ceng/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>&emsp;&emsp;地球表面通过地面的摩擦对空气水平运动产生阻力，从而使气流速度减慢，该阻力对气流的作用随高度的增加而减弱。当超过特定高度($$z_G$$)时,这一作用即可被忽视，气流将沿等压线以梯度风速流动，则将此高度以下的区域称作<strong>大气边界层</strong>（**<em>Atmosphere Boundary Layer, ABL**</em>）。一般的，大气边界层内近地层的气流是湍流，湍流掺混使地表阻力的影响扩展到大气边界层的整个区域。而在边界层高度以上的自由大气中的风流动属于层流。<a href="#refer-anchor-1">[1]</a></p><h2 id="风速剖面"><a href="#风速剖面" class="headerlink" title="风速剖面"></a>风速剖面</h2><h3 id="对数律"><a href="#对数律" class="headerlink" title="对数律"></a>对数律</h3><p>&emsp;&emsp;平均风剖面是微气象学研究风速变化的一种主要方法。目前，气象学家认为用对数律表示大气底层强风风速廓线比较理想，其表达式为<a href="#refer-anchor-2">[2]</a><a href="#refer-anchor-3">[3]</a></p><center>$$u = \frac{u^*}{\kappa} \ln \left( \frac{z - d + z_0}{z_0} \right)\tag{1}$$</center>式中<br>&emsp;&emsp;$$u$$&ensp;——&ensp;高度 $$z$$ 处的平均风速（m/s）<br>&emsp;&emsp;$$u^*$$&ensp;——&ensp;剪切风速（m/s）<br>&emsp;&emsp;$$\kappa$$&ensp;——&ensp;卡曼常数，一般取0.4<br>&emsp;&emsp;$$d$$&ensp;——&ensp;零平均位移（m）<br>&emsp;&emsp;$$z_0$$&ensp;——&ensp;粗糙高度（m），取值可见下表[[1]](#refer-anchor-1)<br><table><thead><tr><th><strong>地面类型</strong></th><th><strong>$$z_0/\rm{m}$$</strong></th><th><strong>地面类型</strong></th><th><strong>$$z_0/\rm{m}$$</strong></th></tr></thead><tbody><tr><td>砂地</td><td>0.0001~0.001</td><td>矮棕榈</td><td>0.10~0.30</td></tr><tr><td>雪地</td><td>0.001~0.006</td><td>松树林</td><td>0.90~1.00</td></tr><tr><td>割过的草地（~0.01m）</td><td>0.001~0.01</td><td>稀疏建成市郊</td><td>0.20~0.40</td></tr><tr><td>矮草地、空旷草原</td><td>0.01~0.04</td><td>密集建成市郊、市区</td><td>0.80~1.20</td></tr><tr><td>休耕地</td><td>0.02~0.03</td><td>大城市中心</td><td>2.00~3.00</td></tr><tr><td>高草地</td><td>0.04~0.10</td><td></td><td></td></tr></tbody></table><p>&emsp;&emsp;城市地区的修正下次再写。</p><h3 id="指数律"><a href="#指数律" class="headerlink" title="指数律"></a>指数律</h3><p>&emsp;&emsp;懒得写了。</p><h2 id="湍流特征"><a href="#湍流特征" class="headerlink" title="湍流特征"></a>湍流特征</h2><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a class="target-fix" id="refer-anchor-1"></a></p><p>[1] 黄本才. 结构抗风分析原理及应用[M]. 同济大学出版社, 2001.</p><p><a class="target-fix" id="refer-anchor-2"></a></p><p>[2] Yang Y, Gu M, Chen S, et al. New inflow boundary conditions for modelling the neutral equilibrium atmospheric boundary layer in computational wind engineering[J]. Journal of Wind Engineering and Industrial Aerodynamics, 2009, 97(2): 88-95.</p><p><a class="target-fix" id="refer-anchor-3"></a></p><p>[3] Richards P J, Hoxey R P. Appropriate boundary conditions for computational wind engineering models using the k-ε turbulence model[M]//Computational Wind Engineering 1. Elsevier, 1993: 145-153.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> CFD </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CFD </tag>
+            
+            <tag> OpenFOAM </tag>
+            
+            <tag> Wind Engineering </tag>
             
         </tags>
       
