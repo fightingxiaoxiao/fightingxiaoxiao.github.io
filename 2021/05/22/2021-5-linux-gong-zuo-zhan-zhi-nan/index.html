@@ -468,21 +468,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-07-19
+                    2021-08-08
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    541
+                    557
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -516,18 +516,24 @@
 <li><p>打开终端窗口</p>
 </li>
 <li><p>进入k文件所在路径，比如</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /media/workstationData/cxx/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>执行LSDYNA程序</p>
 </li>
 </ol>
-<p>SMP求解器</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /media/workstationData/lsdyna_example/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="3">
+<li>执行LSDYNA求解器</li>
+</ol>
+<ul>
+<li>SMP求解器</li>
+</ul>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">lsdyna <span class="token assign-left variable">i</span><span class="token operator">=</span>test.k<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>MPP求解器</p>
+<ul>
+<li>MPP求解器</li>
+</ul>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">lsdyna -mpp -np <span class="token number">4</span> <span class="token assign-left variable">i</span><span class="token operator">=</span>test.k <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>PS: 如果MPP程序卡住，可以尝试执行</p>
+<p>PS: 如果MPP程序卡住，可以尝试执行（<strong>如不了解管理员权限，请事先告知我！</strong>）</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token number">0</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> /proc/sys/kernel/yama/ptrace_scope<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="Abaqus"><a href="#Abaqus" class="headerlink" title="Abaqus"></a>Abaqus</h3><h3 id="OpenFOAM"><a href="#OpenFOAM" class="headerlink" title="OpenFOAM"></a>OpenFOAM</h3>
