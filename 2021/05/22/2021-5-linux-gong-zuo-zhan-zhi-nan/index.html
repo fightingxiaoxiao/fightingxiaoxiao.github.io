@@ -475,7 +475,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    614
+                    617
                 </div>
                 
 
@@ -512,18 +512,9 @@
 <p><strong>4. 便利的网络配置。</strong>Linux几乎是组建计算机集群的唯一选择。</p>
 <p><strong>5. 以上都是编的。</strong>主要原因是逼格够高。</p>
 <h2 id="工作站配置介绍"><a href="#工作站配置介绍" class="headerlink" title="工作站配置介绍"></a>工作站配置介绍</h2><h2 id="系统的基本操作"><a href="#系统的基本操作" class="headerlink" title="系统的基本操作"></a>系统的基本操作</h2><p>本系统安装了Gnome桌面，也就是你们现在看到的这个图形界面。尽管很多软件像win10一样能用双击的方式打开，但这并不是一个很好的选择。因为使用这种方式打开的软件默认采用后台运行的方式，当后台运行的软件报错时，我们可能需要进入任务管理器才能强制中断并退出。</p>
-<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><h2 id="主要CAE软件的使用方法"><a href="#主要CAE软件的使用方法" class="headerlink" title="主要CAE软件的使用方法"></a>主要CAE软件的使用方法</h2><h3 id="ANSYS-Fluent"><a href="#ANSYS-Fluent" class="headerlink" title="ANSYS Fluent"></a>ANSYS Fluent</h3><h3 id="ANSYS-LS-DYNA"><a href="#ANSYS-LS-DYNA" class="headerlink" title="ANSYS LS-DYNA"></a>ANSYS LS-DYNA</h3><ol>
-<li><p>打开终端窗口</p>
-</li>
-<li><p>进入k文件所在路径，比如</p>
-</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /media/workstationData/lsdyna_example/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><h2 id="主要CAE软件的使用方法"><a href="#主要CAE软件的使用方法" class="headerlink" title="主要CAE软件的使用方法"></a>主要CAE软件的使用方法</h2><h3 id="ANSYS-Fluent"><a href="#ANSYS-Fluent" class="headerlink" title="ANSYS Fluent"></a>ANSYS Fluent</h3><h3 id="ANSYS-LS-DYNA"><a href="#ANSYS-LS-DYNA" class="headerlink" title="ANSYS LS-DYNA"></a>ANSYS LS-DYNA</h3><h4 id="1-打开终端窗口"><a href="#1-打开终端窗口" class="headerlink" title="1. 打开终端窗口"></a>1. 打开终端窗口</h4><h4 id="2-进入k文件所在路径，比如"><a href="#2-进入k文件所在路径，比如" class="headerlink" title="2. 进入k文件所在路径，比如"></a>2. 进入k文件所在路径，比如</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /media/workstationData/lsdyna_example/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<ol start="3">
-<li>执行LSDYNA求解器</li>
-</ol>
-<ul>
+<h4 id="3-执行LSDYNA求解器"><a href="#3-执行LSDYNA求解器" class="headerlink" title="3. 执行LSDYNA求解器"></a>3. 执行LSDYNA求解器</h4><ul>
 <li>使用<code>1</code>个线程运行<code>单精度</code> <code>SMP</code>求解器</li>
 </ul>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">lsdyna <span class="token assign-left variable">i</span><span class="token operator">=</span>test.k<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -533,10 +524,7 @@
 </ul>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">lsdyna -mpp -np <span class="token number">4</span> <span class="token assign-left variable">i</span><span class="token operator">=</span>test.k<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<ol start="4">
-<li>常见问题</li>
-</ol>
-<blockquote>
+<h4 id="4-常见问题"><a href="#4-常见问题" class="headerlink" title="4. 常见问题"></a>4. 常见问题</h4><blockquote>
 <p>重启工作站后MPP程序卡住</p>
 </blockquote>
 <p>这个问题可能是由于INTELMPI没有获取足够的权限导致的，可以尝试执行以下命令（<strong>如不了解管理员权限，请事先告知我！</strong>）</p>
