@@ -3,11 +3,11 @@
   <title>笑笑的科研小站</title>
   
   <subtitle>且听风吟</subtitle>
-  <link href="http://www.smilemax.top/atom.xml" rel="self"/>
+  <link href="https://fightingxiaoxiao.github.io/atom.xml" rel="self"/>
   
-  <link href="http://www.smilemax.top/"/>
+  <link href="https://fightingxiaoxiao.github.io/"/>
   <updated>2021-08-09T08:59:52.206Z</updated>
-  <id>http://www.smilemax.top/</id>
+  <id>https://fightingxiaoxiao.github.io/</id>
   
   <author>
     <name>Xiaoxiao</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Linux工作站指南</title>
-    <link href="http://www.smilemax.top/2021/05/22/2021-5-linux-gong-zuo-zhan-zhi-nan/"/>
-    <id>http://www.smilemax.top/2021/05/22/2021-5-linux-gong-zuo-zhan-zhi-nan/</id>
+    <link href="https://fightingxiaoxiao.github.io/2021/05/22/2021-5-linux-gong-zuo-zhan-zhi-nan/"/>
+    <id>https://fightingxiaoxiao.github.io/2021/05/22/2021-5-linux-gong-zuo-zhan-zhi-nan/</id>
     <published>2021-05-22T11:45:00.000Z</published>
     <updated>2021-08-09T08:59:52.206Z</updated>
     
@@ -34,38 +34,38 @@
     
     
     
-    <category term="手册" scheme="http://www.smilemax.top/categories/%E6%89%8B%E5%86%8C/"/>
+    <category term="手册" scheme="https://fightingxiaoxiao.github.io/categories/%E6%89%8B%E5%86%8C/"/>
     
     
-    <category term="Linux" scheme="http://www.smilemax.top/tags/Linux/"/>
+    <category term="Linux" scheme="https://fightingxiaoxiao.github.io/tags/Linux/"/>
     
-    <category term="CAE" scheme="http://www.smilemax.top/tags/CAE/"/>
+    <category term="CAE" scheme="https://fightingxiaoxiao.github.io/tags/CAE/"/>
     
   </entry>
   
   <entry>
     <title>CFD-DPM的基本原理</title>
-    <link href="http://www.smilemax.top/2021/03/14/2021-3-cfd-dpm-de-ji-ben-yuan-li/"/>
-    <id>http://www.smilemax.top/2021/03/14/2021-3-cfd-dpm-de-ji-ben-yuan-li/</id>
+    <link href="https://fightingxiaoxiao.github.io/2021/03/14/2021-3-cfd-dpm-de-ji-ben-yuan-li/"/>
+    <id>https://fightingxiaoxiao.github.io/2021/03/14/2021-3-cfd-dpm-de-ji-ben-yuan-li/</id>
     <published>2021-03-14T06:21:00.000Z</published>
     <updated>2021-05-22T11:43:31.179Z</updated>
     
     
     
     
-    <category term="知识" scheme="http://www.smilemax.top/categories/%E7%9F%A5%E8%AF%86/"/>
+    <category term="知识" scheme="https://fightingxiaoxiao.github.io/categories/%E7%9F%A5%E8%AF%86/"/>
     
     
-    <category term="CFD" scheme="http://www.smilemax.top/tags/CFD/"/>
+    <category term="CFD" scheme="https://fightingxiaoxiao.github.io/tags/CFD/"/>
     
-    <category term="DPM" scheme="http://www.smilemax.top/tags/DPM/"/>
+    <category term="DPM" scheme="https://fightingxiaoxiao.github.io/tags/DPM/"/>
     
   </entry>
   
   <entry>
     <title>大气边界层的数值方法实现：以OpenFOAM为例（一）</title>
-    <link href="http://www.smilemax.top/2020/12/13/2020-12-14-da-qi-bian-jie-ceng/"/>
-    <id>http://www.smilemax.top/2020/12/13/2020-12-14-da-qi-bian-jie-ceng/</id>
+    <link href="https://fightingxiaoxiao.github.io/2020/12/13/2020-12-14-da-qi-bian-jie-ceng/"/>
+    <id>https://fightingxiaoxiao.github.io/2020/12/13/2020-12-14-da-qi-bian-jie-ceng/</id>
     <published>2020-12-13T15:21:00.000Z</published>
     <updated>2021-08-08T14:58:36.437Z</updated>
     
@@ -73,24 +73,24 @@
     <summary type="html">大气边界层理论</summary>
     
     
-    <content src="http://www.smilemax.top/article_img/2020-6-12-cfd-interface-1/title.jpg" type="image"/>
+    <content src="https://fightingxiaoxiao.github.io/article_img/2020-6-12-cfd-interface-1/title.jpg" type="image"/>
     
     
-    <category term="CFD" scheme="http://www.smilemax.top/categories/CFD/"/>
+    <category term="CFD" scheme="https://fightingxiaoxiao.github.io/categories/CFD/"/>
     
     
-    <category term="CFD" scheme="http://www.smilemax.top/tags/CFD/"/>
+    <category term="CFD" scheme="https://fightingxiaoxiao.github.io/tags/CFD/"/>
     
-    <category term="OpenFOAM" scheme="http://www.smilemax.top/tags/OpenFOAM/"/>
+    <category term="OpenFOAM" scheme="https://fightingxiaoxiao.github.io/tags/OpenFOAM/"/>
     
-    <category term="Wind Engineering" scheme="http://www.smilemax.top/tags/Wind-Engineering/"/>
+    <category term="Wind Engineering" scheme="https://fightingxiaoxiao.github.io/tags/Wind-Engineering/"/>
     
   </entry>
   
   <entry>
     <title>OpenFOAM初探（一）</title>
-    <link href="http://www.smilemax.top/2020/02/14/2020-2-openfoam-de-jie-shao-yu-an-zhuang/"/>
-    <id>http://www.smilemax.top/2020/02/14/2020-2-openfoam-de-jie-shao-yu-an-zhuang/</id>
+    <link href="https://fightingxiaoxiao.github.io/2020/02/14/2020-2-openfoam-de-jie-shao-yu-an-zhuang/"/>
+    <id>https://fightingxiaoxiao.github.io/2020/02/14/2020-2-openfoam-de-jie-shao-yu-an-zhuang/</id>
     <published>2020-02-14T06:21:00.000Z</published>
     <updated>2021-05-22T11:43:36.640Z</updated>
     
@@ -105,21 +105,21 @@
     
     
     
-    <category term="知识" scheme="http://www.smilemax.top/categories/%E7%9F%A5%E8%AF%86/"/>
+    <category term="知识" scheme="https://fightingxiaoxiao.github.io/categories/%E7%9F%A5%E8%AF%86/"/>
     
     
-    <category term="CFD" scheme="http://www.smilemax.top/tags/CFD/"/>
+    <category term="CFD" scheme="https://fightingxiaoxiao.github.io/tags/CFD/"/>
     
-    <category term="OpenFOAM" scheme="http://www.smilemax.top/tags/OpenFOAM/"/>
+    <category term="OpenFOAM" scheme="https://fightingxiaoxiao.github.io/tags/OpenFOAM/"/>
     
-    <category term="Linux" scheme="http://www.smilemax.top/tags/Linux/"/>
+    <category term="Linux" scheme="https://fightingxiaoxiao.github.io/tags/Linux/"/>
     
   </entry>
   
   <entry>
     <title>2020新春快乐！</title>
-    <link href="http://www.smilemax.top/2020/02/13/2020-02-2020-happy-new-year/"/>
-    <id>http://www.smilemax.top/2020/02/13/2020-02-2020-happy-new-year/</id>
+    <link href="https://fightingxiaoxiao.github.io/2020/02/13/2020-02-2020-happy-new-year/"/>
+    <id>https://fightingxiaoxiao.github.io/2020/02/13/2020-02-2020-happy-new-year/</id>
     <published>2020-02-13T04:04:05.000Z</published>
     <updated>2021-05-22T11:43:43.269Z</updated>
     
@@ -134,10 +134,10 @@
     
     
     
-    <category term="日记" scheme="http://www.smilemax.top/categories/%E6%97%A5%E8%AE%B0/"/>
+    <category term="日记" scheme="https://fightingxiaoxiao.github.io/categories/%E6%97%A5%E8%AE%B0/"/>
     
     
-    <category term="日常" scheme="http://www.smilemax.top/tags/%E6%97%A5%E5%B8%B8/"/>
+    <category term="日常" scheme="https://fightingxiaoxiao.github.io/tags/%E6%97%A5%E5%B8%B8/"/>
     
   </entry>
   
