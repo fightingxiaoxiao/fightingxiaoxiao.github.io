@@ -311,7 +311,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/babala.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -468,21 +468,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-08-08
+                    2021-08-09
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    618
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    4 分
                 </div>
                 
 
@@ -511,10 +511,26 @@
 <p><strong>3. 强大的开源生态链。</strong>在计算机仿真领域，几乎所有的开源程序都更偏向GNU/Linux生态。事实上，包括ANSYS,LSTC在内的商软在测试性能时也偏向使用Linux(比如RHEL)。</p>
 <p><strong>4. 便利的网络配置。</strong>Linux几乎是组建计算机集群的唯一选择。</p>
 <p><strong>5. 以上都是编的。</strong>主要原因是逼格够高。</p>
-<h2 id="工作站配置介绍"><a href="#工作站配置介绍" class="headerlink" title="工作站配置介绍"></a>工作站配置介绍</h2><h2 id="系统的基本操作"><a href="#系统的基本操作" class="headerlink" title="系统的基本操作"></a>系统的基本操作</h2><p>本系统安装了Gnome桌面，也就是你们现在看到的这个图形界面。尽管很多软件像win10一样能用双击的方式打开，但这并不是一个很好的选择。因为使用这种方式打开的软件默认采用后台运行的方式，当后台运行的软件报错时，我们可能需要进入任务管理器才能强制中断并退出。</p>
-<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><h2 id="主要CAE软件的使用方法"><a href="#主要CAE软件的使用方法" class="headerlink" title="主要CAE软件的使用方法"></a>主要CAE软件的使用方法</h2><h3 id="ANSYS-Fluent"><a href="#ANSYS-Fluent" class="headerlink" title="ANSYS Fluent"></a>ANSYS Fluent</h3><h3 id="ANSYS-LS-DYNA"><a href="#ANSYS-LS-DYNA" class="headerlink" title="ANSYS LS-DYNA"></a>ANSYS LS-DYNA</h3><h5 id="1-打开终端窗口"><a href="#1-打开终端窗口" class="headerlink" title="1. 打开终端窗口"></a>1. 打开终端窗口</h5><h5 id="2-进入k文件所在路径，比如"><a href="#2-进入k文件所在路径，比如" class="headerlink" title="2. 进入k文件所在路径，比如"></a>2. 进入k文件所在路径，比如</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /media/workstationData/lsdyna_example/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="工作站配置介绍"><a href="#工作站配置介绍" class="headerlink" title="工作站配置介绍"></a>工作站配置介绍</h2><h2 id="系统的基本操作"><a href="#系统的基本操作" class="headerlink" title="系统的基本操作"></a>系统的基本操作</h2><p>本系统安装了Gnome桌面，也就是你们现在看到的这个图形界面。尽管很多软件像win10一样能用双击的方式打开，但这并不是一个很好的选择。因为使用这种方式打开的软件默认采用后台运行的方式，当后台运行的软件报错时，我们可能需要进入任务管理器才能强制中断并退出。Linux系统更推荐使用<strong>终端</strong>(<strong>Terminal</strong>)直接输入<strong>命令行</strong>进行操作。使用<code>Ctrl</code>+<code>Alt</code>+<code>T</code>或在资源管理器的空白位置<code>右键</code>-&gt;<code>Open in Terminal</code>可以快速打开一个终端窗口。</p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
+<li><p>请务必在运行程序时注意终端命令的执行路径！错误的路径很可能会覆盖其他人的工作成果！在终端中执行<code>pwd</code>命令可以快速查看当前路径。</p>
+</li>
+<li><p>在运行大规模的计算时，请注意系统资源的占用情况！在终端中执行<code>top</code>或<code>htop</code>可以快速查看当前的CPU和内存使用情况。</p>
+</li>
+</ul>
+<h2 id="主要CAE软件的使用方法"><a href="#主要CAE软件的使用方法" class="headerlink" title="主要CAE软件的使用方法"></a>主要CAE软件的使用方法</h2><h3 id="ANSYS-Fluent"><a href="#ANSYS-Fluent" class="headerlink" title="ANSYS Fluent"></a>ANSYS Fluent</h3><h3 id="ANSYS-LS-DYNA"><a href="#ANSYS-LS-DYNA" class="headerlink" title="ANSYS LS-DYNA"></a>ANSYS LS-DYNA</h3><h5 id="1-配置项目路径"><a href="#1-配置项目路径" class="headerlink" title="1. 配置项目路径"></a>1. 配置项目路径</h5><p>将你想要执行的k文件放到你的工作路径，打开终端，进入你的工作路径，例如</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /media/workstationData/lsdyna_example/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h5 id="3-执行LS-DYNA求解器"><a href="#3-执行LS-DYNA求解器" class="headerlink" title="3. 执行LS-DYNA求解器"></a>3. 执行LS-DYNA求解器</h5><ul>
+<p>当然，如果你在资源管理器界面，在当前文件目录下采用右键的方式打开Terminal的话，Terminal默认的路径就会在当前路径下，可以执行<code>pwd</code>命令核实。</p>
+<h5 id="2-执行LS-DYNA求解器"><a href="#2-执行LS-DYNA求解器" class="headerlink" title="2. 执行LS-DYNA求解器"></a>2. 执行LS-DYNA求解器</h5><p>LS-DYNA的求解器命令为<code>lsdyna</code>，其通过不同的可选命令来实现求解的设置，如：</p>
+<p><code>-mpp</code> 使用MPP求解器，不附加该词条则使用SMP求解器</p>
+<p><code>-np X</code> 使用X个计算节点启动MPP求解器</p>
+<p><code>-dp</code> 使用双精度求解器，不附加该词条则使用单精度求解器</p>
+<p><code>i=xxx.k</code> 指定需要执行的k文件，应确保k文件位于当前路径</p>
+<p><code>memory=xxxxxx</code> 指定求解器占用内存，默认单位是字节，一般情况下不需要使用</p>
+<p><code>ncpus=X</code> 使用X个线程启动SMP求解器。需要注意，按照官方文档的说明，当并行线程数大于5时，SMP的并行加速比可能会显著下降，此时更推荐使用MPP求解器。</p>
+<p>以下给出一些实际运行案例：</p>
+<ul>
 <li>使用<code>1</code>个线程运行<code>单精度</code> <code>SMP</code>求解器</li>
 </ul>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">lsdyna <span class="token assign-left variable">i</span><span class="token operator">=</span>test.k<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -523,6 +539,24 @@
 <li>使用<code>4</code>个并行节点运行<code>单精度</code> <code>MPP</code>求解器</li>
 </ul>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">lsdyna -mpp -np <span class="token number">4</span> <span class="token assign-left variable">i</span><span class="token operator">=</span>test.k<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>使用<code>4</code>个线程运行<code>双精度</code> <code>SMP</code>求解器</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">lsdyna -dp <span class="token assign-left variable">i</span><span class="token operator">=</span>test.k <span class="token assign-left variable">ncpus</span><span class="token operator">=</span><span class="token number">4</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>使用<code>8</code>个并行节点运行<code>双精度</code> <code>MPP</code>求解器</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">lsdyna -mpp -dp -np <span class="token number">8</span> <span class="token assign-left variable">i</span><span class="token operator">=</span>test.k<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>使用<code>8</code>个并行节点运行<code>双精度</code> <code>MPP</code>求解器，并指定2000M内存</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">lsdyna -mpp -dp -np <span class="token number">8</span> <span class="token assign-left variable">i</span><span class="token operator">=</span>test.k <span class="token assign-left variable">memory</span><span class="token operator">=</span>2000M<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>或</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">lsdyna -mpp -dp -np <span class="token number">8</span> <span class="token assign-left variable">i</span><span class="token operator">=</span>test.k <span class="token assign-left variable">memory</span><span class="token operator">=</span><span class="token number">2000000000</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h5 id="4-常见问题"><a href="#4-常见问题" class="headerlink" title="4. 常见问题"></a>4. 常见问题</h5><blockquote>
 <p>重启工作站后MPP程序卡住</p>
@@ -777,8 +811,7 @@
                 <a href="/2021/05/22/2021-5-linux-gong-zuo-zhan-zhi-nan/">
                     <div class="card-image">
                         
-                        
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Linux工作站指南">
+                        <img src="https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/babala.jpg" class="responsive-img" alt="Linux工作站指南">
                         
                         <span class="card-title">Linux工作站指南</span>
                     </div>
@@ -1037,7 +1070,7 @@
     
     <div class="row">
         <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
-                   server="netease"
+                   server="tencent"
                    type="playlist"
                    id="503838841"
                    fixed='true'
@@ -1070,7 +1103,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">2.3k</span>&nbsp;字
+                class="white-color">2.9k</span>&nbsp;字
             
             
             
