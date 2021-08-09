@@ -393,10 +393,12 @@
 </div>
 
 
-        <script>
-            $('.bg-cover').css('background-image', 'url(/%20/%20medias%20/%20banner%20/%200.%20jpg%20)');
-        </script>
-        
+    <script>
+        // 每天切换 banner 图.  Switch banner image every day.
+        var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
+        $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
+    </script>
+    
 
             <div class="cover-btns">
                 <a href="#articles" class="waves-effect waves-light btn">
