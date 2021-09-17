@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="OpenFOAM初探（一）, 笑笑的科研小站">
+    <meta name="keywords" content="OpenFOAM初探（二）, 笑笑的科研小站">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>OpenFOAM初探（一） | 笑笑的科研小站</title>
+    <title>OpenFOAM初探（二） | 笑笑的科研小站</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -316,7 +316,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">OpenFOAM初探（一）</h1>
+                    <h1 class="description center-align post-title">OpenFOAM初探（二）</h1>
                 </div>
             </div>
         </div>
@@ -440,10 +440,6 @@
                                 <span class="chip bg-color">OpenFOAM</span>
                             </a>
                         
-                            <a href="/tags/Linux/">
-                                <span class="chip bg-color">Linux</span>
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -452,8 +448,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E7%9F%A5%E8%AF%86/" class="post-category">
-                                知识
+                            <a href="/categories/CFD/" class="post-category">
+                                CFD
                             </a>
                         
                     </div>
@@ -465,28 +461,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-14
+                    2020-02-18
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-05-22
+                    2021-09-17
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    987
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    5 分
                 </div>
                 
 
@@ -509,21 +505,116 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>笔者早年的工作主要在win10平台进行，使用过诸如CFX、Fluent等商业软件，后续论文工作主要操练的是Fluent UDF。诚然，Fluent依托UDF在可操作性上已经远超其余商业CFD软件(待考证)，但是其缺陷依然明显：1, 界面操作繁琐，对于一些参数化的研究工作，很难通过脚本实现(GUI依赖版本，TUI懒得学)；2, 新功能的整合程度参差不齐，以笔者常用的DPM为例，功能限制较多，BUG不少…；3, 很难修改顶层求解器，很多中间步骤需要手工；4, 安装包太大，正版太贵。<br>OpenFOAM是一款流行的开源CFD工具箱，最初萌生体验的想法主要还是觉得自己的代码水平有些上路了(自我感觉)，此外觉得用命令行和脚本操作很有一种Geek的感觉～</p>
-<h2 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h2><p>OpenFOAM主要有两大分支，一是<a target="_blank" rel="noopener" href="https://www.openfoam.org/">基金会版(.org)</a>，版本号为OF6,7,8…，似乎是由帝国理工维护，从”血统”上讲更纯；二是<a target="_blank" rel="noopener" href="https://www.openfoam.com/">ESI版(.com)</a>，版本号为v1912,v2006,v2012…(前两位数字代表年份，后两位数字代表月份，第一次接触乍一看还以为这版本好几年没更新了)，由ESI Group维护，有那么一点点商业化的感觉。通过使用OpenFOAM 7/8/v2006/v2012这四个版本, 我大致了解了一下这两个分支的区别：</p>
-<ul>
-<li><strong>手册</strong> <a target="_blank" rel="noopener" href="https://openfoam.com/documentation/guides/latest/doc/">ESI版的手册</a>要远比基金会版的全面，后者基本就是看源码。当然总体来说OpenFOAM是我用过的大型开源软件里文档做的最差的，大概是为了培训收入吧。</li>
-<li><strong>算例</strong> ESI版自带的Tutorials要比基金会版的多，比如大气边界层的建模，基金会版似乎没有。</li>
-<li><strong>后处理</strong> ESI版DPM类的求解器输出的lagrangian粒子场能够通过外部安装的Paraview读取，而基金会版的只能通过在ThirdParty中编译的Paraview打开，而这个版本的显示性能较差。同时，如果使用的是WSL1这种没有显示接口的系统，使用Windows下的Paraview做颗粒后处理的话，ESI版是唯一的选择。</li>
-<li><strong>求解器</strong> 基金会版似乎对一些求解器做了整合，比如将动网格功能合并进了一些原始的求解器，这一点比较友好。求解器功能上两者似乎差异不大。</li>
-<li><strong>第三方包</strong> ESI版支持更多的第三方内容，比如比较知名的科学计算套件Petsc(很高端，很想学，但没空)、基于一些奇妙方法的多相流求解器OpenQBMM(但是算例好像跑不了…)、优化大规模IO的adios(听着很妙但没钱玩超算)…但是鲁迅说过，我可以不用，但它必须要有。</li>
-<li><strong>平台支持</strong> 参考基金会官网，OpenFOAM主要面向Linux，同时也一定程度支持Windows 10和macOS。基金会提供了面向Linux的源码包，以及Ubuntu等主流Linux发行版的二进制包。在Win10上安装OpenFOAM(不包括虚拟机)需要安装Linux子系统，即WSL。而ESI版提供基于MSYS的OpenCFD,能在Windows上做到开箱即用(似乎就是个docker?)，针对不同发行版的二进制包也更多。不过平台的支持程度并不是很关键，因为想要好好学习OpenFOAM还是得从编译源码包开始，使用原生Linux无论从性能和兼容性来看都是最佳选择，WSL可以作为Windows系统上的备胎。否则OpenFOAM对比Fluent似乎没有明显优势。</li>
-</ul>
-<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><h3 id="Arch-Manjaro"><a href="#Arch-Manjaro" class="headerlink" title="Arch/Manjaro"></a>Arch/Manjaro</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> pacman -S gcc flex cmake <span class="token function">git</span> openmpi<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h2 id="blockMesh命令"><a href="#blockMesh命令" class="headerlink" title="blockMesh命令"></a>blockMesh命令</h2><p>&emsp;&emsp;<code>blockMesh</code> 是OpenFOAM中最基本的网格生成器之一，依赖于字典文件blockMeshDict。该程序以块(block)的思想来构造六面体(hexahedron)网格，类似于ICEM的结构化网格功能。blockMesh的主函数代码位于 /applications/utilities/mesh/generation/blockMesh/blockMesh.C 。关于该功能的详细介绍可以查阅<a target="_blank" rel="noopener" href="https://cfd.direct/openfoam/user-guide/v7-blockmesh/#x26-1850005.3">Mesh generation with blockMesh</a></p>
+<p>用法(Usage):</p>
+<pre class="line-numbers language-none"><code class="language-none">blockMesh [OPTION]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>选项(Options):<br></p>
+<p>&emsp;&emsp;&emsp;  <strong>-case</strong> &lt;dir&gt; <br><br>&emsp;&emsp;&emsp; 指定案例所在目录，若缺省，则为当前路径。</p>
+<p>&emsp;&emsp;&emsp;  <strong>-dict</strong> &lt;filename&gt; <br><br>&emsp;&emsp;&emsp; 从指定路径读取blockMeshDict。</p>
+<p>&emsp;&emsp;&emsp;  <strong>-region</strong> &lt;name&gt; <br><br>&emsp;&emsp;&emsp; 只生成指定区域的网格。</p>
+<p>&emsp;&emsp;&emsp;  <strong>-blockTopology</strong> <br><br>&emsp;&emsp;&emsp; 将块的边缘和中心输出为.obj文件，以便进行可视化。</p>
+<p>&emsp;&emsp;&emsp;  <strong>-noFunctionObjects</strong> <br><br>&emsp;&emsp;&emsp; 跳过functionObjects的执行</p>
+<br>
+## 字典文件的书写
+&emsp;&emsp;`blockMesh` 指令依赖于字典文件blockMeshDict，该字典文件可位于
+* system/blockMeshDict
+* system/&lt;region&gt;/blockMeshDict
+* constant/polyMesh/blockMeshDict
+* constant/&lt;region&gt;/polyMesh/blockMeshDict<br>
 
-<h3 id="Debian-Ubuntu"><a href="#Debian-Ubuntu" class="headerlink" title="Debian/Ubuntu"></a>Debian/Ubuntu</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> update
-<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> build-essential flex bison cmake zlib1g-dev libboost-system-dev libboost-thread-dev libopenmpi-dev openmpi-bin gnuplot libreadline-dev libncurses-dev libxt-dev
-<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> qt4-dev-tools libqt4-dev libqt4-opengl-dev freeglut3-dev libqtwebkit-dev<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>字典文件的内容包括：</p>
+<h3 id="文件头-File-Header"><a href="#文件头-File-Header" class="headerlink" title="文件头(File Header)"></a>文件头(File Header)</h3><p>&emsp;&emsp;文件头用于申明字典类型。</p>
+<pre class="line-numbers language-none"><code class="language-none">FoamFile
+&#123;
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="尺度缩放"><a href="#尺度缩放" class="headerlink" title="尺度缩放"></a>尺度缩放</h3><p>&emsp;&emsp;关键词 <code>convertToMeters</code> 用于定义几何缩放尺度，一般均转换为国际单位-米。</p>
+<pre class="line-numbers language-none"><code class="language-none">convertToMeters 1.0;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="顶点定义"><a href="#顶点定义" class="headerlink" title="顶点定义"></a>顶点定义</h3><p>&emsp;&emsp;顶点关键词用于指定block顶点坐标，顶点编号从0开始。</p>
+<pre class="line-numbers language-none"><code class="language-none">vertices
+(
+    (0. 0. 0.)
+    (1. 0. 0.)
+);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="块定义"><a href="#块定义" class="headerlink" title="块定义"></a>块定义</h3><p>&emsp;&emsp;block是用八个顶点定义的六面体。第一个括号内书写八个顶点编号；第二个括号内书写x,y,z三个方向上的网格节点总数；simpleGrading后的括号可简单地定义节点分布律，表示x,y,z三个方向上的梯度率(<em>Grading Ratio</em>, 第一个网格尺寸/最后一个网格尺寸)(<strong>Fig. 1</strong>)。</p>
+<pre class="line-numbers language-none"><code class="language-none">blocks
+(
+    hex (0 1 2 3 4 5 6 7) (10 10 10) simpleGrading (2 2 1)
+);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>&emsp;&emsp;<code>blockMesh</code> 同样也可以定义比较复杂的节点分布律。以下展示的脚本中，对block的y方向定义了3个子block,对每个子block施加不同的节点分布律。每个子括号的第一个数字代表子block在该方向上的几何尺寸权重，第二个数字代表子block在该方向上的节点数量权重，第三个数字代表梯度率。</p>
+<pre class="line-numbers language-none"><code class="language-none">blocks
+(
+    hex (0 1 2 3 4 5 6 7) (10 10 10) 
+    simpleGrading ( 1
+                    ((2 2 0.5)(3 6 0.2)(1 2 0.6))
+                    1
+                  )
+);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="曲边"><a href="#曲边" class="headerlink" title="曲边"></a>曲边</h3><p>&emsp;&emsp;此部分用于定义block中的曲线边缘，如几何中没有曲线可以将括号中内容缺省。<a target="_blank" rel="noopener" href="https://cfd.direct/openfoam/user-guide/v7-blockmesh/#x26-1850005.3">Mesh generation with blockMesh</a>中有比较详细的介绍，此处不表。</p>
+<pre class="line-numbers language-none"><code class="language-none">edges
+(
+    arc 1 5 (1.0 0.0 0.5)
+);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="边界定义"><a href="#边界定义" class="headerlink" title="边界定义"></a>边界定义</h3><p>&emsp;&emsp;边界的定义是CFD分析的重要步骤。其结构包括：</p>
+<ul>
+<li>说明边界名称 —— inlet, outlet, any_name_u_like… </li>
+<li>边界类型 —— patch表示后续需要赋予明确数值的边界，比如出入口；wall当然就是壁面；symmetry就是对称边界；其余定义尚在探索。</li>
+<li>几何面 —— 表示该边界包含的block面。</li>
+</ul>
+<p>&emsp;&emsp;对于未定义的所有外露面，<code>blockMesh</code> 在执行过程中会有警告，并将这些面合并成一个集合。</p>
+<pre class="line-numbers language-none"><code class="language-none">boundary               &#x2F;&#x2F; keyword
+    (
+        inlet              &#x2F;&#x2F; patch name
+        &#123;
+            type patch;    &#x2F;&#x2F; patch type for patch 0
+            faces
+            (
+                (0 4 7 3)  &#x2F;&#x2F; block face in this patch
+            );
+        &#125;                  &#x2F;&#x2F; end of 0th patch definition
+        outlet             &#x2F;&#x2F; patch name
+        &#123;
+            type patch;    &#x2F;&#x2F; patch type for patch 1
+            faces
+            (
+                (1 2 6 5)
+            );
+        &#125;
+        walls
+        &#123;
+            type wall;
+            faces
+            (
+                (0 1 5 4)
+                (0 3 2 1)
+                (3 7 6 2)
+                (4 5 6 7)
+            );
+        &#125;
+    );<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="合并表面对"><a href="#合并表面对" class="headerlink" title="合并表面对"></a>合并表面对</h3><p>&emsp;&emsp;用于把两个不完全共节点的面熔接，反正对我而言没啥用，缺省。具体操作依然可见<a target="_blank" rel="noopener" href="https://cfd.direct/openfoam/user-guide/v7-blockmesh/#x26-1850005.3">Mesh generation with blockMesh</a>(没错我就是这么懒:-))。</p>
+<pre class="line-numbers language-none"><code class="language-none">mergePatchPairs
+(
+);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<br>
+## 宏语法和动态编译（参数化）
+&emsp;&emsp;对于超过1个blcok的字典文件，顶点数超过了10个，后期修改简直要了懒人们的命。万幸的是，OpenFOAM的字典文件提供宏语法，比如在开头申明 `para 1.;` ，那在后续定义数字类参数时就可以用 `$para` 来表示。而对于需要进行数学计算的部分，可以采用 `#calc` 植入简单的计算语句：
+<pre class="line-numbers language-none"><code class="language-none">Y        5;
+Y_left   #calc &quot;-0.5*$Y&quot;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+&emsp;&emsp;对于更复杂的需求，当然也可以直接植入C++代码片段。当然放这写显得杀鸡焉用牛刀，先给个[链接](https://cfd.direct/openfoam/user-guide/v7-basic-file-format/#x17-1230004.2)。
+
+<br>
+## 总结
+&emsp;&emsp;`blockMesh` 从本质上讲就是一个脚本化的结构化网格生成器，对于一些简单模型，免去了在GUI上点来点去的麻烦，参数化的支持也能一定程度上改善几何参数化分析时的前处理效率。同时， `blockMesh` 在很多算例中都用于生成一个大流域，以进行下一步 `sanppyHexMesh` 的精细化非结构网格处理。
 
                 
             </div>
@@ -540,7 +631,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://fightingxiaoxiao.github.io" rel="external nofollow noreferrer">Xiaoxiao</a>
+                    <a href="https://fightingxiaoxiao.github.io" rel="external nofollow noreferrer">xiaoxiao</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -550,7 +641,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://fightingxiaoxiao.github.io/2020/02/14/2020-2-openfoam-de-jie-shao-yu-an-zhuang/">https://fightingxiaoxiao.github.io/2020/02/14/2020-2-openfoam-de-jie-shao-yu-an-zhuang/</a>
+                    <a href="https://fightingxiaoxiao.github.io/2020/02/18/2020-2-14-openfoam-study-2-blockmesh/">https://fightingxiaoxiao.github.io/2020/02/18/2020-2-14-openfoam-study-2-blockmesh/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -563,7 +654,7 @@
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY-NC 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="https://fightingxiaoxiao.github.io" target="_blank">Xiaoxiao</a>
+                    <a href="https://fightingxiaoxiao.github.io" target="_blank">xiaoxiao</a>
                     !
                 </span>
             </div>
@@ -594,10 +685,6 @@
                             
                                 <a href="/tags/OpenFOAM/">
                                     <span class="chip bg-color">OpenFOAM</span>
-                                </a>
-                            
-                                <a href="/tags/Linux/">
-                                    <span class="chip bg-color">Linux</span>
                                 </a>
                             
                         </div>
@@ -771,24 +858,24 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/02/18/2020-2-14-openfoam-study-2-blockmesh/">
+                <a href="/2020/12/13/2020-12-14-da-qi-bian-jie-ceng/">
                     <div class="card-image">
                         
                         
-                        <img src="https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/ayaka.JPG" class="responsive-img" alt="OpenFOAM初探（二）">
+                        <img src="https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/keqing.JPG" class="responsive-img" alt="大气边界层的数值方法实现：以OpenFOAM为例（一）">
                         
-                        <span class="card-title">OpenFOAM初探（二）</span>
+                        <span class="card-title">大气边界层的数值方法实现：以OpenFOAM为例（一）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            大气边界层理论
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-18
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-12-13
                         </span>
                         <span class="publish-author">
                             
@@ -813,6 +900,10 @@
                         <span class="chip bg-color">OpenFOAM</span>
                     </a>
                     
+                    <a href="/tags/Wind-Engineering/">
+                        <span class="chip bg-color">Wind Engineering</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -824,30 +915,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/13/2020-02-2020-happy-new-year/">
+                <a href="/2020/02/14/2020-2-openfoam-de-jie-shao-yu-an-zhuang/">
                     <div class="card-image">
                         
-                        <img src="https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/title.jpg" class="responsive-img" alt="2020新春快乐！">
                         
-                        <span class="card-title">2020新春快乐！</span>
+                        <img src="https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/ayaka.JPG" class="responsive-img" alt="OpenFOAM初探（一）">
+                        
+                        <span class="card-title">OpenFOAM初探（一）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            我的第一篇博客发布啦！
+                            运行环境及编译安装
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-14
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%97%A5%E8%AE%B0/" class="post-category">
-                                    日记
+                            <a href="/categories/%E7%9F%A5%E8%AF%86/" class="post-category">
+                                    知识
                                 </a>
                             
                             
@@ -857,8 +949,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%97%A5%E5%B8%B8/">
-                        <span class="chip bg-color">日常</span>
+                    <a href="/tags/CFD/">
+                        <span class="chip bg-color">CFD</span>
+                    </a>
+                    
+                    <a href="/tags/OpenFOAM/">
+                        <span class="chip bg-color">OpenFOAM</span>
+                    </a>
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
                 </div>

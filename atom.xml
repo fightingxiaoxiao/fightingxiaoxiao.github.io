@@ -88,6 +88,27 @@
   </entry>
   
   <entry>
+    <title>OpenFOAM初探（二）</title>
+    <link href="https://fightingxiaoxiao.github.io/2020/02/18/2020-2-14-openfoam-study-2-blockmesh/"/>
+    <id>https://fightingxiaoxiao.github.io/2020/02/18/2020-2-14-openfoam-study-2-blockmesh/</id>
+    <published>2020-02-18T08:46:05.000Z</published>
+    <updated>2021-09-17T03:21:56.763Z</updated>
+    
+    
+    <summary type="html">blockMesh详解</summary>
+    
+    
+    
+    <category term="CFD" scheme="https://fightingxiaoxiao.github.io/categories/CFD/"/>
+    
+    
+    <category term="CFD" scheme="https://fightingxiaoxiao.github.io/tags/CFD/"/>
+    
+    <category term="OpenFOAM" scheme="https://fightingxiaoxiao.github.io/tags/OpenFOAM/"/>
+    
+  </entry>
+  
+  <entry>
     <title>OpenFOAM初探（一）</title>
     <link href="https://fightingxiaoxiao.github.io/2020/02/14/2020-2-openfoam-de-jie-shao-yu-an-zhuang/"/>
     <id>https://fightingxiaoxiao.github.io/2020/02/14/2020-2-openfoam-de-jie-shao-yu-an-zhuang/</id>
