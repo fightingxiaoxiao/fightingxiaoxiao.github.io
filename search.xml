@@ -87,6 +87,31 @@
     
     
     <entry>
+      <title>大气边界层的数值方法实现：以OpenFOAM为例（一）</title>
+      <link href="2020/12/13/2022-8-macos-xue-xi-xiao-ji/"/>
+      <url>2020/12/13/2022-8-macos-xue-xi-xiao-ji/</url>
+      
+        <content type="html"><![CDATA[<h2 id="在内存上创建分区"><a href="#在内存上创建分区" class="headerlink" title="在内存上创建分区"></a>在内存上创建分区</h2><p>在内存上创建一个128MB的可读写分区</p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">diskutil erasevolume HFS+ &#39;RAM Disk&#39; &#96;hdiutil attach -nomount ram:&#x2F;&#x2F;262144<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>弹出名为<code>/dev/disk8</code>的分区</p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">hdiutil detach &#x2F;dev&#x2F;disk8<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> CFD </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> macOS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>OpenFOAM初探（二）</title>
       <link href="2020/02/18/2020-2-14-openfoam-study-2-blockmesh/"/>
       <url>2020/02/18/2020-2-14-openfoam-study-2-blockmesh/</url>
