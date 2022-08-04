@@ -6,7 +6,7 @@
   <link href="https://fightingxiaoxiao.github.io/atom.xml" rel="self"/>
   
   <link href="https://fightingxiaoxiao.github.io/"/>
-  <updated>2021-08-19T05:07:38.000Z</updated>
+  <updated>2022-08-04T04:42:08.000Z</updated>
   <id>https://fightingxiaoxiao.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>macOS系统学习小记</title>
+    <link href="https://fightingxiaoxiao.github.io/2022/08/04/2022-8-macos-xue-xi-xiao-ji/"/>
+    <id>https://fightingxiaoxiao.github.io/2022/08/04/2022-8-macos-xue-xi-xiao-ji/</id>
+    <published>2022-08-04T04:42:00.000Z</published>
+    <updated>2022-08-04T04:42:08.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;在内存上创建分区&quot;&gt;&lt;a href=&quot;#在内存上创建分区&quot; class=&quot;headerlink&quot; title=&quot;在内存上创建分区&quot;&gt;&lt;/a&gt;在内存上创建分区&lt;/h2&gt;&lt;p&gt;在内存上创建一个128MB的可读写分区&lt;/p&gt;
+&lt;pre</summary>
+        
+      
+    
+    
+    
+    <category term="手册" scheme="https://fightingxiaoxiao.github.io/categories/%E6%89%8B%E5%86%8C/"/>
+    
+    
+    <category term="macOS" scheme="https://fightingxiaoxiao.github.io/tags/macOS/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux工作站指南</title>
@@ -84,27 +110,6 @@
     <category term="OpenFOAM" scheme="https://fightingxiaoxiao.github.io/tags/OpenFOAM/"/>
     
     <category term="Wind Engineering" scheme="https://fightingxiaoxiao.github.io/tags/Wind-Engineering/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>macOS学习小记</title>
-    <link href="https://fightingxiaoxiao.github.io/2020/12/13/2022-8-macos-xue-xi-xiao-ji/"/>
-    <id>https://fightingxiaoxiao.github.io/2020/12/13/2022-8-macos-xue-xi-xiao-ji/</id>
-    <published>2020-12-13T15:21:00.000Z</published>
-    <updated>2022-08-04T04:38:36.000Z</updated>
-    
-    
-    <summary type="html">macOS的系统指令随笔</summary>
-    
-    
-    <content src="https://fightingxiaoxiao.github.io/article_img/2020-6-12-cfd-interface-1/title.jpg" type="image"/>
-    
-    
-    <category term="macOS" scheme="https://fightingxiaoxiao.github.io/categories/macOS/"/>
-    
-    
-    <category term="macOS" scheme="https://fightingxiaoxiao.github.io/tags/macOS/"/>
     
   </entry>
   
