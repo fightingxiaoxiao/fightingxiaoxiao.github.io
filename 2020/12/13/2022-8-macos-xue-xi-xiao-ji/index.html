@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="大气边界层的数值方法实现：以OpenFOAM为例（一）, 笑笑的科研小站">
+    <meta name="keywords" content="macOS学习小记, 笑笑的科研小站">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>大气边界层的数值方法实现：以OpenFOAM为例（一） | 笑笑的科研小站</title>
+    <title>macOS学习小记 | 笑笑的科研小站</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -311,12 +311,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/keqing.JPG')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/diona.JPG')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">大气边界层的数值方法实现：以OpenFOAM为例（一）</h1>
+                    <h1 class="description center-align post-title">macOS学习小记</h1>
                 </div>
             </div>
         </div>
@@ -444,8 +444,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/CFD/" class="post-category">
-                                CFD
+                            <a href="/categories/macOS/" class="post-category">
+                                macOS
                             </a>
                         
                     </div>
@@ -471,7 +471,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    53
+                    46
                 </div>
                 
 
@@ -502,10 +502,10 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="在内存上创建分区"><a href="#在内存上创建分区" class="headerlink" title="在内存上创建分区"></a>在内存上创建分区</h2><p>在内存上创建一个128MB的可读写分区</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">diskutil erasevolume HFS+ &#39;RAM Disk&#39; &#96;hdiutil attach -nomount ram:&#x2F;&#x2F;262144<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">diskutil erasevolume HFS+ <span class="token string">'RAM Disk'</span> `hdiutil attach -nomount ram://262144<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>弹出名为<code>/dev/disk8</code>的分区</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">hdiutil detach &#x2F;dev&#x2F;disk8<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">hdiutil detach /dev/disk8<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
                 
