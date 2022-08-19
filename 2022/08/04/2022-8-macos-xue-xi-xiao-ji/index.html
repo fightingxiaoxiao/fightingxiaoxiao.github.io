@@ -471,7 +471,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    54
+                    46
                 </div>
                 
 
@@ -502,10 +502,10 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="在内存上创建分区"><a href="#在内存上创建分区" class="headerlink" title="在内存上创建分区"></a>在内存上创建分区</h2><p>在内存上创建一个128MB的可读写分区</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">diskutil erasevolume HFS+ &#39;RAM Disk&#39; &#96;hdiutil attach -nomount ram:&#x2F;&#x2F;262144&#96;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">diskutil erasevolume HFS+ <span class="token string">'RAM Disk'</span> <span class="token variable"><span class="token variable">`</span>hdiutil attach -nomount ram://262144<span class="token variable">`</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>弹出名为<code>/dev/disk8</code>的分区</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">hdiutil detach &#x2F;dev&#x2F;disk8<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">hdiutil detach /dev/disk8<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
                 

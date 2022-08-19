@@ -510,7 +510,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>在风吹雪、风吹沙、尘埃物输运等物理现象中，随着地表的颗粒物被风吹起，或是颗粒因为动能不足而发生沉积，其堆积形态会随着时间的推移而发生变化：</p>
-<img src="https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/2022-8/snowdrift.png" alt="snowdrift" style="zoom:40%;" />
+<img src="https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/2022-8/snowdrift.png" alt="风致雪漂形成的雪堆" style="zoom:40%;" />
 
 <p>下面就是一个用于描述这类现象的侵蚀/沉积模型<sup>[1]</sup>，作者认为边界处的剪切风速的大小和颗粒物浓度决定了颗粒床的侵蚀/沉积量，进而可以推算出底部边界的演化过程：</p>
 <p>$$<br>q_{\text{dep}} = -\phi w_f \left(1-\frac{u_{*}^{2}}{u_{*t}^{2}}\right)<br>$$</p>
@@ -593,7 +593,7 @@ forAll(pVec, i)
 (*this) &#x3D;&#x3D; pVec;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>相关的求解器代码和计算案例可见<a target="_blank" rel="noopener" href="https://github.com/fightingxiaoxiao/driftScalarDyFoam%EF%BC%8C%E6%88%91%E4%B9%9F%E4%BD%BF%E7%94%A8%E8%BF%99%E4%B8%AA%E6%80%9D%E8%B7%AF%E5%AE%9E%E7%8E%B0%E4%BA%86%E5%AF%B9%E5%B1%8B%E9%9D%A2%E7%A7%AF%E9%9B%AA%E5%92%8C%E6%96%B9%E5%9D%97%E5%91%A8%E8%BE%B9%E7%A7%AF%E9%9B%AA%E7%9A%84%E7%AE%80%E5%8D%95%E9%A2%84%E6%B5%8B">https://github.com/fightingxiaoxiao/driftScalarDyFoam，我也使用这个思路实现了对屋面积雪和方块周边积雪的简单预测</a><sup>[2]</sup>，相关论文发表于<a target="_blank" rel="noopener" href="https://doi.org/10.3389/feart.2022.822140">https://doi.org/10.3389/feart.2022.822140</a> 。</p>
-<img src="https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/2022-8/output.gif" alt="output" style="zoom:50%;" />
+<img src="https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/2022-8/output.gif" alt="方块周边的积雪演化" style="zoom:50%;" />
 
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p> [1] ZHOU X, KANG L, GU M, 等. Numerical simulation and wind tunnel test for redistribution of snow on a flat roof[J/OL]. Journal of Wind Engineering and Industrial Aerodynamics, 2016, 153: 92-105. <a target="_blank" rel="noopener" href="https://doi.org/10.1016/j.jweia.2016.03.008">https://doi.org/10.1016/j.jweia.2016.03.008</a>.</p>
 <p>[2] CHEN X, YU Z. DriftScalarDyFoam: An OpenFOAM-Based Multistage Solver for Drifting Snow and Its Distribution Around Buildings[J/OL]. Frontiers in Earth Science, 2022, 10[2022-03-16]. <a target="_blank" rel="noopener" href="https://www.frontiersin.org/article/10.3389/feart.2022.822140">https://www.frontiersin.org/article/10.3389/feart.2022.822140</a>.</p>
