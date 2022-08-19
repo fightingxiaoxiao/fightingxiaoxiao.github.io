@@ -513,14 +513,14 @@
 <img src="https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/2022-8/snowdrift.png" alt="风致雪漂形成的雪堆" style="zoom:40%;" />
 
 <p>下面就是一个用于描述这类现象的侵蚀/沉积模型<sup>[1]</sup>，作者认为边界处的剪切风速的大小和颗粒物浓度决定了颗粒床的侵蚀/沉积量，进而可以推算出底部边界的演化过程：</p>
-<p>$$<br>q_{\mathrm{dep}} = -\phi w_f \left(1-\frac{u_{*}^{2}}{u_{*t}^{2}}\right)<br>$$</p>
-<p>$$<br>q_{\mathrm{ero}}=-A_\mathrm{ero} u_{*}^{2}\left(1-\frac{u_{<em>t}^{2}}{u_{</em>}^{2}}\right)<br>$$</p>
+<p>$$q_{\mathrm{dep}} = -\phi w_f \left(1-\frac{u_{*}^{2}}{u_{*t}^{2}}\right)$$</p>
+<p>$$q_{\mathrm{ero}}=-A_\mathrm{ero} \left(u_{*}^{2}-u_{*t}^2\right)$$</p>
 <p>但是如果想在OpenFOAM中直接再现这个模型是会遇到麻烦的，因为常见的OpenFOAM动网格模型都是“强迫型”的。也就是说，网格的移动是需要事先指定的，流场的改变取决于网格的变化。这显然与我们的期望不符。因为在上述问题中，网格的变化来源于流场，而流场也会因为网格的变动发生进一步的改变，这两者之间存在耦合关系。</p>
 <p>当然对于可定制性很强的OpenFOAM来说，解决这个问题只需要植入一段在算例中动态编译的代码。首先我们注意到动网格的边界条件来自于<code>0/pointMotionU</code>或<code>0/pointDisplacement</code>文件（取决于你使用的动网格求解器是基于速度还是位移），因此直接使用<code>codedFixedValue</code>这个重量级选手即可达到实时调整网格的目的。通过可编程接口，我们可以在定义边界条件中通过访问<code>patch().lookupPatchField</code>获取当前边界位置的场。例如我们已在自定义的求解器中创建了一个体标量场<code>deltaH</code>用于计算和存放网格格心和边界面心的侵蚀/沉积高度（非零值仅出现在特定边界），则可以通过下列方式在<code>codedFixedValue</code>的代码段中进行访问：</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;仅访问当前边界的场
 fvPatchField&lt;scalar&gt; deltaH
 (
-		patch().lookupPatchField&lt;volScalarField, scalar&gt;(&quot;deltaH&quot;)
+	patch().lookupPatchField&lt;volScalarField, scalar&gt;(&quot;deltaH&quot;)
 );<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>但是，无论<code>0/pointMotionU还是0/pointDisplacement</code>均属于<code>pointVectorField</code>，与之对应的边界类是<a target="_blank" rel="noopener" href="https://www.openfoam.com/documentation/guides/v2112/api/classFoam_1_1pointPatch.html"><code>Foam::pointPatch</code></a>，其数据存储在格点上。而在有限体积法表述下的边界是<a target="_blank" rel="noopener" href="https://www.openfoam.com/documentation/guides/v2112/api/classFoam_1_1fvPatch.html"><code>Foam::fvPatch</code></a>，其数据存储在面心。这就带来两个问题：</p>
@@ -534,7 +534,7 @@ fvPatchField&lt;scalar&gt; deltaH
 &#x2F;&#x2F; 访问全局场
 const volScalarField &amp;deltaH
 (
-		this-&gt;db().objectRegistry::lookupObject&lt;volScalarField&gt;(&quot;deltaH&quot;);
+	this-&gt;db().objectRegistry::lookupObject&lt;volScalarField&gt;(&quot;deltaH&quot;);
 );
 
 const scalarField&amp; deltaHp &#x3D; deltaH.boundaryField()[patchIndex];<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
@@ -543,38 +543,34 @@ const scalarField&amp; deltaHp &#x3D; deltaH.boundaryField()[patchIndex];<span a
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;PrimitivePatchInterpolation&lt;Patch&gt;::makeFaceToPointWeights
 forAll(pointFaces, pointi)
 &#123;
-		const labelList&amp; curFaces &#x3D; pointFaces[pointi];
-
-		scalarList&amp; pw &#x3D; weights[pointi];
- 		pw.setSize(curFaces.size());
-
-		scalar sumw &#x3D; 0.0;
-
-		forAll(curFaces, facei)
-		&#123;
-            pw[facei] &#x3D;
-                1.0&#x2F;mag(faces[curFaces[facei]].centre(points) - points[pointi]);
-            sumw +&#x3D; pw[facei];
-		&#125;
-
-		forAll(curFaces, facei)
-		&#123;
-            pw[facei] &#x2F;&#x3D; sumw;
-		&#125;
+	const labelList&amp; curFaces &#x3D; pointFaces[pointi];
+	scalarList&amp; pw &#x3D; weights[pointi];
+ 	pw.setSize(curFaces.size());
+	scalar sumw &#x3D; 0.0;
+	forAll(curFaces, facei)
+	&#123;
+        pw[facei] &#x3D;
+            1.0&#x2F;mag(faces[curFaces[facei]].centre(points) - points[pointi]);
+        sumw +&#x3D; pw[facei];
+	&#125;
+	forAll(curFaces, facei)
+	&#123;
+        pw[facei] &#x2F;&#x3D; sumw;
+	&#125;
 &#125;
 
 &#x2F;&#x2F;PrimitivePatchInterpolation&lt;Patch&gt;::faceToPointInterpolate
 forAll(result, facei)
 &#123;
- 		const labelList&amp; curPoints &#x3D; localFaces[facei];
+ 	const labelList&amp; curPoints &#x3D; localFaces[facei];
 
-		forAll(curPoints, pointi)
+	forAll(curPoints, pointi)
   	&#123;
-				result[facei] +&#x3D; pf[curPoints[pointi]];
-		&#125;
-		result[facei] &#x2F;&#x3D; curPoints.size();
+		result[facei] +&#x3D; pf[curPoints[pointi]];
+	&#125;
+	result[facei] &#x2F;&#x3D; curPoints.size();
 &#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>原理搞明白了，接下来就只需要调用<code>primitivePatchInterpolation</code>就行了。<code>primitivePatchInterpolation</code>构造函数的形参是一个<code>PrimitivePatch</code>对象，我没有找到直接访问的方法，但是我们可以通过刚才获取的<code>deltaH</code>场反溯网格，即利用<code>deltaH.mesh().boundaryMesh()</code>获得<code>polyBoundaryMesh</code>，这是一个存储<code>polyPatch</code>的List，而<code>polyPatch</code>恰巧继承自<code>PrimitivePatch</code>。自此，整个插值过程得以完成，我们获得了一个名为<code>deltaHpp</code>的场，它对应边界上每个节点的<code>deltaH</code>值。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; 实例化插值对象
 primitivePatchInterpolation facePointInterp(deltaH.mesh().boundaryMesh()[patchIndex]);
@@ -585,9 +581,9 @@ tmp&lt;scalarField&gt; deltaHpp &#x3D; facePointInterp.faceToPointInterpolate(de
 
 forAll(pVec, i)
 &#123;
-		pVec[i][0] &#x3D; 0;
-		pVec[i][1] &#x3D; 0;
-		pVec[i][2] &#x3D; deltaHpp()[i];
+	pVec[i][0] &#x3D; 0;
+	pVec[i][1] &#x3D; 0;
+	pVec[i][2] &#x3D; deltaHpp()[i];
 &#125;
 
 (*this) &#x3D;&#x3D; pVec;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
