@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="笑笑的科研小站">
+    <meta name="keywords" content="在OpenFOAM中实现动网格与流场的信息交互, 笑笑的科研小站">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>笑笑的科研小站</title>
+    <title>在OpenFOAM中实现动网格与流场的信息交互 | 笑笑的科研小站</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -311,12 +311,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/aimi%26babala.JPG')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/SumerRender_1.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title"></h1>
+                    <h1 class="description center-align post-title">在OpenFOAM中实现动网格与流场的信息交互</h1>
                 </div>
             </div>
         </div>
@@ -430,12 +430,33 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/CFD/">
+                                <span class="chip bg-color">CFD</span>
+                            </a>
+                        
+                            <a href="/tags/OpenFOAM/">
+                                <span class="chip bg-color">OpenFOAM</span>
+                            </a>
+                        
+                            <a href="/tags/C/">
+                                <span class="chip bg-color">C++</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/CFD/" class="post-category">
+                                CFD
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -488,7 +509,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="在OpenFOAM中实现动网格与流场的信息交互"><a href="#在OpenFOAM中实现动网格与流场的信息交互" class="headerlink" title="在OpenFOAM中实现动网格与流场的信息交互"></a>在OpenFOAM中实现动网格与流场的信息交互</h1><p>在风吹雪、风吹沙、尘埃物输运等物理现象中，随着地表的颗粒物被风吹起，或是颗粒因为动能不足而发生沉积，其堆积形态会随着时间的推移而发生变化：</p>
+                <p>在风吹雪、风吹沙、尘埃物输运等物理现象中，随着地表的颗粒物被风吹起，或是颗粒因为动能不足而发生沉积，其堆积形态会随着时间的推移而发生变化：</p>
 <img src="./image/snowdrift.png" alt="snowdrift" style="zoom:40%;" />
 
 <p>下面就是一个用于描述这类现象的侵蚀/沉积模型<sup>[1]</sup>，作者认为边界处的剪切风速的大小和颗粒物浓度决定了颗粒床的侵蚀/沉积量，进而可以推算出底部边界的演化过程：</p>
@@ -639,7 +660,19 @@ forAll(pVec, i)
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/CFD/">
+                                    <span class="chip bg-color">CFD</span>
+                                </a>
+                            
+                                <a href="/tags/OpenFOAM/">
+                                    <span class="chip bg-color">OpenFOAM</span>
+                                </a>
+                            
+                                <a href="/tags/C/">
+                                    <span class="chip bg-color">C++</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -815,16 +848,15 @@ forAll(pVec, i)
                 <a href="/2022/08/19/2022-8-zai-openfoam-zhong-shi-xian-dong-wang-ge-yu-liu-chang-de-xin-xi-jiao-hu/">
                     <div class="card-image">
                         
+                        <img src="https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/SumerRender_1.png" class="responsive-img" alt="在OpenFOAM中实现动网格与流场的信息交互">
                         
-                        <img src="https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/aimi%26babala.JPG" class="responsive-img" alt="">
-                        
-                        <span class="card-title"></span>
+                        <span class="card-title">在OpenFOAM中实现动网格与流场的信息交互</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            风吹雪的OpenFOAM动网格实现
                         
                     </div>
                     <div class="publish-info">
@@ -833,13 +865,33 @@ forAll(pVec, i)
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Xiaoxiao
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/CFD/" class="post-category">
+                                    CFD
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/CFD/">
+                        <span class="chip bg-color">CFD</span>
+                    </a>
+                    
+                    <a href="/tags/OpenFOAM/">
+                        <span class="chip bg-color">OpenFOAM</span>
+                    </a>
+                    
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>

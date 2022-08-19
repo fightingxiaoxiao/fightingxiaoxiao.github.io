@@ -6,7 +6,7 @@
   <link href="https://fightingxiaoxiao.github.io/atom.xml" rel="self"/>
   
   <link href="https://fightingxiaoxiao.github.io/"/>
-  <updated>2022-08-19T06:46:24.713Z</updated>
+  <updated>2022-08-19T06:58:36.000Z</updated>
   <id>https://fightingxiaoxiao.github.io/</id>
   
   <author>
@@ -17,23 +17,32 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>在OpenFOAM中实现动网格与流场的信息交互</title>
     <link href="https://fightingxiaoxiao.github.io/2022/08/19/2022-8-zai-openfoam-zhong-shi-xian-dong-wang-ge-yu-liu-chang-de-xin-xi-jiao-hu/"/>
     <id>https://fightingxiaoxiao.github.io/2022/08/19/2022-8-zai-openfoam-zhong-shi-xian-dong-wang-ge-yu-liu-chang-de-xin-xi-jiao-hu/</id>
-    <published>2022-08-19T00:52:35.278Z</published>
-    <updated>2022-08-19T06:46:24.713Z</updated>
+    <published>2022-08-19T06:49:00.000Z</published>
+    <updated>2022-08-19T06:58:36.000Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;在OpenFOAM中实现动网格与流场的信息交互&quot;&gt;&lt;a href=&quot;#在OpenFOAM中实现动网格与流场的信息交互&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;p&gt;在风吹雪、风吹沙、尘埃物输运等物理现象中，随着地表的颗粒物被风吹起，或是颗粒因为动能不足而发生沉积，其堆积形态会随着时间的推移而发生变化：&lt;/p&gt;
+&lt;img src=&quot;./image/snowdrift.png&quot; alt=&quot;snowdrift&quot;</summary>
         
       
     
     
     
+    <category term="CFD" scheme="https://fightingxiaoxiao.github.io/categories/CFD/"/>
+    
+    
+    <category term="CFD" scheme="https://fightingxiaoxiao.github.io/tags/CFD/"/>
+    
+    <category term="OpenFOAM" scheme="https://fightingxiaoxiao.github.io/tags/OpenFOAM/"/>
+    
+    <category term="C++" scheme="https://fightingxiaoxiao.github.io/tags/C/"/>
     
   </entry>
   
