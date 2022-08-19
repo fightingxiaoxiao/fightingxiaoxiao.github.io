@@ -513,8 +513,8 @@
 <img src="https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/2022-8/snowdrift.png" alt="风致雪漂形成的雪堆" style="zoom:40%;" />
 
 <p>下面就是一个用于描述这类现象的侵蚀/沉积模型<sup>[1]</sup>，作者认为边界处的剪切风速的大小和颗粒物浓度决定了颗粒床的侵蚀/沉积量，进而可以推算出底部边界的演化过程：</p>
-<p>$$<br>q_{\text{dep}} = -\phi w_f \left(1-\frac{u_{*}^{2}}{u_{*t}^{2}}\right)<br>$$</p>
-<p>$$<br>q_{\text{ero}}=-A_\text{ero} u_{*}^{2}\left(1-\frac{u_{<em>t}^{2}}{u_</em>^{2}}\right)<br>$$</p>
+<p>$$<br>q_{\mathrm{dep}} = -\phi w_f \left(1-\frac{u_{*}^{2}}{u_{*t}^{2}}\right)<br>$$</p>
+<p>$$<br>q_{\mathrm{ero}}=-A_\mathrm{ero} u_{*}^{2}\left(1-\frac{u_{<em>t}^{2}}{u_{</em>}^{2}}\right)<br>$$</p>
 <p>但是如果想在OpenFOAM中直接再现这个模型是会遇到麻烦的，因为常见的OpenFOAM动网格模型都是“强迫型”的。也就是说，网格的移动是需要事先指定的，流场的改变取决于网格的变化。这显然与我们的期望不符。因为在上述问题中，网格的变化来源于流场，而流场也会因为网格的变动发生进一步的改变，这两者之间存在耦合关系。</p>
 <p>当然对于可定制性很强的OpenFOAM来说，解决这个问题只需要植入一段在算例中动态编译的代码。首先我们注意到动网格的边界条件来自于<code>0/pointMotionU</code>或<code>0/pointDisplacement</code>文件（取决于你使用的动网格求解器是基于速度还是位移），因此直接使用<code>codedFixedValue</code>这个重量级选手即可达到实时调整网格的目的。通过可编程接口，我们可以在定义边界条件中通过访问<code>patch().lookupPatchField</code>获取当前边界位置的场。例如我们已在自定义的求解器中创建了一个体标量场<code>deltaH</code>用于计算和存放网格格心和边界面心的侵蚀/沉积高度（非零值仅出现在特定边界），则可以通过下列方式在<code>codedFixedValue</code>的代码段中进行访问：</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;仅访问当前边界的场
