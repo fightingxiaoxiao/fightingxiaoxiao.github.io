@@ -6,7 +6,7 @@
   <link href="https://fightingxiaoxiao.github.io/atom.xml" rel="self"/>
   
   <link href="https://fightingxiaoxiao.github.io/"/>
-  <updated>2022-08-04T04:43:23.000Z</updated>
+  <updated>2022-08-19T06:46:24.713Z</updated>
   <id>https://fightingxiaoxiao.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://fightingxiaoxiao.github.io/2022/08/19/2022-8-zai-openfoam-zhong-shi-xian-dong-wang-ge-yu-liu-chang-de-xin-xi-jiao-hu/"/>
+    <id>https://fightingxiaoxiao.github.io/2022/08/19/2022-8-zai-openfoam-zhong-shi-xian-dong-wang-ge-yu-liu-chang-de-xin-xi-jiao-hu/</id>
+    <published>2022-08-19T00:52:35.278Z</published>
+    <updated>2022-08-19T06:46:24.713Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;在OpenFOAM中实现动网格与流场的信息交互&quot;&gt;&lt;a href=&quot;#在OpenFOAM中实现动网格与流场的信息交互&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>macOS系统学习小记</title>

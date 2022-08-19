@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="大气边界层的数值方法实现：以OpenFOAM为例（一）, 笑笑的科研小站">
+    <meta name="keywords" content="笑笑的科研小站">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>大气边界层的数值方法实现：以OpenFOAM为例（一） | 笑笑的科研小站</title>
+    <title>笑笑的科研小站</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -311,12 +311,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/keqing.JPG')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/aimi%26babala.JPG')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">大气边界层的数值方法实现：以OpenFOAM为例（一）</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -430,33 +430,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/CFD/">
-                                <span class="chip bg-color">CFD</span>
-                            </a>
-                        
-                            <a href="/tags/OpenFOAM/">
-                                <span class="chip bg-color">OpenFOAM</span>
-                            </a>
-                        
-                            <a href="/tags/Wind-Engineering/">
-                                <span class="chip bg-color">Wind Engineering</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/CFD/" class="post-category">
-                                CFD
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -465,28 +444,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-12-13
+                    2022-08-19
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-08-10
+                    2022-08-19
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    532
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    5 分
                 </div>
                 
 
@@ -509,67 +488,94 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>地球表面通过地面的摩擦对空气水平运动产生阻力，从而使气流速度减慢，该阻力对气流的作用随高度的增加而减弱。当超过特定高度 $(z_G)$ 时,这一作用即可被忽视，气流将沿等压线以梯度风速流动，则将此高度以下的区域称作<strong>大气边界层</strong>（<strong>Atmosphere Boundary Layer, ABL</strong>）。一般的，大气边界层内近地层的气流是湍流，湍流掺混使地表阻力的影响扩展到大气边界层的整个区域。而在边界层高度以上的自由大气中的风流动属于层流。<a href="#refer-anchor-1">[1]</a></p>
-<h2 id="风速剖面"><a href="#风速剖面" class="headerlink" title="风速剖面"></a>风速剖面</h2><h3 id="对数律"><a href="#对数律" class="headerlink" title="对数律"></a>对数律</h3><p>平均风剖面是微气象学研究风速变化的一种主要方法。目前，气象学家认为用对数律表示大气底层强风风速廓线比较理想，其表达式为<a href="#refer-anchor-2">[2]</a><a href="#refer-anchor-3">[3]</a><br>$$u = \frac{u^*}{\kappa} \ln \left( \frac{z - d + z_0}{z_0} \right)\tag{1}$$<br>式中</p>
-<p>$u$ — 高度 $z$ 处的平均风速（m/s）</p>
-<p>$u^*$ — 剪切风速（m/s）</p>
-<p>$\kappa$ — 卡曼常数，一般取0.4</p>
-<p>$d$ — 零平均位移（m）</p>
-<p>$z_0$ — 粗糙高度（m），取值可见下表<a href="#refer-anchor-1">[1]</a></p>
-<table>
-<thead>
-<tr>
-<th><strong>地面类型</strong></th>
-<th><strong>$z_0/\rm{m}$</strong></th>
-<th><strong>地面类型</strong></th>
-<th><strong>$z_0/\rm{m}$</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>砂地</td>
-<td>0.0001~0.001</td>
-<td>矮棕榈</td>
-<td>0.10~0.30</td>
-</tr>
-<tr>
-<td>雪地</td>
-<td>0.001~0.006</td>
-<td>松树林</td>
-<td>0.90~1.00</td>
-</tr>
-<tr>
-<td>割过的草地（~0.01m）</td>
-<td>0.001~0.01</td>
-<td>稀疏建成市郊</td>
-<td>0.20~0.40</td>
-</tr>
-<tr>
-<td>矮草地、空旷草原</td>
-<td>0.01~0.04</td>
-<td>密集建成市郊、市区</td>
-<td>0.80~1.20</td>
-</tr>
-<tr>
-<td>休耕地</td>
-<td>0.02~0.03</td>
-<td>大城市中心</td>
-<td>2.00~3.00</td>
-</tr>
-<tr>
-<td>高草地</td>
-<td>0.04~0.10</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>城市地区的修正下次再写。</p>
-<h3 id="指数律"><a href="#指数律" class="headerlink" title="指数律"></a>指数律</h3><p>&emsp;&emsp;懒得写了。</p>
-<h2 id="湍流特征"><a href="#湍流特征" class="headerlink" title="湍流特征"></a>湍流特征</h2><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a class="target-fix" id="refer-anchor-1"></a></p>
-<p>[1] 黄本才. 结构抗风分析原理及应用[M]. 同济大学出版社, 2001.</p>
-<p><a class="target-fix" id="refer-anchor-2"></a></p>
-<p>[2] Yang Y, Gu M, Chen S, et al. New inflow boundary conditions for modelling the neutral equilibrium atmospheric boundary layer in computational wind engineering[J]. Journal of Wind Engineering and Industrial Aerodynamics, 2009, 97(2): 88-95.</p>
-<p><a class="target-fix" id="refer-anchor-3"></a></p>
-<p>[3] Richards P J, Hoxey R P. Appropriate boundary conditions for computational wind engineering models using the k-ε turbulence model[M]//Computational Wind Engineering 1. Elsevier, 1993: 145-153.</p>
+                <h1 id="在OpenFOAM中实现动网格与流场的信息交互"><a href="#在OpenFOAM中实现动网格与流场的信息交互" class="headerlink" title="在OpenFOAM中实现动网格与流场的信息交互"></a>在OpenFOAM中实现动网格与流场的信息交互</h1><p>在风吹雪、风吹沙、尘埃物输运等物理现象中，随着地表的颗粒物被风吹起，或是颗粒因为动能不足而发生沉积，其堆积形态会随着时间的推移而发生变化：</p>
+<img src="./image/snowdrift.png" alt="snowdrift" style="zoom:40%;" />
+
+<p>下面就是一个用于描述这类现象的侵蚀/沉积模型<sup>[1]</sup>，作者认为边界处的剪切风速的大小和颗粒物浓度决定了颗粒床的侵蚀/沉积量，进而可以推算出底部边界的演化过程：</p>
+<p>$$<br>q_{\text{dep}} = -\phi w_f \left(1-\frac{u_{*}^{2}}{u_{*t}^{2}}\right)<br>$$</p>
+<p>$$<br>q_{\text{ero}}=-A_\text{ero} u_{*}^{2}\left(1-\frac{u_{<em>t}^{2}}{u_</em>^{2}}\right)<br>$$</p>
+<p>但是如果想在OpenFOAM中直接再现这个模型是会遇到麻烦的，因为常见的OpenFOAM动网格模型都是“强迫型”的。也就是说，网格的移动是需要事先指定的，流场的改变取决于网格的变化。这显然与我们的期望不符。因为在上述问题中，网格的变化来源于流场，而流场也会因为网格的变动发生进一步的改变，这两者之间存在耦合关系。</p>
+<p>当然对于可定制性很强的OpenFOAM来说，解决这个问题只需要植入一段在算例中动态编译的代码。首先我们注意到动网格的边界条件来自于<code>0/pointMotionU</code>或<code>0/pointDisplacement</code>文件（取决于你使用的动网格求解器是基于速度还是位移），因此直接使用<code>codedFixedValue</code>这个重量级选手即可达到实时调整网格的目的。通过可编程接口，我们可以在定义边界条件中通过访问<code>patch().lookupPatchField</code>获取当前边界位置的场。例如我们已在自定义的求解器中创建了一个体标量场<code>deltaH</code>用于计算和存放网格格心和边界面心的侵蚀/沉积高度（非零值仅出现在特定边界），则可以通过下列方式在<code>codedFixedValue</code>的代码段中进行访问：</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;仅访问当前边界的场
+fvPatchField&lt;scalar&gt; deltaH
+(
+		patch().lookupPatchField&lt;volScalarField, scalar&gt;(&quot;deltaH&quot;)
+);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>但是，无论<code>0/pointMotionU还是0/pointDisplacement</code>均属于<code>pointVectorField</code>，与之对应的边界类是<a target="_blank" rel="noopener" href="https://www.openfoam.com/documentation/guides/v2112/api/classFoam_1_1pointPatch.html"><code>Foam::pointPatch</code></a>，其数据存储在格点上。而在有限体积法表述下的边界是<a target="_blank" rel="noopener" href="https://www.openfoam.com/documentation/guides/v2112/api/classFoam_1_1fvPatch.html"><code>Foam::fvPatch</code></a>，其数据存储在面心。这就带来两个问题：</p>
+<ol>
+<li><code>deltaH</code>场不存在于<code>pointField</code>中，因此在定义动网格边界条件时，无法通过上述的<code>patch().lookupPatchField</code>进行查找。</li>
+<li>格点数据和面心数据显然是无法对齐的，需要进行插值。</li>
+</ol>
+<p>第一个问题很好解决。<code>fvPatch</code>和<code>pointPatch</code>虽然存在差异，但它们的指向的patch编号是一致的，因此可以通过<code>this-&gt;db()</code>访问到全局的网格信息和场信息，然后提取对应编号的边界场。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">label patchIndex &#x3D; patch().index(); &#x2F;&#x2F; 获取patch编号
+
+&#x2F;&#x2F; 访问全局场
+const volScalarField &amp;deltaH
+(
+		this-&gt;db().objectRegistry::lookupObject&lt;volScalarField&gt;(&quot;deltaH&quot;);
+);
+
+const scalarField&amp; deltaHp &#x3D; deltaH.boundaryField()[patchIndex];<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>第二个问题稍复杂一些，因为从单纯的CFD计算角度出发，基于体心的有限体积法没有将数据插值到节点的必要。不过幸运的是，OpenFOAM提供了一个<a target="_blank" rel="noopener" href="https://www.openfoam.com/documentation/guides/v2112/api/classFoam_1_1PrimitivePatchInterpolation.html"><code>PrimitivePatchInterpolation</code></a>类，其中包含了从面向点插值的方法<code>faceToPointInterpolate</code>。简单看下源码，插值过程主要分为两步，首先是在节点上遍历所有从属的面，计算节点到面的距离，以倒数的形式计入面对点的权重并进行归一化，之后遍历所有面，把带权重的值累加进节点即可。本质上就是一个线性插值。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;PrimitivePatchInterpolation&lt;Patch&gt;::makeFaceToPointWeights
+forAll(pointFaces, pointi)
+&#123;
+		const labelList&amp; curFaces &#x3D; pointFaces[pointi];
+
+		scalarList&amp; pw &#x3D; weights[pointi];
+ 		pw.setSize(curFaces.size());
+
+		scalar sumw &#x3D; 0.0;
+
+		forAll(curFaces, facei)
+		&#123;
+            pw[facei] &#x3D;
+                1.0&#x2F;mag(faces[curFaces[facei]].centre(points) - points[pointi]);
+            sumw +&#x3D; pw[facei];
+		&#125;
+
+		forAll(curFaces, facei)
+		&#123;
+            pw[facei] &#x2F;&#x3D; sumw;
+		&#125;
+&#125;
+
+&#x2F;&#x2F;PrimitivePatchInterpolation&lt;Patch&gt;::faceToPointInterpolate
+forAll(result, facei)
+&#123;
+ 		const labelList&amp; curPoints &#x3D; localFaces[facei];
+
+		forAll(curPoints, pointi)
+  	&#123;
+				result[facei] +&#x3D; pf[curPoints[pointi]];
+		&#125;
+		result[facei] &#x2F;&#x3D; curPoints.size();
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>原理搞明白了，接下来就只需要调用<code>primitivePatchInterpolation</code>就行了。<code>primitivePatchInterpolation</code>构造函数的形参是一个<code>PrimitivePatch</code>对象，我没有找到直接访问的方法，但是我们可以通过刚才获取的<code>deltaH</code>场反溯网格，即利用<code>deltaH.mesh().boundaryMesh()</code>获得<code>polyBoundaryMesh</code>，这是一个存储<code>polyPatch</code>的List，而<code>polyPatch</code>恰巧继承自<code>PrimitivePatch</code>。自此，整个插值过程得以完成，我们获得了一个名为<code>deltaHpp</code>的场，它对应边界上每个节点的<code>deltaH</code>值。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; 实例化插值对象
+primitivePatchInterpolation facePointInterp(deltaH.mesh().boundaryMesh()[patchIndex]);
+
+tmp&lt;scalarField&gt; deltaHpp &#x3D; facePointInterp.faceToPointInterpolate(deltaHp); &#x2F;&#x2F; 面心向节点插值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>最后，只需要将获得的高度变化场赋予边界的节点场即可。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">pointField pVec(deltaHpp().size());
+
+forAll(pVec, i)
+&#123;
+		pVec[i][0] &#x3D; 0;
+		pVec[i][1] &#x3D; 0;
+		pVec[i][2] &#x3D; deltaHpp()[i];
+&#125;
+
+(*this) &#x3D;&#x3D; pVec;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>相关的求解器代码和计算案例可见<a target="_blank" rel="noopener" href="https://github.com/fightingxiaoxiao/driftScalarDyFoam%EF%BC%8C%E6%88%91%E4%B9%9F%E4%BD%BF%E7%94%A8%E8%BF%99%E4%B8%AA%E6%80%9D%E8%B7%AF%E5%AE%9E%E7%8E%B0%E4%BA%86%E5%AF%B9%E5%B1%8B%E9%9D%A2%E7%A7%AF%E9%9B%AA%E5%92%8C%E6%96%B9%E5%9D%97%E5%91%A8%E8%BE%B9%E7%A7%AF%E9%9B%AA%E7%9A%84%E7%AE%80%E5%8D%95%E9%A2%84%E6%B5%8B">https://github.com/fightingxiaoxiao/driftScalarDyFoam，我也使用这个思路实现了对屋面积雪和方块周边积雪的简单预测</a><sup>[2]</sup>，相关论文发表于<a target="_blank" rel="noopener" href="https://doi.org/10.3389/feart.2022.822140">https://doi.org/10.3389/feart.2022.822140</a> 。</p>
+<img src="./image/output.gif" alt="output" style="zoom:50%;" />
+
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p> [1] ZHOU X, KANG L, GU M, 等. Numerical simulation and wind tunnel test for redistribution of snow on a flat roof[J/OL]. Journal of Wind Engineering and Industrial Aerodynamics, 2016, 153: 92-105. <a target="_blank" rel="noopener" href="https://doi.org/10.1016/j.jweia.2016.03.008">https://doi.org/10.1016/j.jweia.2016.03.008</a>.</p>
+<p>[2] CHEN X, YU Z. DriftScalarDyFoam: An OpenFOAM-Based Multistage Solver for Drifting Snow and Its Distribution Around Buildings[J/OL]. Frontiers in Earth Science, 2022, 10[2022-03-16]. <a target="_blank" rel="noopener" href="https://www.frontiersin.org/article/10.3389/feart.2022.822140">https://www.frontiersin.org/article/10.3389/feart.2022.822140</a>.</p>
 
                 
             </div>
@@ -586,7 +592,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://fightingxiaoxiao.github.io" rel="external nofollow noreferrer">xiaoxiao</a>
+                    <a href="https://fightingxiaoxiao.github.io" rel="external nofollow noreferrer">Xiaoxiao</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -596,7 +602,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://fightingxiaoxiao.github.io/2020/12/13/2020-12-14-da-qi-bian-jie-ceng/">https://fightingxiaoxiao.github.io/2020/12/13/2020-12-14-da-qi-bian-jie-ceng/</a>
+                    <a href="https://fightingxiaoxiao.github.io/2022/08/19/2022-8-zai-openfoam-zhong-shi-xian-dong-wang-ge-yu-liu-chang-de-xin-xi-jiao-hu/">https://fightingxiaoxiao.github.io/2022/08/19/2022-8-zai-openfoam-zhong-shi-xian-dong-wang-ge-yu-liu-chang-de-xin-xi-jiao-hu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -609,7 +615,7 @@
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY-NC 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="https://fightingxiaoxiao.github.io" target="_blank">xiaoxiao</a>
+                    <a href="https://fightingxiaoxiao.github.io" target="_blank">Xiaoxiao</a>
                     !
                 </span>
             </div>
@@ -633,19 +639,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/CFD/">
-                                    <span class="chip bg-color">CFD</span>
-                                </a>
-                            
-                                <a href="/tags/OpenFOAM/">
-                                    <span class="chip bg-color">OpenFOAM</span>
-                                </a>
-                            
-                                <a href="/tags/Wind-Engineering/">
-                                    <span class="chip bg-color">Wind Engineering</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -813,53 +807,39 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/03/14/2021-3-cfd-dpm-de-ji-ben-yuan-li/">
+                <a href="/2022/08/19/2022-8-zai-openfoam-zhong-shi-xian-dong-wang-ge-yu-liu-chang-de-xin-xi-jiao-hu/">
                     <div class="card-image">
                         
                         
-                        <img src="https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/hutao.JPG" class="responsive-img" alt="CFD-DPM的基本原理">
+                        <img src="https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/aimi%26babala.JPG" class="responsive-img" alt="">
                         
-                        <span class="card-title">CFD-DPM的基本原理</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            耦合E-L方法的介绍与基本方程
+                            
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-14
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-19
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E7%9F%A5%E8%AF%86/" class="post-category">
-                                    知识
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Xiaoxiao
                             
                         </span>
                     </div>
                 </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/CFD/">
-                        <span class="chip bg-color">CFD</span>
-                    </a>
-                    
-                    <a href="/tags/DPM/">
-                        <span class="chip bg-color">DPM</span>
-                    </a>
-                    
-                </div>
+
                 
             </div>
         </div>
@@ -870,31 +850,30 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/18/2020-2-14-openfoam-study-2-blockmesh/">
+                <a href="/2022/08/04/2022-8-macos-xue-xi-xiao-ji/">
                     <div class="card-image">
                         
+                        <img src="https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/babala.jpg" class="responsive-img" alt="macOS系统学习小记">
                         
-                        <img src="https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/ayaka.JPG" class="responsive-img" alt="OpenFOAM初探（二）">
-                        
-                        <span class="card-title">OpenFOAM初探（二）</span>
+                        <span class="card-title">macOS系统学习小记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            blockMesh详解
+                            macOS Shell指令的笔记
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-18
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-04
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/CFD/" class="post-category">
-                                    CFD
+                            <a href="/categories/%E6%89%8B%E5%86%8C/" class="post-category">
+                                    手册
                                 </a>
                             
                             
@@ -904,12 +883,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/CFD/">
-                        <span class="chip bg-color">CFD</span>
-                    </a>
-                    
-                    <a href="/tags/OpenFOAM/">
-                        <span class="chip bg-color">OpenFOAM</span>
+                    <a href="/tags/macOS/">
+                        <span class="chip bg-color">macOS</span>
                     </a>
                     
                 </div>
@@ -1040,13 +1015,6 @@
 
 </main>
 
-
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
-    });
-</script>
 
 
 
