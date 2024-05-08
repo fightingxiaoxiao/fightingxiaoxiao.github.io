@@ -6,7 +6,7 @@
   <link href="https://fightingxiaoxiao.github.io/atom.xml" rel="self"/>
   
   <link href="https://fightingxiaoxiao.github.io/"/>
-  <updated>2022-08-20T08:23:48.000Z</updated>
+  <updated>2024-05-08T06:45:33.000Z</updated>
   <id>https://fightingxiaoxiao.github.io/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>时隔两年的测试</title>
+    <link href="https://fightingxiaoxiao.github.io/2024/05/08/2024-5-shi-ge-liang-nian-de-ce-shi/"/>
+    <id>https://fightingxiaoxiao.github.io/2024/05/08/2024-5-shi-ge-liang-nian-de-ce-shi/</id>
+    <published>2024-05-08T06:44:00.000Z</published>
+    <updated>2024-05-08T06:45:33.000Z</updated>
+    
+    
+    
+    
+    <category term="测试" scheme="https://fightingxiaoxiao.github.io/categories/%E6%B5%8B%E8%AF%95/"/>
+    
+    
+    <category term="测试" scheme="https://fightingxiaoxiao.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>在OpenFOAM中实现动网格与流场的信息交互</title>
