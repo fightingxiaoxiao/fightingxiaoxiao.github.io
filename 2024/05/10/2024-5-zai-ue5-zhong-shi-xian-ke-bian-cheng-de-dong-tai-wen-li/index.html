@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="OpenFOAM初探（一）, 故径拾遗">
+    <meta name="keywords" content="在UE5中实现可编程的动态纹理, 故径拾遗">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>OpenFOAM初探（一） | 故径拾遗</title>
+    <title>在UE5中实现可编程的动态纹理 | 故径拾遗</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -267,12 +267,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/ayaka.JPG')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/serene-dusk-anime-aesthetic-8dbiy62xqu6gpu59.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">OpenFOAM初探（一）</h1>
+                    <h1 class="description center-align post-title">在UE5中实现可编程的动态纹理</h1>
                 </div>
             </div>
         </div>
@@ -388,16 +388,28 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/CFD/">
-                                <span class="chip bg-color">CFD</span>
+                            <a href="/tags/C/">
+                                <span class="chip bg-color">C++</span>
                             </a>
                         
-                            <a href="/tags/OpenFOAM/">
-                                <span class="chip bg-color">OpenFOAM</span>
+                            <a href="/tags/Unreal-Engine/">
+                                <span class="chip bg-color">Unreal Engine</span>
                             </a>
                         
-                            <a href="/tags/Linux/">
-                                <span class="chip bg-color">Linux</span>
+                            <a href="/tags/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E/">
+                                <span class="chip bg-color">虚幻引擎</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%95%B0%E5%AD%97%E5%AD%AA%E7%94%9F/">
+                                <span class="chip bg-color">数字孪生</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/">
+                                <span class="chip bg-color">可视化</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%9D%90%E8%B4%A8/">
+                                <span class="chip bg-color">材质</span>
                             </a>
                         
                     </div>
@@ -408,8 +420,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E7%9F%A5%E8%AF%86/" class="post-category">
-                                知识
+                            <a href="/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/" class="post-category">
+                                可视化
                             </a>
                         
                     </div>
@@ -421,28 +433,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-14
+                    2024-05-10
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-05-22
+                    2024-05-10
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    987
+                    51
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    1 分
                 </div>
                 
 
@@ -465,22 +477,20 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>笔者早年的工作主要在win10平台进行，使用过诸如CFX、Fluent等商业软件，后续论文工作主要操练的是Fluent UDF。诚然，Fluent依托UDF在可操作性上已经远超其余商业CFD软件(待考证)，但是其缺陷依然明显：1, 界面操作繁琐，对于一些参数化的研究工作，很难通过脚本实现(GUI依赖版本，TUI懒得学)；2, 新功能的整合程度参差不齐，以笔者常用的DPM为例，功能限制较多，BUG不少…；3, 很难修改顶层求解器，很多中间步骤需要手工；4, 安装包太大，正版太贵。<br>OpenFOAM是一款流行的开源CFD工具箱，最初萌生体验的想法主要还是觉得自己的代码水平有些上路了(自我感觉)，此外觉得用命令行和脚本操作很有一种Geek的感觉～</p>
-<h2 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h2><p>OpenFOAM主要有两大分支，一是<a target="_blank" rel="noopener" href="https://www.openfoam.org/">基金会版(.org)</a>，版本号为OF6,7,8…，似乎是由帝国理工维护，从”血统”上讲更纯；二是<a target="_blank" rel="noopener" href="https://www.openfoam.com/">ESI版(.com)</a>，版本号为v1912,v2006,v2012…(前两位数字代表年份，后两位数字代表月份，第一次接触乍一看还以为这版本好几年没更新了)，由ESI Group维护，有那么一点点商业化的感觉。通过使用OpenFOAM 7/8/v2006/v2012这四个版本, 我大致了解了一下这两个分支的区别：</p>
-<ul>
-<li><strong>手册</strong> <a target="_blank" rel="noopener" href="https://openfoam.com/documentation/guides/latest/doc/">ESI版的手册</a>要远比基金会版的全面，后者基本就是看源码。当然总体来说OpenFOAM是我用过的大型开源软件里文档做的最差的，大概是为了培训收入吧。</li>
-<li><strong>算例</strong> ESI版自带的Tutorials要比基金会版的多，比如大气边界层的建模，基金会版似乎没有。</li>
-<li><strong>后处理</strong> ESI版DPM类的求解器输出的lagrangian粒子场能够通过外部安装的Paraview读取，而基金会版的只能通过在ThirdParty中编译的Paraview打开，而这个版本的显示性能较差。同时，如果使用的是WSL1这种没有显示接口的系统，使用Windows下的Paraview做颗粒后处理的话，ESI版是唯一的选择。</li>
-<li><strong>求解器</strong> 基金会版似乎对一些求解器做了整合，比如将动网格功能合并进了一些原始的求解器，这一点比较友好。求解器功能上两者似乎差异不大。</li>
-<li><strong>第三方包</strong> ESI版支持更多的第三方内容，比如比较知名的科学计算套件Petsc(很高端，很想学，但没空)、基于一些奇妙方法的多相流求解器OpenQBMM(但是算例好像跑不了…)、优化大规模IO的adios(听着很妙但没钱玩超算)…但是鲁迅说过，我可以不用，但它必须要有。</li>
-<li><strong>平台支持</strong> 参考基金会官网，OpenFOAM主要面向Linux，同时也一定程度支持Windows 10和macOS。基金会提供了面向Linux的源码包，以及Ubuntu等主流Linux发行版的二进制包。在Win10上安装OpenFOAM(不包括虚拟机)需要安装Linux子系统，即WSL。而ESI版提供基于MSYS的OpenCFD,能在Windows上做到开箱即用(似乎就是个docker?)，针对不同发行版的二进制包也更多。不过平台的支持程度并不是很关键，因为想要好好学习OpenFOAM还是得从编译源码包开始，使用原生Linux无论从性能和兼容性来看都是最佳选择，WSL可以作为Windows系统上的备胎。否则OpenFOAM对比Fluent似乎没有明显优势。</li>
-</ul>
-<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><h3 id="Arch-Manjaro"><a href="#Arch-Manjaro" class="headerlink" title="Arch/Manjaro"></a>Arch/Manjaro</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> pacman -S gcc flex cmake <span class="token function">git</span> openmpi<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>内存纹理创建</p>
+<p>完整的源文件见下：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"CreateDynamicTexture.h"</span></span>
 
-<h3 id="Debian-Ubuntu"><a href="#Debian-Ubuntu" class="headerlink" title="Debian/Ubuntu"></a>Debian/Ubuntu</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> update
-<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> build-essential flex bison cmake zlib1g-dev libboost-system-dev libboost-thread-dev libopenmpi-dev openmpi-bin gnuplot libreadline-dev libncurses-dev libxt-dev
-<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> qt4-dev-tools libqt4-dev libqt4-opengl-dev freeglut3-dev libqtwebkit-dev<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+UTexture2D <span class="token operator">*</span> <span class="token class-name">UCreateDynamicTexture</span><span class="token operator">::</span><span class="token function">CreateDynamicTexture</span><span class="token punctuation">(</span><span class="token keyword">int</span> Width<span class="token punctuation">,</span> <span class="token keyword">int</span> Height<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    int32 TextureWidth <span class="token operator">=</span> Width<span class="token punctuation">;</span>
+    int32 TextureHeight <span class="token operator">=</span> Height<span class="token punctuation">;</span>
+    UTexture2D <span class="token operator">*</span>NewTexture <span class="token operator">=</span> <span class="token class-name">UTexture2D</span><span class="token operator">::</span><span class="token function">CreateTransient</span><span class="token punctuation">(</span>TextureWidth<span class="token punctuation">,</span> TextureHeight<span class="token punctuation">,</span> PF_B8G8R8A8<span class="token punctuation">,</span> <span class="token function">FName</span><span class="token punctuation">(</span><span class="token string">"MyColorMap"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
+    <span class="token keyword">return</span> NewTexture<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2>
                 
             </div>
             <hr/>
@@ -496,7 +506,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://fightingxiaoxiao.github.io" rel="external nofollow noreferrer">Xiaoxiao</a>
+                    <a href="https://fightingxiaoxiao.github.io" rel="external nofollow noreferrer">陈肖笑</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -506,7 +516,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://fightingxiaoxiao.github.io/2020/02/14/2020-2-openfoam-de-jie-shao-yu-an-zhuang/">https://fightingxiaoxiao.github.io/2020/02/14/2020-2-openfoam-de-jie-shao-yu-an-zhuang/</a>
+                    <a href="https://fightingxiaoxiao.github.io/2024/05/10/2024-5-zai-ue5-zhong-shi-xian-ke-bian-cheng-de-dong-tai-wen-li/">https://fightingxiaoxiao.github.io/2024/05/10/2024-5-zai-ue5-zhong-shi-xian-ke-bian-cheng-de-dong-tai-wen-li/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -519,7 +529,7 @@
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY-NC 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="https://fightingxiaoxiao.github.io" target="_blank">Xiaoxiao</a>
+                    <a href="https://fightingxiaoxiao.github.io" target="_blank">陈肖笑</a>
                     !
                 </span>
             </div>
@@ -544,16 +554,28 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/CFD/">
-                                    <span class="chip bg-color">CFD</span>
+                                <a href="/tags/C/">
+                                    <span class="chip bg-color">C++</span>
                                 </a>
                             
-                                <a href="/tags/OpenFOAM/">
-                                    <span class="chip bg-color">OpenFOAM</span>
+                                <a href="/tags/Unreal-Engine/">
+                                    <span class="chip bg-color">Unreal Engine</span>
                                 </a>
                             
-                                <a href="/tags/Linux/">
-                                    <span class="chip bg-color">Linux</span>
+                                <a href="/tags/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E/">
+                                    <span class="chip bg-color">虚幻引擎</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%95%B0%E5%AD%97%E5%AD%AA%E7%94%9F/">
+                                    <span class="chip bg-color">数字孪生</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/">
+                                    <span class="chip bg-color">可视化</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%9D%90%E8%B4%A8/">
+                                    <span class="chip bg-color">材质</span>
                                 </a>
                             
                         </div>
@@ -723,50 +745,67 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/02/18/2020-2-14-openfoam-study-2-blockmesh/">
+                <a href="/2024/05/10/2024-5-zai-ue5-zhong-shi-xian-ke-bian-cheng-de-dong-tai-wen-li/">
                     <div class="card-image">
                         
+                        <img src="https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/serene-dusk-anime-aesthetic-8dbiy62xqu6gpu59.jpg" class="responsive-img" alt="在UE5中实现可编程的动态纹理">
                         
-                        <img src="https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/ayaka.JPG" class="responsive-img" alt="OpenFOAM初探（二）">
-                        
-                        <span class="card-title">OpenFOAM初探（二）</span>
+                        <span class="card-title">在UE5中实现可编程的动态纹理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            blockMesh详解
+                            一种在虚幻引擎5中实现动态纹理的编程方法
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-18
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-05-10
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/CFD/" class="post-category">
-                                    CFD
+                            <a href="/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/" class="post-category">
+                                    可视化
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/CFD/">
-                        <span class="chip bg-color">CFD</span>
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
                     </a>
                     
-                    <a href="/tags/OpenFOAM/">
-                        <span class="chip bg-color">OpenFOAM</span>
+                    <a href="/tags/Unreal-Engine/">
+                        <span class="chip bg-color">Unreal Engine</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E/">
+                        <span class="chip bg-color">虚幻引擎</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E5%AD%97%E5%AD%AA%E7%94%9F/">
+                        <span class="chip bg-color">数字孪生</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/">
+                        <span class="chip bg-color">可视化</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%9D%90%E8%B4%A8/">
+                        <span class="chip bg-color">材质</span>
                     </a>
                     
                 </div>
@@ -780,30 +819,30 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/13/2020-02-2020-happy-new-year/">
+                <a href="/2024/05/08/2024-5-shi-ge-liang-nian-de-ce-shi/">
                     <div class="card-image">
                         
-                        <img src="https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/title.jpg" class="responsive-img" alt="2020新春快乐！">
+                        <img src="https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/serene-dusk-anime-aesthetic-8dbiy62xqu6gpu59.jpg" class="responsive-img" alt="时隔两年的测试">
                         
-                        <span class="card-title">2020新春快乐！</span>
+                        <span class="card-title">时隔两年的测试</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            我的第一篇博客发布啦！
+                            测试
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-05-08
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%97%A5%E8%AE%B0/" class="post-category">
-                                    日记
+                            <a href="/categories/%E6%B5%8B%E8%AF%95/" class="post-category">
+                                    测试
                                 </a>
                             
                             
@@ -813,8 +852,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%97%A5%E5%B8%B8/">
-                        <span class="chip bg-color">日常</span>
+                    <a href="/tags/%E6%B5%8B%E8%AF%95/">
+                        <span class="chip bg-color">测试</span>
                     </a>
                     
                 </div>
@@ -945,6 +984,13 @@
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
 
 
 
