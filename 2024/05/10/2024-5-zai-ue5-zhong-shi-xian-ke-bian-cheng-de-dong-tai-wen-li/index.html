@@ -393,20 +393,8 @@
                                 <span class="chip bg-color">C++</span>
                             </a>
                         
-                            <a href="/tags/Unreal-Engine/">
-                                <span class="chip bg-color">Unreal Engine</span>
-                            </a>
-                        
                             <a href="/tags/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E/">
                                 <span class="chip bg-color">虚幻引擎</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%95%B0%E5%AD%97%E5%AD%AA%E7%94%9F/">
-                                <span class="chip bg-color">数字孪生</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/">
-                                <span class="chip bg-color">可视化</span>
                             </a>
                         
                             <a href="/tags/%E6%9D%90%E8%B4%A8/">
@@ -441,7 +429,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-05-10
+                    2024-05-24
                 </div>
                 
 
@@ -482,11 +470,11 @@
 <p>完整的源文件见下：</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"CreateDynamicTexture.h"</span></span>
 
-UTexture2D <span class="token operator">*</span> <span class="token class-name">UCreateDynamicTexture</span><span class="token operator">::</span><span class="token function">CreateDynamicTexture</span><span class="token punctuation">(</span><span class="token keyword">int</span> Width<span class="token punctuation">,</span> <span class="token keyword">int</span> Height<span class="token punctuation">)</span>
+UTexture2D <span class="token operator">*</span> <span class="token class-name">UCreateDynamicTexture</span><span class="token double-colon punctuation">::</span><span class="token function">CreateDynamicTexture</span><span class="token punctuation">(</span><span class="token keyword">int</span> Width<span class="token punctuation">,</span> <span class="token keyword">int</span> Height<span class="token punctuation">)</span>
 <span class="token punctuation">&#123;</span>
     int32 TextureWidth <span class="token operator">=</span> Width<span class="token punctuation">;</span>
     int32 TextureHeight <span class="token operator">=</span> Height<span class="token punctuation">;</span>
-    UTexture2D <span class="token operator">*</span>NewTexture <span class="token operator">=</span> <span class="token class-name">UTexture2D</span><span class="token operator">::</span><span class="token function">CreateTransient</span><span class="token punctuation">(</span>TextureWidth<span class="token punctuation">,</span> TextureHeight<span class="token punctuation">,</span> PF_B8G8R8A8<span class="token punctuation">,</span> <span class="token function">FName</span><span class="token punctuation">(</span><span class="token string">"MyColorMap"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    UTexture2D <span class="token operator">*</span>NewTexture <span class="token operator">=</span> <span class="token class-name">UTexture2D</span><span class="token double-colon punctuation">::</span><span class="token function">CreateTransient</span><span class="token punctuation">(</span>TextureWidth<span class="token punctuation">,</span> TextureHeight<span class="token punctuation">,</span> PF_B8G8R8A8<span class="token punctuation">,</span> <span class="token function">FName</span><span class="token punctuation">(</span><span class="token string">"MyColorMap"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token keyword">return</span> NewTexture<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
@@ -559,20 +547,8 @@ UTexture2D <span class="token operator">*</span> <span class="token class-name">
                                     <span class="chip bg-color">C++</span>
                                 </a>
                             
-                                <a href="/tags/Unreal-Engine/">
-                                    <span class="chip bg-color">Unreal Engine</span>
-                                </a>
-                            
                                 <a href="/tags/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E/">
                                     <span class="chip bg-color">虚幻引擎</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%95%B0%E5%AD%97%E5%AD%AA%E7%94%9F/">
-                                    <span class="chip bg-color">数字孪生</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/">
-                                    <span class="chip bg-color">可视化</span>
                                 </a>
                             
                                 <a href="/tags/%E6%9D%90%E8%B4%A8/">
