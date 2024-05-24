@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>在macOS上安装pygrib</title>
+      <link href="2024/05/24/2024-5-zai-macos-shang-an-zhuang-pygrib/"/>
+      <url>2024/05/24/2024-5-zai-macos-shang-an-zhuang-pygrib/</url>
+      
+        <content type="html"><![CDATA[<h2 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h2><p>pygrib是一个用于读取和写入气象数据格式<code>.grib</code>的Python库，在macOS上安装时遇到如下报错：</p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">      src/pygrib/_pygrib.c:1256:10: fatal error: <span class="token string">'grib_api.h'</span> <span class="token function">file</span> not found      <span class="token comment">#include "grib_api.h"</span>               ^~~~~~~~~~~~      <span class="token number">214</span> warnings and <span class="token number">1</span> error generated.      error: <span class="token builtin class-name">command</span> <span class="token string">'/usr/bin/clang'</span> failed with <span class="token builtin class-name">exit</span> code <span class="token number">1</span>      <span class="token punctuation">[</span>end of output<span class="token punctuation">]</span>  note: This error originates from a subprocess, and is likely not a problem with pip.  ERROR: Failed building wheel <span class="token keyword">for</span> pygribFailed to build pygribERROR: Could not build wheels <span class="token keyword">for</span> pygrib, <span class="token function">which</span> is required to <span class="token function">install</span> pyproject.toml-based projects<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="参考方案"><a href="#参考方案" class="headerlink" title="参考方案"></a>参考方案</h2><p>这个<a href="https://github.com/jswhit/pygrib/issues/115">issue</a>提出了类似的问题，平台是Ubuntu。其解决方案如下：</p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> libeccodes-devpip <span class="token function">install</span> eccodes-python<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>同样的思路迁移至macOS，通过homebrew安装<code>eccodes</code>，并通过pip安装<code>eccodes-python</code>，最终成功安装。</p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">brew <span class="token function">install</span> eccodespip <span class="token function">install</span> eccodes-python<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>此外，注意到<code>eccodes</code>包需要<code>hdf5</code>包作为依赖，同某些包依赖的<code>hdf5-mpi</code>形成冲突，后期需要注意。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 气象学 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+            <tag> 气象学 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>在UE5中实现可编程的动态纹理</title>
       <link href="2024/05/10/2024-5-zai-ue5-zhong-shi-xian-ke-bian-cheng-de-dong-tai-wen-li/"/>
       <url>2024/05/10/2024-5-zai-ue5-zhong-shi-xian-ke-bian-cheng-de-dong-tai-wen-li/</url>

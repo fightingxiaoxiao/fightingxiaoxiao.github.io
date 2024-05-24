@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="在UE5中实现可编程的动态纹理, 故径拾遗">
+    <meta name="keywords" content="在macOS上安装pygrib, 故径拾遗">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>在UE5中实现可编程的动态纹理 | 故径拾遗</title>
+    <title>在macOS上安装pygrib | 故径拾遗</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -272,7 +272,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">在UE5中实现可编程的动态纹理</h1>
+                    <h1 class="description center-align post-title">在macOS上安装pygrib</h1>
                 </div>
             </div>
         </div>
@@ -388,28 +388,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/C/">
-                                <span class="chip bg-color">C++</span>
+                            <a href="/tags/Python/">
+                                <span class="chip bg-color">Python</span>
                             </a>
                         
-                            <a href="/tags/Unreal-Engine/">
-                                <span class="chip bg-color">Unreal Engine</span>
-                            </a>
-                        
-                            <a href="/tags/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E/">
-                                <span class="chip bg-color">虚幻引擎</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%95%B0%E5%AD%97%E5%AD%AA%E7%94%9F/">
-                                <span class="chip bg-color">数字孪生</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/">
-                                <span class="chip bg-color">可视化</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%9D%90%E8%B4%A8/">
-                                <span class="chip bg-color">材质</span>
+                            <a href="/tags/%E6%B0%94%E8%B1%A1%E5%AD%A6/">
+                                <span class="chip bg-color">气象学</span>
                             </a>
                         
                     </div>
@@ -420,8 +404,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/" class="post-category">
-                                可视化
+                            <a href="/categories/%E6%B0%94%E8%B1%A1%E5%AD%A6/" class="post-category">
+                                气象学
                             </a>
                         
                     </div>
@@ -433,21 +417,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-05-10
+                    2024-05-24
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-05-10
+                    2024-05-24
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    51
+                    218
                 </div>
                 
 
@@ -477,20 +461,29 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>内存纹理创建</p>
-<p>完整的源文件见下：</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"CreateDynamicTexture.h"</span></span>
+                <h2 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h2><p>pygrib是一个用于读取和写入气象数据格式<code>.grib</code>的Python库，在macOS上安装时遇到如下报错：</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">      src/pygrib/_pygrib.c:1256:10: fatal error: <span class="token string">'grib_api.h'</span> <span class="token function">file</span> not found
+      <span class="token comment">#include "grib_api.h"</span>
+               ^~~~~~~~~~~~
+      <span class="token number">214</span> warnings and <span class="token number">1</span> error generated.
+      error: <span class="token builtin class-name">command</span> <span class="token string">'/usr/bin/clang'</span> failed with <span class="token builtin class-name">exit</span> code <span class="token number">1</span>
+      <span class="token punctuation">[</span>end of output<span class="token punctuation">]</span>
 
-UTexture2D <span class="token operator">*</span> <span class="token class-name">UCreateDynamicTexture</span><span class="token operator">::</span><span class="token function">CreateDynamicTexture</span><span class="token punctuation">(</span><span class="token keyword">int</span> Width<span class="token punctuation">,</span> <span class="token keyword">int</span> Height<span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-    int32 TextureWidth <span class="token operator">=</span> Width<span class="token punctuation">;</span>
-    int32 TextureHeight <span class="token operator">=</span> Height<span class="token punctuation">;</span>
-    UTexture2D <span class="token operator">*</span>NewTexture <span class="token operator">=</span> <span class="token class-name">UTexture2D</span><span class="token operator">::</span><span class="token function">CreateTransient</span><span class="token punctuation">(</span>TextureWidth<span class="token punctuation">,</span> TextureHeight<span class="token punctuation">,</span> PF_B8G8R8A8<span class="token punctuation">,</span> <span class="token function">FName</span><span class="token punctuation">(</span><span class="token string">"MyColorMap"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+  ERROR: Failed building wheel <span class="token keyword">for</span> pygrib
+Failed to build pygrib
+ERROR: Could not build wheels <span class="token keyword">for</span> pygrib, <span class="token function">which</span> is required to <span class="token function">install</span> pyproject.toml-based projects<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-    <span class="token keyword">return</span> NewTexture<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="参考方案"><a href="#参考方案" class="headerlink" title="参考方案"></a>参考方案</h2><p>这个<a target="_blank" rel="noopener" href="https://github.com/jswhit/pygrib/issues/115">issue</a>提出了类似的问题，平台是Ubuntu。其解决方案如下：</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> libeccodes-dev
+pip <span class="token function">install</span> eccodes-python<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>同样的思路迁移至macOS，通过homebrew安装<code>eccodes</code>，并通过pip安装<code>eccodes-python</code>，最终成功安装。</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">brew <span class="token function">install</span> eccodes
+pip <span class="token function">install</span> eccodes-python<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>此外，注意到<code>eccodes</code>包需要<code>hdf5</code>包作为依赖，同某些包依赖的<code>hdf5-mpi</code>形成冲突，后期需要注意。</p>
+
                 
             </div>
             <hr/>
@@ -516,7 +509,7 @@ UTexture2D <span class="token operator">*</span> <span class="token class-name">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://fightingxiaoxiao.github.io/2024/05/10/2024-5-zai-ue5-zhong-shi-xian-ke-bian-cheng-de-dong-tai-wen-li/">https://fightingxiaoxiao.github.io/2024/05/10/2024-5-zai-ue5-zhong-shi-xian-ke-bian-cheng-de-dong-tai-wen-li/</a>
+                    <a href="https://fightingxiaoxiao.github.io/2024/05/24/2024-5-zai-macos-shang-an-zhuang-pygrib/">https://fightingxiaoxiao.github.io/2024/05/24/2024-5-zai-macos-shang-an-zhuang-pygrib/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -554,28 +547,12 @@ UTexture2D <span class="token operator">*</span> <span class="token class-name">
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/C/">
-                                    <span class="chip bg-color">C++</span>
+                                <a href="/tags/Python/">
+                                    <span class="chip bg-color">Python</span>
                                 </a>
                             
-                                <a href="/tags/Unreal-Engine/">
-                                    <span class="chip bg-color">Unreal Engine</span>
-                                </a>
-                            
-                                <a href="/tags/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E/">
-                                    <span class="chip bg-color">虚幻引擎</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%95%B0%E5%AD%97%E5%AD%AA%E7%94%9F/">
-                                    <span class="chip bg-color">数字孪生</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/">
-                                    <span class="chip bg-color">可视化</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%9D%90%E8%B4%A8/">
-                                    <span class="chip bg-color">材质</span>
+                                <a href="/tags/%E6%B0%94%E8%B1%A1%E5%AD%A6/">
+                                    <span class="chip bg-color">气象学</span>
                                 </a>
                             
                         </div>
@@ -745,9 +722,10 @@ UTexture2D <span class="token operator">*</span> <span class="token class-name">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2024/05/24/2024-5-zai-macos-shang-an-zhuang-pygrib/">
                     <div class="card-image">
@@ -764,9 +742,9 @@ UTexture2D <span class="token operator">*</span> <span class="token class-name">
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-05-24
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-05-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -779,6 +757,7 @@ UTexture2D <span class="token operator">*</span> <span class="token class-name">
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -801,30 +780,30 @@ UTexture2D <span class="token operator">*</span> <span class="token class-name">
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/05/08/2024-5-shi-ge-liang-nian-de-ce-shi/">
+                <a href="/2024/05/10/2024-5-zai-ue5-zhong-shi-xian-ke-bian-cheng-de-dong-tai-wen-li/">
                     <div class="card-image">
                         
-                        <img src="https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/serene-dusk-anime-aesthetic-8dbiy62xqu6gpu59.jpg" class="responsive-img" alt="时隔两年的测试">
+                        <img src="https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/serene-dusk-anime-aesthetic-8dbiy62xqu6gpu59.jpg" class="responsive-img" alt="在UE5中实现可编程的动态纹理">
                         
-                        <span class="card-title">时隔两年的测试</span>
+                        <span class="card-title">在UE5中实现可编程的动态纹理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            测试
+                            一种在虚幻引擎5中实现动态纹理的编程方法
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-05-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-05-10
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%B5%8B%E8%AF%95/" class="post-category">
-                                    测试
+                            <a href="/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/" class="post-category">
+                                    可视化
                                 </a>
                             
                             
@@ -834,8 +813,28 @@ UTexture2D <span class="token operator">*</span> <span class="token class-name">
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%B5%8B%E8%AF%95/">
-                        <span class="chip bg-color">测试</span>
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
+                    </a>
+                    
+                    <a href="/tags/Unreal-Engine/">
+                        <span class="chip bg-color">Unreal Engine</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E/">
+                        <span class="chip bg-color">虚幻引擎</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E5%AD%97%E5%AD%AA%E7%94%9F/">
+                        <span class="chip bg-color">数字孪生</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/">
+                        <span class="chip bg-color">可视化</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%9D%90%E8%B4%A8/">
+                        <span class="chip bg-color">材质</span>
                     </a>
                     
                 </div>
