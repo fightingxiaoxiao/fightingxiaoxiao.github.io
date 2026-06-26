@@ -1,0 +1,71 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="ink" data-mode="light"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>macOS系统学习小记 · 观澜听风</title><meta name="description" content="macOS Shell指令的笔记"><meta name="author" content="陈肖笑"><link rel="canonical" href="https://smilemax.top/blog/macos-notes/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="preconnect" href="https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com" crossorigin><meta property="og:type" content="website"><meta property="og:title" content="macOS系统学习小记 · 观澜听风"><meta property="og:description" content="macOS Shell指令的笔记"><meta property="og:url" content="https://smilemax.top/blog/macos-notes/"><meta name="twitter:card" content="summary_large_image"><meta name="generator" content="Astro v6.4.8"><script>(function(){const defaultTheme = "ink";
+const themes = ["ink","sand","celadon"];
+
+  (() => {
+    try {
+      const el = document.documentElement;
+      let t = localStorage.getItem('theme');
+      if (!t || !themes.includes(t)) t = defaultTheme;
+      const m =
+        localStorage.getItem('mode') ||
+        (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      el.dataset.theme = t;
+      el.dataset.mode = m;
+    } catch (e) {
+      /* 无 localStorage 时退回 SSR 默认值 */
+    }
+  })();
+})();</script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CAqDO0tx.js"></script><link rel="stylesheet" href="/_astro/_..BYI2aceI.css"><style>.prose{font-size:1.05rem;line-height:1.8;color:var(--color-text)}.prose>*+*{margin-top:var(--space-5)}.prose h2,.prose h3,.prose h4{margin-top:var(--space-10);margin-bottom:var(--space-2);scroll-margin-top:calc(var(--nav-h) + var(--space-4));line-height:1.3}.prose h2{font-size:var(--text-xl);padding-bottom:var(--space-2);border-bottom:1px solid var(--border)}.prose h3{font-size:var(--text-lg)}.prose h4{font-size:var(--text-base);color:var(--text-muted)}.prose p,.prose li{text-wrap:pretty}.prose a{color:var(--link);text-decoration:underline;text-decoration-color:color-mix(in oklch,var(--link) 35%,transparent);text-underline-offset:3px}.prose a:hover{text-decoration-color:var(--link)}.prose strong{font-weight:650}.prose ul,.prose ol{padding-left:1.5rem}.prose li+li{margin-top:var(--space-2)}.prose blockquote{border-left:3px solid var(--accent);padding:var(--space-1) var(--space-4);color:var(--text-muted);background:var(--surface-2);border-radius:0 var(--radius-sm) var(--radius-sm) 0}.prose :not(pre)>code{font-family:var(--font-mono);font-size:.875em;background:var(--surface-2);padding:.15em .4em;border-radius:var(--radius-sm);border:1px solid var(--border)}.prose pre.astro-code{margin-block:var(--space-5)}.prose img{border-radius:var(--radius-md);margin-inline:auto;box-shadow:var(--shadow-sm)}.prose hr{border:none;border-top:1px solid var(--border);margin-block:var(--space-10)}.prose table{width:100%;border-collapse:collapse;font-size:var(--text-sm);display:block;overflow-x:auto}.prose th,.prose td{border:1px solid var(--border);padding:var(--space-2) var(--space-3);text-align:left}.prose thead th{background:var(--surface-2)}.prose .katex-display{overflow-x:auto;overflow-y:hidden;padding-block:var(--space-2)}.prose .references,.prose #refs{font-size:var(--text-sm);color:var(--text-muted)}.prose .csl-entry{margin-top:var(--space-2)}
+</style><link rel="stylesheet" href="/_astro/BaseLayout.Bv2DYzM7.css"></head> <body> <header class="nav" data-astro-cid-bli5r3oy> <div class="nav__inner container" data-astro-cid-bli5r3oy> <a href="/" class="nav__brand" aria-label="观澜听风" data-astro-cid-bli5r3oy> <span class="nav__mark" aria-hidden="true" data-astro-cid-bli5r3oy></span> <span class="nav__title" data-astro-cid-bli5r3oy>观澜听风</span> <span class="nav__brush" aria-hidden="true" data-astro-cid-bli5r3oy></span> </a> <nav id="nav-links" class="nav__links" aria-label="主导航" data-astro-cid-bli5r3oy> <a href="/blog" class="nav__link is-active" aria-current="page" data-astro-cid-bli5r3oy> 博文 </a><a href="/album" class="nav__link" data-astro-cid-bli5r3oy> 相册 </a><a href="/slides" class="nav__link" data-astro-cid-bli5r3oy> 课件 </a><a href="/mis" class="nav__link" data-astro-cid-bli5r3oy> MIS </a><a href="/about" class="nav__link" data-astro-cid-bli5r3oy> 关于 </a> </nav> <div class="nav__right" data-astro-cid-bli5r3oy> <div class="theme-controls" data-astro-cid-revbyrwk> <button class="tc-btn" data-toggle-mode aria-label="切换深浅色" title="深 / 浅色" data-astro-cid-revbyrwk> <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" data-astro-cid-revbyrwk> <circle cx="12" cy="12" r="4" data-astro-cid-revbyrwk></circle> <path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19" data-astro-cid-revbyrwk></path> </svg> <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-revbyrwk> <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" data-astro-cid-revbyrwk></path> </svg> </button> <details class="theme-menu" data-astro-cid-revbyrwk> <summary class="tc-btn" aria-label="切换配色" title="配色主题" data-astro-cid-revbyrwk> <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-revbyrwk> <circle cx="13.5" cy="6.5" r="1.2" data-astro-cid-revbyrwk></circle> <circle cx="17.5" cy="10.5" r="1.2" data-astro-cid-revbyrwk></circle> <circle cx="8.5" cy="7.5" r="1.2" data-astro-cid-revbyrwk></circle> <circle cx="6.5" cy="12.5" r="1.2" data-astro-cid-revbyrwk></circle> <path d="M12 2a10 10 0 1 0 0 20c1.1 0 2-.9 2-2 0-.5-.2-1-.5-1.3-.3-.4-.5-.8-.5-1.2 0-1 .8-1.8 1.8-1.8H16a6 6 0 0 0 6-6c0-4.4-4.5-7.9-10-7.9z" data-astro-cid-revbyrwk></path> </svg> </summary> <div class="theme-pop" role="menu" data-astro-cid-revbyrwk> <button class="theme-pop__item" data-set-theme="ink" role="menuitem" data-astro-cid-revbyrwk> <span class="swatch swatch--ink" aria-hidden="true" data-astro-cid-revbyrwk></span> 墨与宣 </button><button class="theme-pop__item" data-set-theme="sand" role="menuitem" data-astro-cid-revbyrwk> <span class="swatch swatch--sand" aria-hidden="true" data-astro-cid-revbyrwk></span> 暖砂 </button><button class="theme-pop__item" data-set-theme="celadon" role="menuitem" data-astro-cid-revbyrwk> <span class="swatch swatch--celadon" aria-hidden="true" data-astro-cid-revbyrwk></span> 青瓷 </button> </div> </details> </div> <button class="nav__toggle" type="button" data-nav-toggle aria-label="菜单" aria-expanded="false" aria-controls="nav-links" data-astro-cid-bli5r3oy> <span class="nav__bars" aria-hidden="true" data-astro-cid-bli5r3oy></span> </button> </div> </div> </header> <script type="module">(function(){const r=window;if(r.__navBound)return;r.__navBound=!0;const s=()=>document.querySelector(".nav"),n=e=>{const t=s();if(!t)return;e?t.setAttribute("data-nav-open",""):t.removeAttribute("data-nav-open");const a=t.querySelector("[data-nav-toggle]");a&&a.setAttribute("aria-expanded",e?"true":"false")};document.addEventListener("click",e=>{const t=e.target;if(t.closest("[data-nav-toggle]")){const o=s();n(!(o&&o.hasAttribute("data-nav-open")));return}const a=s();if(!(!a||!a.hasAttribute("data-nav-open"))){if(t.closest(".nav__link")){n(!1);return}t.closest(".nav")||n(!1)}}),document.addEventListener("keydown",e=>{e.key==="Escape"&&n(!1)}),document.addEventListener("astro:after-swap",()=>n(!1))})();</script> <main class="site-main">  <div class="post-shell container" data-astro-cid-gjtny2mx> <article class="post" data-astro-cid-gjtny2mx> <header class="post__head" data-astro-cid-gjtny2mx> <a class="post__cat" href="/categories/%E6%89%8B%E5%86%8C" data-astro-cid-gjtny2mx> 手册 </a> <h1 class="post__title" data-astro-cid-gjtny2mx>macOS系统学习小记</h1> <div class="post__meta" data-astro-cid-gjtny2mx> <time datetime="2022-08-04T12:42:00.000Z" data-astro-cid-gjtny2mx>2022-08-04</time>  <span class="post__tags" data-astro-cid-gjtny2mx> <a class="post__tag" href="/tags/macOS" style="--tag-h:175" data-astro-cid-gjtny2mx> macOS </a> </span> </div> </header> <img class="post__cover" src="https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/Lycoris.JPG" srcset="https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/Lycoris.JPG?imageMogr2/thumbnail/640x 640w, https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/Lycoris.JPG?imageMogr2/thumbnail/1024x 1024w, https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/Lycoris.JPG?imageMogr2/thumbnail/1440x 1440w" sizes="(max-width: 760px) 100vw, 720px" alt="" loading="eager" decoding="async" data-astro-cid-gjtny2mx> <div class="prose" data-astro-cid-gjtny2mx>  <h2 id="在内存上创建分区">在内存上创建分区</h2>
+<p>在内存上创建一个 128MB 的可读写分区</p>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">diskutil</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> erasevolume</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> HFS+</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> 'RAM Disk'</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> `</span><span style="color:#6F42C1;--shiki-dark:#B392F0">hdiutil</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> attach </span><span style="color:#005CC5;--shiki-dark:#79B8FF">-nomount</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> ram://262144`</span></span></code></pre>
+<p>弹出名为 <code>/dev/disk8</code> 的分区</p>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">hdiutil</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> detach</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> /dev/disk8</span></span></code></pre>  </div>  </article> <aside class="post-aside" data-astro-cid-gjtny2mx> <nav class="toc" aria-label="目录" data-astro-cid-ymbpksfa><p class="toc__title" data-astro-cid-ymbpksfa>目录</p><ul class="toc__list" role="list" data-astro-cid-ymbpksfa><li class="toc__item" data-astro-cid-ymbpksfa><a class="toc__link" href="#在内存上创建分区" data-toc-link="在内存上创建分区" data-astro-cid-ymbpksfa>在内存上创建分区</a></li></ul></nav><script type="module">function s(){const e=document.querySelectorAll("[data-toc-link]");if(!e.length)return;const n=new Map;e.forEach(t=>n.set(t.getAttribute("data-toc-link")||"",t));const o=[...n.keys()].map(t=>document.getElementById(t)).filter(t=>!!t);if(!o.length)return;const a=new IntersectionObserver(t=>{t.forEach(r=>{r.isIntersecting&&(e.forEach(i=>i.classList.remove("is-active")),n.get(r.target.id)?.classList.add("is-active"))})},{rootMargin:"-12% 0px -78% 0px",threshold:0});o.forEach(t=>a.observe(t))}document.addEventListener("astro:page-load",s);s();</script> </aside> </div>  </main> <footer class="footer" data-astro-cid-oegwczy5> <div class="container footer__inner" data-astro-cid-oegwczy5> <p class="footer__copy" data-astro-cid-oegwczy5>© 2026 陈肖笑 · 观澜听风</p> <p class="footer__meta" data-astro-cid-oegwczy5> <a href="https://github.com/fightingxiaoxiao" rel="me noopener" target="_blank" data-astro-cid-oegwczy5>GitHub</a> <span aria-hidden="true" data-astro-cid-oegwczy5>·</span> <a href="mailto:smilemax@foxmail.com" data-astro-cid-oegwczy5>Email</a> <span aria-hidden="true" data-astro-cid-oegwczy5>·</span> <a href="/rss.xml" data-astro-cid-oegwczy5>RSS</a> </p> </div> </footer> <script>
+      // 主题/模式：全局事件委托，绑定一次，跨视图过渡存活。
+      (function () {
+        function apply() {
+          var el = document.documentElement;
+          el.dataset.theme = localStorage.getItem('theme') || el.dataset.theme || 'ink';
+          el.dataset.mode = localStorage.getItem('mode') || el.dataset.mode || 'light';
+        }
+        function onClick(e) {
+          var modeBtn = e.target.closest('[data-toggle-mode]');
+          if (modeBtn) {
+            var cur = document.documentElement.dataset.mode === 'dark' ? 'dark' : 'light';
+            var next = cur === 'dark' ? 'light' : 'dark';
+            try {
+              localStorage.setItem('mode', next);
+            } catch (_) {}
+            document.documentElement.dataset.mode = next;
+            return;
+          }
+          var themeBtn = e.target.closest('[data-set-theme]');
+          if (themeBtn) {
+            var t = themeBtn.getAttribute('data-set-theme');
+            try {
+              localStorage.setItem('theme', t);
+            } catch (_) {}
+            document.documentElement.dataset.theme = t;
+            var menu = themeBtn.closest('details');
+            if (menu) menu.open = false;
+          }
+        }
+        if (!window.__themeBound) {
+          document.addEventListener('click', onClick);
+          // 换页前把主题写进「即将载入的文档」根元素，从源头防回退/白闪。
+          // ClientRouter 会用新文档的 SSR 默认值覆盖 <html data-theme/mode>，
+          // 只靠 after-swap 事后纠正会先覆盖后纠正，可能被看到为「主题回退」。
+          document.addEventListener('astro:before-swap', function (e) {
+            var doc = e.newDocument;
+            if (!doc) return;
+            var t = localStorage.getItem('theme');
+            var m = localStorage.getItem('mode');
+            if (t) doc.documentElement.dataset.theme = t;
+            if (m) doc.documentElement.dataset.mode = m;
+          });
+          document.addEventListener('astro:after-swap', apply); // 兜底再套一次
+          window.__themeBound = true;
+        }
+        apply();
+      })();
+    </script> </body> </html>

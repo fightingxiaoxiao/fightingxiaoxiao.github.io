@@ -1,0 +1,142 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="ink" data-mode="light"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>大气边界层的数值方法实现：以OpenFOAM为例（一） · 观澜听风</title><meta name="description" content="大气边界层理论"><meta name="author" content="陈肖笑"><link rel="canonical" href="https://smilemax.top/blog/atmospheric-boundary-layer/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="preconnect" href="https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com" crossorigin><meta property="og:type" content="website"><meta property="og:title" content="大气边界层的数值方法实现：以OpenFOAM为例（一） · 观澜听风"><meta property="og:description" content="大气边界层理论"><meta property="og:url" content="https://smilemax.top/blog/atmospheric-boundary-layer/"><meta name="twitter:card" content="summary_large_image"><meta name="generator" content="Astro v6.4.8"><script>(function(){const defaultTheme = "ink";
+const themes = ["ink","sand","celadon"];
+
+  (() => {
+    try {
+      const el = document.documentElement;
+      let t = localStorage.getItem('theme');
+      if (!t || !themes.includes(t)) t = defaultTheme;
+      const m =
+        localStorage.getItem('mode') ||
+        (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      el.dataset.theme = t;
+      el.dataset.mode = m;
+    } catch (e) {
+      /* 无 localStorage 时退回 SSR 默认值 */
+    }
+  })();
+})();</script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CAqDO0tx.js"></script><link rel="stylesheet" href="/_astro/_..BYI2aceI.css"><style>.prose{font-size:1.05rem;line-height:1.8;color:var(--color-text)}.prose>*+*{margin-top:var(--space-5)}.prose h2,.prose h3,.prose h4{margin-top:var(--space-10);margin-bottom:var(--space-2);scroll-margin-top:calc(var(--nav-h) + var(--space-4));line-height:1.3}.prose h2{font-size:var(--text-xl);padding-bottom:var(--space-2);border-bottom:1px solid var(--border)}.prose h3{font-size:var(--text-lg)}.prose h4{font-size:var(--text-base);color:var(--text-muted)}.prose p,.prose li{text-wrap:pretty}.prose a{color:var(--link);text-decoration:underline;text-decoration-color:color-mix(in oklch,var(--link) 35%,transparent);text-underline-offset:3px}.prose a:hover{text-decoration-color:var(--link)}.prose strong{font-weight:650}.prose ul,.prose ol{padding-left:1.5rem}.prose li+li{margin-top:var(--space-2)}.prose blockquote{border-left:3px solid var(--accent);padding:var(--space-1) var(--space-4);color:var(--text-muted);background:var(--surface-2);border-radius:0 var(--radius-sm) var(--radius-sm) 0}.prose :not(pre)>code{font-family:var(--font-mono);font-size:.875em;background:var(--surface-2);padding:.15em .4em;border-radius:var(--radius-sm);border:1px solid var(--border)}.prose pre.astro-code{margin-block:var(--space-5)}.prose img{border-radius:var(--radius-md);margin-inline:auto;box-shadow:var(--shadow-sm)}.prose hr{border:none;border-top:1px solid var(--border);margin-block:var(--space-10)}.prose table{width:100%;border-collapse:collapse;font-size:var(--text-sm);display:block;overflow-x:auto}.prose th,.prose td{border:1px solid var(--border);padding:var(--space-2) var(--space-3);text-align:left}.prose thead th{background:var(--surface-2)}.prose .katex-display{overflow-x:auto;overflow-y:hidden;padding-block:var(--space-2)}.prose .references,.prose #refs{font-size:var(--text-sm);color:var(--text-muted)}.prose .csl-entry{margin-top:var(--space-2)}
+</style><link rel="stylesheet" href="/_astro/BaseLayout.Bv2DYzM7.css"></head> <body> <header class="nav" data-astro-cid-bli5r3oy> <div class="nav__inner container" data-astro-cid-bli5r3oy> <a href="/" class="nav__brand" aria-label="观澜听风" data-astro-cid-bli5r3oy> <span class="nav__mark" aria-hidden="true" data-astro-cid-bli5r3oy></span> <span class="nav__title" data-astro-cid-bli5r3oy>观澜听风</span> <span class="nav__brush" aria-hidden="true" data-astro-cid-bli5r3oy></span> </a> <nav id="nav-links" class="nav__links" aria-label="主导航" data-astro-cid-bli5r3oy> <a href="/blog" class="nav__link is-active" aria-current="page" data-astro-cid-bli5r3oy> 博文 </a><a href="/album" class="nav__link" data-astro-cid-bli5r3oy> 相册 </a><a href="/slides" class="nav__link" data-astro-cid-bli5r3oy> 课件 </a><a href="/mis" class="nav__link" data-astro-cid-bli5r3oy> MIS </a><a href="/about" class="nav__link" data-astro-cid-bli5r3oy> 关于 </a> </nav> <div class="nav__right" data-astro-cid-bli5r3oy> <div class="theme-controls" data-astro-cid-revbyrwk> <button class="tc-btn" data-toggle-mode aria-label="切换深浅色" title="深 / 浅色" data-astro-cid-revbyrwk> <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" data-astro-cid-revbyrwk> <circle cx="12" cy="12" r="4" data-astro-cid-revbyrwk></circle> <path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19" data-astro-cid-revbyrwk></path> </svg> <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-revbyrwk> <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" data-astro-cid-revbyrwk></path> </svg> </button> <details class="theme-menu" data-astro-cid-revbyrwk> <summary class="tc-btn" aria-label="切换配色" title="配色主题" data-astro-cid-revbyrwk> <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-revbyrwk> <circle cx="13.5" cy="6.5" r="1.2" data-astro-cid-revbyrwk></circle> <circle cx="17.5" cy="10.5" r="1.2" data-astro-cid-revbyrwk></circle> <circle cx="8.5" cy="7.5" r="1.2" data-astro-cid-revbyrwk></circle> <circle cx="6.5" cy="12.5" r="1.2" data-astro-cid-revbyrwk></circle> <path d="M12 2a10 10 0 1 0 0 20c1.1 0 2-.9 2-2 0-.5-.2-1-.5-1.3-.3-.4-.5-.8-.5-1.2 0-1 .8-1.8 1.8-1.8H16a6 6 0 0 0 6-6c0-4.4-4.5-7.9-10-7.9z" data-astro-cid-revbyrwk></path> </svg> </summary> <div class="theme-pop" role="menu" data-astro-cid-revbyrwk> <button class="theme-pop__item" data-set-theme="ink" role="menuitem" data-astro-cid-revbyrwk> <span class="swatch swatch--ink" aria-hidden="true" data-astro-cid-revbyrwk></span> 墨与宣 </button><button class="theme-pop__item" data-set-theme="sand" role="menuitem" data-astro-cid-revbyrwk> <span class="swatch swatch--sand" aria-hidden="true" data-astro-cid-revbyrwk></span> 暖砂 </button><button class="theme-pop__item" data-set-theme="celadon" role="menuitem" data-astro-cid-revbyrwk> <span class="swatch swatch--celadon" aria-hidden="true" data-astro-cid-revbyrwk></span> 青瓷 </button> </div> </details> </div> <button class="nav__toggle" type="button" data-nav-toggle aria-label="菜单" aria-expanded="false" aria-controls="nav-links" data-astro-cid-bli5r3oy> <span class="nav__bars" aria-hidden="true" data-astro-cid-bli5r3oy></span> </button> </div> </div> </header> <script type="module">(function(){const r=window;if(r.__navBound)return;r.__navBound=!0;const s=()=>document.querySelector(".nav"),n=e=>{const t=s();if(!t)return;e?t.setAttribute("data-nav-open",""):t.removeAttribute("data-nav-open");const a=t.querySelector("[data-nav-toggle]");a&&a.setAttribute("aria-expanded",e?"true":"false")};document.addEventListener("click",e=>{const t=e.target;if(t.closest("[data-nav-toggle]")){const o=s();n(!(o&&o.hasAttribute("data-nav-open")));return}const a=s();if(!(!a||!a.hasAttribute("data-nav-open"))){if(t.closest(".nav__link")){n(!1);return}t.closest(".nav")||n(!1)}}),document.addEventListener("keydown",e=>{e.key==="Escape"&&n(!1)}),document.addEventListener("astro:after-swap",()=>n(!1))})();</script> <main class="site-main">  <div class="post-shell container" data-astro-cid-gjtny2mx> <article class="post" data-astro-cid-gjtny2mx> <header class="post__head" data-astro-cid-gjtny2mx> <a class="post__cat" href="/categories/CFD" data-astro-cid-gjtny2mx> CFD </a> <h1 class="post__title" data-astro-cid-gjtny2mx>大气边界层的数值方法实现：以OpenFOAM为例（一）</h1> <div class="post__meta" data-astro-cid-gjtny2mx> <time datetime="2020-12-13T23:21:00.000Z" data-astro-cid-gjtny2mx>2020-12-14</time>  <span class="post__tags" data-astro-cid-gjtny2mx> <a class="post__tag" href="/tags/CFD" style="--tag-h:55" data-astro-cid-gjtny2mx> CFD </a><a class="post__tag" href="/tags/OpenFOAM" style="--tag-h:340" data-astro-cid-gjtny2mx> OpenFOAM </a><a class="post__tag" href="/tags/Wind%20Engineering" style="--tag-h:175" data-astro-cid-gjtny2mx> Wind Engineering </a> </span> </div> </header> <img class="post__cover" src="https://smilemax-1300318971.cos.ap-chengdu.myqcloud.com/blogImage/babala.jpg" sizes="(max-width: 760px) 100vw, 720px" alt="" loading="eager" decoding="async" data-astro-cid-gjtny2mx> <div class="prose" data-astro-cid-gjtny2mx>  <h2 id="前言">前言</h2>
+<h2 id="基本概念">基本概念</h2>
+<p>地球表面通过地面的摩擦对空气水平运动产生阻力，从而使气流速度减慢，该阻力对气流的作用随高度的增加而减弱。当超过特定高度 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><msub><mi>z</mi><mi>G</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(z_G)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.044em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">G</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 时，这一作用即可被忽视，气流将沿等压线以梯度风速流动，则将此高度以下的区域称作<strong>大气边界层</strong>（<strong>Atmosphere Boundary Layer, ABL</strong>）。一般的，大气边界层内近地层的气流是湍流，湍流掺混使地表阻力的影响扩展到大气边界层的整个区域。而在边界层高度以上的自由大气中的风流动属于层流。<span class="" id="citation--huang2001--1">(<a href="#bib-huang2001">1</a>)</span></p>
+<h2 id="风速剖面">风速剖面</h2>
+<h3 id="对数律">对数律</h3>
+<p>平均风剖面是微气象学研究风速变化的一种主要方法。目前，气象学家认为用对数律表示大气底层强风风速廓线比较理想，其表达式为<span class="" id="citation--yang2009--richards1993--2">(<a href="#bib-yang2009">2</a>,<a href="#bib-richards1993">3</a>)</span></p>
+<p><span class="katex-error" title="ParseError: KaTeX parse error: \tag works only in display equations" style="color:#cc0000">u = \frac{u^*}{\kappa} \ln \left( \frac{z - d + z_0}{z_0} \right)\tag{1}</span></p>
+<p>式中</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> — 高度 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi></mrow><annotation encoding="application/x-tex">z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.044em;">z</span></span></span></span> 处的平均风速（m/s）</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>u</mi><mo>∗</mo></msup></mrow><annotation encoding="application/x-tex">u^*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6887em;"></span><span class="mord"><span class="mord mathnormal">u</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6887em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span></span></span></span> — 剪切风速（m/s）</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>κ</mi></mrow><annotation encoding="application/x-tex">\kappa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">κ</span></span></span></span> — 卡曼常数，一般取 0.4</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span></span></span></span> — 零平均位移（m）</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">z_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.044em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> — 粗糙高度（m），取值可见下表<span class="" id="citation--huang2001--3">(<a href="#bib-huang2001">1</a>)</span></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th><strong>地面类型</strong></th><th><strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mn>0</mn></msub><mi mathvariant="normal">/</mi><mi mathvariant="normal">m</mi></mrow><annotation encoding="application/x-tex">z_0/\mathrm{m}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.044em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">/</span><span class="mord mathrm">m</span></span></span></span></strong></th><th><strong>地面类型</strong></th><th><strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mn>0</mn></msub><mi mathvariant="normal">/</mi><mi mathvariant="normal">m</mi></mrow><annotation encoding="application/x-tex">z_0/\mathrm{m}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.044em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">/</span><span class="mord mathrm">m</span></span></span></span></strong></th></tr></thead><tbody><tr><td>砂地</td><td>0.0001~0.001</td><td>矮棕榈</td><td>0.10~0.30</td></tr><tr><td>雪地</td><td>0.001~0.006</td><td>松树林</td><td>0.90~1.00</td></tr><tr><td>割过的草地（~0.01m）</td><td>0.001~0.01</td><td>稀疏建成市郊</td><td>0.20~0.40</td></tr><tr><td>矮草地、空旷草原</td><td>0.01~0.04</td><td>密集建成市郊、市区</td><td>0.80~1.20</td></tr><tr><td>休耕地</td><td>0.02~0.03</td><td>大城市中心</td><td>2.00~3.00</td></tr><tr><td>高草地</td><td>0.04~0.10</td><td></td><td></td></tr></tbody></table>
+<p>城市地区的修正下次再写。</p>
+<h3 id="指数律">指数律</h3>
+<p>懒得写了。</p>
+<h2 id="湍流特征">湍流特征</h2>
+<h2 id="参考文献">参考文献</h2><div id="refs" class="references csl-bib-body">
+  <div class="csl-entry" id="bib-huang2001">
+    <div class="csl-left-margin">1. </div><div class="csl-right-inline">Huang B. Principles and Application of Wind-Resistant Analysis of Structures. Tongji University Press; 2001.</div>
+   </div>
+  <div class="csl-entry" id="bib-yang2009">
+    <div class="csl-left-margin">2. </div><div class="csl-right-inline">Yang Y, Gu M, Chen S, Jin X. New inflow boundary conditions for modelling the neutral equilibrium atmospheric boundary layer in computational wind engineering. Journal of Wind Engineering and Industrial Aerodynamics. 2009;97(2):88–95.</div>
+   </div>
+  <div class="csl-entry" id="bib-richards1993">
+    <div class="csl-left-margin">3. </div><div class="csl-right-inline">Richards PJ, Hoxey RP. Appropriate boundary conditions for computational wind engineering models using the k-epsilon turbulence model. In: Computational Wind Engineering 1. Elsevier; 1993. p. 145–53.</div>
+   </div>
+</div>  </div>  </article> <aside class="post-aside" data-astro-cid-gjtny2mx> <nav class="toc" aria-label="目录" data-astro-cid-ymbpksfa><p class="toc__title" data-astro-cid-ymbpksfa>目录</p><ul class="toc__list" role="list" data-astro-cid-ymbpksfa><li class="toc__item" data-astro-cid-ymbpksfa><a class="toc__link" href="#前言" data-toc-link="前言" data-astro-cid-ymbpksfa>前言</a></li><li class="toc__item" data-astro-cid-ymbpksfa><a class="toc__link" href="#基本概念" data-toc-link="基本概念" data-astro-cid-ymbpksfa>基本概念</a></li><li class="toc__item" data-astro-cid-ymbpksfa><a class="toc__link" href="#风速剖面" data-toc-link="风速剖面" data-astro-cid-ymbpksfa>风速剖面</a></li><li class="toc__item toc__item--sub" data-astro-cid-ymbpksfa><a class="toc__link" href="#对数律" data-toc-link="对数律" data-astro-cid-ymbpksfa>对数律</a></li><li class="toc__item toc__item--sub" data-astro-cid-ymbpksfa><a class="toc__link" href="#指数律" data-toc-link="指数律" data-astro-cid-ymbpksfa>指数律</a></li><li class="toc__item" data-astro-cid-ymbpksfa><a class="toc__link" href="#湍流特征" data-toc-link="湍流特征" data-astro-cid-ymbpksfa>湍流特征</a></li><li class="toc__item" data-astro-cid-ymbpksfa><a class="toc__link" href="#参考文献" data-toc-link="参考文献" data-astro-cid-ymbpksfa>参考文献</a></li></ul></nav><script type="module">function s(){const e=document.querySelectorAll("[data-toc-link]");if(!e.length)return;const n=new Map;e.forEach(t=>n.set(t.getAttribute("data-toc-link")||"",t));const o=[...n.keys()].map(t=>document.getElementById(t)).filter(t=>!!t);if(!o.length)return;const a=new IntersectionObserver(t=>{t.forEach(r=>{r.isIntersecting&&(e.forEach(i=>i.classList.remove("is-active")),n.get(r.target.id)?.classList.add("is-active"))})},{rootMargin:"-12% 0px -78% 0px",threshold:0});o.forEach(t=>a.observe(t))}document.addEventListener("astro:page-load",s);s();</script> </aside> </div>  </main> <footer class="footer" data-astro-cid-oegwczy5> <div class="container footer__inner" data-astro-cid-oegwczy5> <p class="footer__copy" data-astro-cid-oegwczy5>© 2026 陈肖笑 · 观澜听风</p> <p class="footer__meta" data-astro-cid-oegwczy5> <a href="https://github.com/fightingxiaoxiao" rel="me noopener" target="_blank" data-astro-cid-oegwczy5>GitHub</a> <span aria-hidden="true" data-astro-cid-oegwczy5>·</span> <a href="mailto:smilemax@foxmail.com" data-astro-cid-oegwczy5>Email</a> <span aria-hidden="true" data-astro-cid-oegwczy5>·</span> <a href="/rss.xml" data-astro-cid-oegwczy5>RSS</a> </p> </div> </footer> <script>
+      // 主题/模式：全局事件委托，绑定一次，跨视图过渡存活。
+      (function () {
+        function apply() {
+          var el = document.documentElement;
+          el.dataset.theme = localStorage.getItem('theme') || el.dataset.theme || 'ink';
+          el.dataset.mode = localStorage.getItem('mode') || el.dataset.mode || 'light';
+        }
+        function onClick(e) {
+          var modeBtn = e.target.closest('[data-toggle-mode]');
+          if (modeBtn) {
+            var cur = document.documentElement.dataset.mode === 'dark' ? 'dark' : 'light';
+            var next = cur === 'dark' ? 'light' : 'dark';
+            try {
+              localStorage.setItem('mode', next);
+            } catch (_) {}
+            document.documentElement.dataset.mode = next;
+            return;
+          }
+          var themeBtn = e.target.closest('[data-set-theme]');
+          if (themeBtn) {
+            var t = themeBtn.getAttribute('data-set-theme');
+            try {
+              localStorage.setItem('theme', t);
+            } catch (_) {}
+            document.documentElement.dataset.theme = t;
+            var menu = themeBtn.closest('details');
+            if (menu) menu.open = false;
+          }
+        }
+        if (!window.__themeBound) {
+          document.addEventListener('click', onClick);
+          // 换页前把主题写进「即将载入的文档」根元素，从源头防回退/白闪。
+          // ClientRouter 会用新文档的 SSR 默认值覆盖 <html data-theme/mode>，
+          // 只靠 after-swap 事后纠正会先覆盖后纠正，可能被看到为「主题回退」。
+          document.addEventListener('astro:before-swap', function (e) {
+            var doc = e.newDocument;
+            if (!doc) return;
+            var t = localStorage.getItem('theme');
+            var m = localStorage.getItem('mode');
+            if (t) doc.documentElement.dataset.theme = t;
+            if (m) doc.documentElement.dataset.mode = m;
+          });
+          document.addEventListener('astro:after-swap', apply); // 兜底再套一次
+          window.__themeBound = true;
+        }
+        apply();
+      })();
+    </script> </body> </html>
